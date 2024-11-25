@@ -6,10 +6,6 @@ import toml
 import time
 import random
 
-# Load the .toml file
-config = toml.load("WEBSITE/.secrets.toml")
-MODEL_API_URL = config["model"]["MODEL_API_URL"]
-
 ### TITLE AND DESCRIPTION ###
 st.markdown(
     """
@@ -22,7 +18,7 @@ st.markdown(
 st.text("Welcome to FoodBuddy™! Our unique model can analize your meal and let you know its nutritional intake.")
 
 # Food picture
-st.image("WEBSITE/HealthyMeal.jpg", caption="Healthy Meal!")
+st.image("HealthyMeal.jpg", caption="Healthy Meal!")
 
 ### STEP 1: USER DETAILS FORM ###
 st.header("Step 1: Personal Details")
@@ -88,13 +84,16 @@ if st.button("Calculate"):
         ],
     }
 
-    # Convert to a DataFrame
+    # Convert to a DataFrame and round values
     df = pd.DataFrame(nutritional_intake)
+    df["Percentage of Calories"] = df["Percentage of Calories"].round(0)
+    df["Calories (kcal)"] = df["Calories (kcal)"].round(0)
+    df["Grams per Day"] = df["Grams per Day"].round(0)
 
     # Display results
     st.subheader("Your Daily Nutritional Intake")
-    st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.2f} kcal/day")
-    st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs:.2f} kcal/day")
+    st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.0f} kcal/day")
+    st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs:.0f} kcal/day")
     st.dataframe(df)
 
     st.markdown(
