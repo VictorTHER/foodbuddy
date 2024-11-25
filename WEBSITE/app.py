@@ -1,121 +1,175 @@
 import streamlit as st
+import pandas as pd
 import requests
-from streamlit_folium import st_folium
-import folium
 from PIL import Image
 import toml
+import time
+import random
 
 # Load the .toml file
-config = toml.load(".secrets.toml")
-
-# Extract Mapbox details
-MAPBOX_ACCESS_TOKEN = config["mapbox"]["MAPBOX_ACCESS_TOKEN"]
-GEOCODING_API_URL = config["mapbox"]["GEOCODING_API_URL"]
-DIRECTIONS_API_URL = config["mapbox"]["DIRECTIONS_API_URL"]
+config = toml.load("WEBSITE/.secrets.toml")
 MODEL_API_URL = config["model"]["MODEL_API_URL"]
 
+### TITLE AND DESCRIPTION ###
+st.markdown(
+    """
+    <h1 style='text-align: center;'>
+    FoodBuddy™ Calculator
+    </h1>
+    """,
+    unsafe_allow_html=True,
+)
+st.text("Welcome to FoodBuddy™! Our unique model can analize your meal and let you know its nutritional intake.")
 
-st.title("NYC taxi Fare Calculator")
+# Food picture
+st.image("WEBSITE/HealthyMeal.jpg", caption="Healthy Meal!")
 
-image = Image.open("/Users/pato/code/Paulltho/taxifare-website/Taxi_picture")
-st.image(image, use_container_width=True)
+### STEP 1: USER DETAILS FORM ###
+st.header("Step 1: Personal Details")
 
-### HEADER 1: FILL IN FORM###
-st.header("Your trip details")
+# Collect user inputs
+age = st.number_input("Age (years)", min_value=1, max_value=120, step=1)
+gender = st.radio("Gender", ["Male", "Female"])
+weight = st.number_input("Weight (kg)", min_value=1, max_value=200, step=1)
+height = st.number_input("Height (cm)", min_value=50, max_value=250, step=1)
 
-### SUBHEADER 1.1: DETAIL FILL IN ###
-st.markdown("_Please fill in your trip details._")
+st.header("Activity Level")
+activity_level = st.selectbox(
+    "Choose your activity level",
+    [
+        "Sedentary (little or no exercise)",
+        "Lightly active (light exercise/sports 1-3 days/week)",
+        "Moderately active (moderate exercise/sports 3-5 days/week)",
+        "Very active (hard exercise/sports 6-7 days a week)",
+        "Super active (very hard exercise/physical job)",
+    ],
+)
 
-timestamp = st.text_input("Date and Time")
-pickup_location = st.text_input("Pickup Location")
-dropoff_location = st.text_input("Dropoff Location")
-passenger_count = st.selectbox("Passenger Count", [1,2,3,4,5,6,7,8])
+# Map activity levels to multipliers
+activity_multipliers = {
+    "Sedentary (little or no exercise)": 1.2,
+    "Lightly active (light exercise/sports 1-3 days/week)": 1.375,
+    "Moderately active (moderate exercise/sports 3-5 days/week)": 1.55,
+    "Very active (hard exercise/sports 6-7 days a week)": 1.725,
+    "Super active (very hard exercise/physical job)": 1.9,
+}
 
-timestamp =
-pickup_location =
-dropoff_location =
-passenger_count = 
-
-2014-07-06+19:18:00&pickup_longitude=-73.950655&pickup_latitude=40.783282&dropoff_longitude=-73.984365&dropoff_latitude=40.769802&passenger_count=2
-
-### SUBHEADER 1.1 TECHNICAL: LAT/LON COMPUTATION ###
-
-def get_coordinates(address):
-    params = {
-        "access_token": MAPBOX_ACCESS_TOKEN,
-        "limit": 1,
-    }
-    response = requests.get(f"{GEOCODING_API_URL}{address}.json", params=params)
-    data = response.json()
-    if "features" in data and len(data["features"]) > 0:
-        return data["features"][0]["center"]  # [longitude, latitude]
-    return None
-
-if st.button("Calculate fare"):
-    pickup_coords = get_coordinates(pickup_location)
-    dropoff_coords = get_coordinates(dropoff_location)
-
-    if pickup_coords and dropoff_coords:
-        # Fetch route using the Directions API
-        route_url = f"{DIRECTIONS_API_URL}{pickup_coords[0]},{pickup_coords[1]};{dropoff_coords[0]},{dropoff_coords[1]}"
-        params = {
-            "geometries": "geojson",
-            "access_token": MAPBOX_ACCESS_TOKEN,
-        }
-        response = requests.get(route_url, params=params)
-        route_data = response.json()
-
-        # Extract the route geometry
-        if "routes" in route_data and len(route_data["routes"]) > 0:
-            route_geometry = route_data["routes"][0]["geometry"]["coordinates"]
-
-            # Create a folium map
-            m = folium.Map(location=[pickup_coords[1], pickup_coords[0]], zoom_start=12)
-
-            # Add the route line to the map
-            folium.PolyLine(
-                locations=[(coord[1], coord[0]) for coord in route_geometry],
-                color="blue",
-                weight=5,
-                opacity=0.8,
-            ).add_to(m)
-
-            # Add markers for pickup and dropoff
-            folium.Marker(
-                location=[pickup_coords[1], pickup_coords[0]], tooltip="Pickup Location"
-            ).add_to(m)
-            folium.Marker(
-                location=[dropoff_coords[1], dropoff_coords[0]], tooltip="Dropoff Location"
-            ).add_to(m)
-
-            # Display the map in Streamlit
-            st_folium(m, width=700, height=500)
-
-            # Run the model
-            params = {
-            "pickup_datetime": timestamp,
-            "pickup_longitude": pickup_coords[0],
-            "pickup_latitude": pickup_coords[1],
-            "dropoff_longitude": dropoff_coords[0],
-            "dropoff_latitude": dropoff_coords[1],
-            "passenger_count": passenger_count,
-            }
-
-            try:
-                # Make a GET request to the model API
-                response = requests.get(MODEL_API_URL, params=params)
-                response_data = response.json()
-
-                # Display the fare prediction
-                if response.status_code == 200 and "fare" in response_data:
-                    fare = response_data["fare"]
-                    st.success(f"Predicted Fare: ${fare:.2f}")
-                else:
-                    st.error("Failed to retrieve a valid fare prediction. Check your inputs or API.")
-            except Exception as e:
-                st.error(f"Error communicating with the API: {e}")
-
-        else:
-            st.error("Could not retrieve the route. Please try again.")
+if st.button("Calculate"):
+    # Calculate BMR using Harris-Benedict equation
+    if gender == "Male":
+        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
     else:
-        st.error("Could not retrieve coordinates for the locations. Please check the input.")
+        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)
+
+    # Adjust for activity level
+    activity_multiplier = activity_multipliers[activity_level]
+    daily_caloric_needs = bmr * activity_multiplier
+
+    # Macro split percentages
+    macros = {
+        "Carbohydrates": 0.5,  # 50% of total calories
+        "Proteins": 0.2,       # 20% of total calories
+        "Fats": 0.3,           # 30% of total calories
+    }
+
+    # Calculate intake for each category
+    nutritional_intake = {
+        "Category": ["Carbohydrates", "Proteins", "Fats"],
+        "Percentage of Calories": [macros["Carbohydrates"], macros["Proteins"], macros["Fats"]],
+        "Calories (kcal)": [
+            daily_caloric_needs * macros["Carbohydrates"],
+            daily_caloric_needs * macros["Proteins"],
+            daily_caloric_needs * macros["Fats"],
+        ],
+        "Grams per Day": [
+            (daily_caloric_needs * macros["Carbohydrates"]) / 4,  # 1g of carbs = 4 kcal
+            (daily_caloric_needs * macros["Proteins"]) / 4,       # 1g of protein = 4 kcal
+            (daily_caloric_needs * macros["Fats"]) / 9,           # 1g of fat = 9 kcal
+        ],
+    }
+
+    # Convert to a DataFrame
+    df = pd.DataFrame(nutritional_intake)
+
+    # Display results
+    st.subheader("Your Daily Nutritional Intake")
+    st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.2f} kcal/day")
+    st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs:.2f} kcal/day")
+    st.dataframe(df)
+
+    st.markdown(
+        "_Note: These calculations are estimates and may vary based on individual needs._"
+    )
+
+
+
+### STEP 2: PHOTO UPLOAD ###
+st.header("Step 2: Upload a Photo")
+
+# Split into two columns
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    # Create a placeholder for the upload button
+    upload_placeholder = st.empty()
+    uploaded_file = upload_placeholder.file_uploader(
+        "Upload a photo of your meal", type=["jpg", "png", "jpeg"]
+    )
+
+    if uploaded_file:
+        # Hide the upload button
+        upload_placeholder.empty()
+
+        # Show the uploaded image
+        uploaded_image = Image.open(uploaded_file)
+        st.image(
+            uploaded_image,
+            caption="Uploaded Image",
+            use_container_width=True,
+        )
+
+        # Add a mask or overlay text to indicate processing
+        st.markdown(
+            """
+            <div style="text-align:center; background: rgba(0, 0, 0, 0.6); color: white; padding: 10px; margin-top: -50px;">
+            <strong>Analyzing...</strong>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+with col2:
+    st.subheader("Processing Status")
+
+    if uploaded_file:
+        # Placeholder for cumulative updates
+        status_placeholder = st.empty()
+
+        # List to store messages
+        status_messages = []
+
+        # Simulate processing steps with random delays
+        steps = [
+            "Analyzing your meal...",
+            "Identifying ingredients...",
+            "Checking nutritional value...",
+            "Recommending recipes...",
+            "Finalizing results...",
+        ]
+
+        for step in steps:
+            # Simulate a random delay
+            time.sleep(random.uniform(0, 5))
+
+            # Add the new step to the list of messages
+            status_messages.append(f"✅ {step}")
+
+            # Add line breaks and update placeholder
+            formatted_messages = "<br>".join(status_messages)
+            status_placeholder.markdown(
+                f"<div style='line-height: 1.8;'>{formatted_messages}</div>",
+                unsafe_allow_html=True,
+            )
+
+        # Final success message
+        st.error("[ERR0R: No response from FoodBuddy™ API]")

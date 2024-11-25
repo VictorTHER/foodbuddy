@@ -162,6 +162,6 @@ cython_debug/
 #.idea/
 
 # WEBSITE
-FoodBuddy-WEBSITE/.secrets.toml
+WEBSITE/.secrets.toml
 .secrets.toml
 .env
