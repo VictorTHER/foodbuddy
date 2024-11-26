@@ -7,6 +7,7 @@ import time
 import random
 
 ### TITLE AND DESCRIPTION ###
+
 st.markdown(
     """
     <h1 style='text-align: center;'>
@@ -18,7 +19,7 @@ st.markdown(
 st.text("Welcome to FoodBuddy™! Our unique model can analize your meal and let you know its nutritional intake.")
 
 # Food picture
-st.image("HealthyMeal.jpg", caption="Healthy Meal!")
+st.image("WEBSITE/HealthyMeal.jpg", caption="Healthy Meal!")
 
 ### STEP 1: USER DETAILS FORM ###
 st.header("Step 1: Personal Details")
@@ -50,7 +51,7 @@ activity_multipliers = {
     "Super active (very hard exercise/physical job)": 1.9,
 }
 
-if st.button("Calculate"):
+if st.button("Calculate you daily needs!"):
     # Calculate BMR using Harris-Benedict equation
     if gender == "Male":
         bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
@@ -61,44 +62,60 @@ if st.button("Calculate"):
     activity_multiplier = activity_multipliers[activity_level]
     daily_caloric_needs = bmr * activity_multiplier
 
-    # Macro split percentages
+    # Macronutrient calculations in grams
     macros = {
-        "Carbohydrates": 0.5,  # 50% of total calories
-        "Proteins": 0.2,       # 20% of total calories
-        "Fats": 0.3,           # 30% of total calories
+        "Carbohydrates": (daily_caloric_needs * 0.5) / 4,  # 50% of calories, 4 kcal per gram
+        "Proteins": (daily_caloric_needs * 0.2) / 4,       # 20% of calories, 4 kcal per gram
+        "Fats": (daily_caloric_needs * 0.3) / 9,           # 30% of calories, 9 kcal per gram
     }
 
-    # Calculate intake for each category
-    nutritional_intake = {
-        "Category": ["Carbohydrates", "Proteins", "Fats"],
-        "Percentage of Calories": [macros["Carbohydrates"], macros["Proteins"], macros["Fats"]],
-        "Calories (kcal)": [
-            daily_caloric_needs * macros["Carbohydrates"],
-            daily_caloric_needs * macros["Proteins"],
-            daily_caloric_needs * macros["Fats"],
-        ],
-        "Grams per Day": [
-            (daily_caloric_needs * macros["Carbohydrates"]) / 4,  # 1g of carbs = 4 kcal
-            (daily_caloric_needs * macros["Proteins"]) / 4,       # 1g of protein = 4 kcal
-            (daily_caloric_needs * macros["Fats"]) / 9,           # 1g of fat = 9 kcal
-        ],
+    # Micronutrient calculations in respective units
+    micronutrients = {
+        "Calcium": 1000 * (bmr / 2796),  # mg
+        "Iron": 8 * (bmr / 2796),        # mg
+        "Magnesium": 400 * (bmr / 2796), # mg
+        "Sodium": 1500 * (bmr / 2796),   # mg
+        "Vitamin C": 90 * (bmr / 2796),  # mg
+        "Vitamin D": 15 * (bmr / 2796),  # µg
+        "Vitamin A": 900 * (bmr / 2796), # µg
     }
 
-    # Convert to a DataFrame and round values
-    df = pd.DataFrame(nutritional_intake)
-    df["Percentage of Calories"] = df["Percentage of Calories"].round(0)
-    df["Calories (kcal)"] = df["Calories (kcal)"].round(0)
-    df["Grams per Day"] = df["Grams per Day"].round(0)
+    # Combine into a single dictionary with units
+    nutrients = {**macros, **micronutrients}
+    units = ["g"] * 3 + ["mg"] * 5 + ["µg"] * 2  # Units for each nutrient
+    nutrient_names = list(nutrients.keys())
+    daily_intake = list(nutrients.values())
+    descriptions = [
+        "Primary energy source for body, fuels brain and muscles.",  # Carbohydrates
+        "Builds and repairs tissues, supports enzymes and hormone production.",  # Proteins
+        "Stores energy, supports cell growth, and protects organs.",  # Fats
+        "Essential for strong bones, teeth, and muscle function.",  # Calcium
+        "Vital for oxygen transport in blood and energy production.",  # Iron
+        "Supports nerve function, muscle contraction, and heart health.",  # Magnesium
+        "Regulates fluid balance, muscle contraction, and nerve signals.",  # Sodium
+        "Boosts immune function, repairs tissues, and antioxidant protection.",  # Vitamin C
+        "Helps calcium absorption, maintains bone health and immune function.",  # Vitamin D
+        "Supports vision, skin health, and immune system functionality."  # Vitamin A
+    ]
 
-    # Display results
+    # Create DataFrame
+    df = pd.DataFrame({
+        "Nutrient": nutrient_names,
+        "Value": [round(value) for value in daily_intake],
+        "Unit": units,
+        "Your Daily Intake": [f"{round(value)} {unit}" for value, unit in zip(daily_intake, units)],
+        "Description": descriptions
+    })
+
+    # Save the DataFrame for further computations
+    st.session_state["df"] = df
+
+    # Display only relevant columns for enhanced visibility
     st.subheader("Your Daily Nutritional Intake")
-    st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.0f} kcal/day")
-    st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs:.0f} kcal/day")
-    st.dataframe(df)
+    # st.write(f"Base Metabolic Rate (BMR): {round(bmr)} kcal/day")
+    # st.write(f"**Total Daily Caloric Needs:** {round(daily_caloric_needs)} kcal/day")
+    st.dataframe(df[["Nutrient", "Your Daily Intake", "Description"]])
 
-    st.markdown(
-        "_Note: These calculations are estimates and may vary based on individual needs._"
-    )
 
 
 
