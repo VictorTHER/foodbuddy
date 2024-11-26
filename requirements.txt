@@ -1,3 +1,8 @@
+pytest
+pylint
+ipdb
+jupyterlab
+scikit-learn
 streamlit
 numpy
 pandas
