@@ -168,4 +168,4 @@ WEBSITE/.secrets.toml
 .env
 
 # PAUL
-paul_exploration.ipynb
+exploration.ipynb
