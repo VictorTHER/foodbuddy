@@ -118,7 +118,7 @@ def download_ingredients_df():
     return pd.read_csv(StringIO(content))
 
 
-def nutrition_facts(ingredient, weight, ingredients_df):
+def nutrition_facts(ingredient, weight):
     """
     Calculate nutrition facts for a given ingredient and weight.
 
@@ -130,7 +130,8 @@ def nutrition_facts(ingredient, weight, ingredients_df):
     Returns:
     - dict: Nutrition facts including ingredient, weight, and nutrient amounts.
     """
-
+    ingredients_df = download_ingredients_df()
+    
     ### STEP 1: MATCH INGREDIENT NAME ###
     try:
         # option 1 = exact match (shouldn't be dupplicates :) )
@@ -172,6 +173,7 @@ def nutrition_facts(ingredient, weight, ingredients_df):
 
     except Exception as e:
         return {"error": str(e)}
+
 
 # clean_ingredients_list()
 # ingredients = download_ingredients_df()

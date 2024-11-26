@@ -16,5 +16,7 @@ bs4
 folium
 streamlit_folium
 
-# ingredients_cleaner.py
+# ingredients_to_nutrients.py
 google.cloud.storage
+transformers
+torch

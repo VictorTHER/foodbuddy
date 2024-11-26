@@ -1,4 +1,4 @@
-ingredient,default_portion,default_portion_in_grams,Calcium_(MG)_per_100G,Carbohydrates_(G)_per_100G,Iron_(MG)_per_100G,Lipid_(G)_per_100G,Magnesium_(MG)_per_100G,Protein_(G)_per_100G,Sodium_(MG)_per_100G,Vitamin_A_(UG)_per_100G,Vitamin_C_(MG)_per_100G,Vitamin_D_(UG)_per_100G
+ingredient,default_portion,default_portion_in_grams,Calcium_(MG)_per_100G,Carbohydrates_(G)_per_100G,Iron_(MG)_per_100G,Lipid_(G)_per_100G,Magnesium_(MG)_per_100G,Protein_(G)_per_100G,Sodium_(MG)_per_100G,Vitamin A_(UG)_per_100G,Vitamin C_(MG)_per_100G,Vitamin D_(UG)_per_100G
 Abalone,Quantity not specified,85.0,39.0,7.46,3.97,6.12,60.0,21.24,574.0,2.0,2.0,0.0
 "Adobo, with noodles",Quantity not specified,224.0,15.0,8.14,0.99,7.66,18.0,16.89,510.0,4.0,0.0,0.3
 "Adobo, with rice",1 cup,244.0,18.0,8.86,1.34,7.94,21.0,17.69,522.0,4.0,0.0,0.4
