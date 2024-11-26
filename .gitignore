@@ -31,6 +31,7 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+.python-version
 
 # Installer logs
 pip-log.txt
@@ -86,7 +87,8 @@ ipython_config.py
 .python-version
 
 # data
-dataraw/
+raw_data/
+hub/
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -162,4 +164,11 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+<<<<<<< HEAD
 credentials.json
+=======
+# WEBSITE
+WEBSITE/.secrets.toml
+.secrets.toml
+.env
+>>>>>>> 9dba8b52164bab4c3842176e3ef1cf280dbf5ac6
