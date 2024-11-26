@@ -169,3 +169,4 @@ WEBSITE/.secrets.toml
 
 # PAUL
 exploration.ipynb
+.python-version
