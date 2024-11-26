@@ -166,3 +166,6 @@ cython_debug/
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
+
+# PAUL
+paul_exploration.ipynb
