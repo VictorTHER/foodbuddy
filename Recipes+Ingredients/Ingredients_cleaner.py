@@ -38,9 +38,9 @@ nutrients = pd.DataFrame({
         "Iron",
         "Magnesium",
         "Sodium",
-        "Vitamin C",
-        "Vitamin D",
-        "Vitamin A"
+        "Vitamin_C",
+        "Vitamin_D",
+        "Vitamin_A"
     ],
     "nutrient_id": [205, 203, 204, 301, 303, 304, 307, 401, 328, 320],
     "unit_name": ["G", "G", "G", "MG", "MG", "MG", "MG", "MG", "UG", "UG"]
