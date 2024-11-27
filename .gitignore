@@ -168,3 +168,10 @@ cython_debug/
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
+
+# PAUL
+Recipes+Ingredients/exploration.ipynb
+Recipes+Ingredients/__pycache__
+Recipes+Ingredients/cleaned_recipes_with_ingredients.csv
+Recipes+Ingredients/data_train_set.csv
+.python-version
