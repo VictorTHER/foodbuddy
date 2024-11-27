@@ -171,4 +171,10 @@ credentials.json
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
->>>>>>> 9dba8b52164bab4c3842176e3ef1cf280dbf5ac6
+
+# PAUL
+Recipes+Ingredients/exploration.ipynb
+Recipes+Ingredients/__pycache__
+Recipes+Ingredients/cleaned_recipes_with_ingredients.csv
+Recipes+Ingredients/data_train_set.csv
+.python-version
