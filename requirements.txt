@@ -20,3 +20,5 @@ streamlit_folium
 google.cloud.storage
 transformers
 torch
+rapidfuzz
+nltk

@@ -131,7 +131,7 @@ def nutrition_facts(ingredient, weight):
     - dict: Nutrition facts including ingredient, weight, and nutrient amounts.
     """
     ingredients_df = download_ingredients_df()
-    
+
     ### STEP 1: MATCH INGREDIENT NAME ###
     try:
         # option 1 = exact match (shouldn't be dupplicates :) )
@@ -177,4 +177,4 @@ def nutrition_facts(ingredient, weight):
 
 # clean_ingredients_list()
 # ingredients = download_ingredients_df()
-# print(nutrition_facts("Abalone",10,ingredients))
+# print(nutrition_facts("Abalone",10))
