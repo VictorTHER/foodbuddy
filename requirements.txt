@@ -15,3 +15,6 @@ requests
 bs4
 folium
 streamlit_folium
+torch
+torchvision
+opencv-python-headless
