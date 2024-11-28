@@ -171,6 +171,7 @@ credentials.json
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
+.envrc
 
 # PAUL
 Recipes+Ingredients/exploration.ipynb
