@@ -1,0 +1,495 @@
+target_cleaned,recipe_cleaned,ingredient_cleaned,is_ok
+cheese soft,NaN,cheese,TRUE
+ham,NaN,ham,TRUE
+cheese hard,cheese head,cheese head,TRUE
+bread wholemeal,bread wholemeal,NaN,TRUE
+cheese cottage,cheese cottage,cheese cottage,TRUE
+bread half white,bread herbal white,bread white,TRUE
+fruit salad,fruit salad,NaN,TRUE
+pancake,pancake,pancake,TRUE
+salmon smoke,dip salmon smoke,fish salmon smoke,TRUE
+avocado,NaN,avocado,TRUE
+onion scallion spring,NaN,onion,TRUE
+caffeine ristretto,fennel risotto,coffee espresso,TRUE
+chip french fry,chip french fry,NaN,TRUE
+pasta,pasta,NaN,TRUE
+sauce tomato,sauce tomato,NaN,TRUE
+cheese,NaN,cheese,TRUE
+pear,NaN,pear,TRUE
+cashew nut,cashew nog nut,cashew salt,TRUE
+almond,NaN,almond,TRUE
+lentil,lentil,lentil,TRUE
+mix vegetable,mix vegetable,NaN,TRUE
+cucumber,NaN,cucumber,TRUE
+cocoa powder,NaN,cocoa powder reconstitute,TRUE
+greek ou yahourt yaourt yoghourt yogourt,greek parfait recipe yogurt yogurt,NaN,TRUE
+concentrate maple syrup,buttery maple syrup,NaN,TRUE
+buckwheat grain peel,buckwheat crawfish pea,buckwheat groat,TRUE
+chicken,chicken,NaN,TRUE
+broccoli,NaN,broccoli,TRUE
+mayonnaise,mayonnaise,NaN,TRUE
+addition bean green salt steam without,NaN,bean sprout,TRUE
+sausage,NaN,sausage,TRUE
+bread lettuce meat sauce substitute,bread butter marmite sauce sourdough,bread egg meat sandwich white,TRUE
+tart,NaN,tart type,TRUE
+rice,NaN,adobo rice,TRUE
+tomato,NaN,tomato,TRUE
+caffeine coffee white,chocolate coffee white,cafe coffee mocha,TRUE
+apple,NaN,apple,TRUE
+linseed,blini sweet,mix seed,TRUE
+seed sunflower,NaN,seed sunflower,TRUE
+cook ham,cook ham,NaN,TRUE
+lye pretzel soft,pretzel soft,pretzel soft,TRUE
+butter,NaN,butter,TRUE
+cucumber pickle,cucumber pickle,NaN,TRUE
+cream soup vegetable,cream soup vegetable,cream soup vegetable,TRUE
+banana,NaN,banana,TRUE
+noodle pasta,noodle satay,cook pasta,TRUE
+cream,NaN,cream heavy,TRUE
+cake chocolate,cake chocolate,NaN,TRUE
+green leaf salad salad,greek lasagna salad,dress salad salad,TRUE
+potato steam,potato steam,NaN,TRUE
+cabbage white,cabbage stew,cabbage chinese,TRUE
+applesauce can unsweetened,applesauce potato sweet,applesauce unsweetened,TRUE
+mushroom,NaN,mushroom,TRUE
+egg,NaN,egg white,TRUE
+bread white,bread white,bread white,TRUE
+caffeine coffee,cake coffee,cafe coffee mocha,TRUE
+herbal tea,herbal tea,NaN,TRUE
+beef sirloin steak,fry sirloin steak,beef round steak,TRUE
+zucchini,bake italian zucchini,NaN,TRUE
+mandarine,NaN,tangerine,TRUE
+apple juice,apple juice,apple juice,TRUE
+caprese mozzarella salad tomato,fresh mozzarella salad tomato,cheese mozzarella part skim,TRUE
+red wine,NaN,red wine,TRUE
+pasta ravioli stuff,lobster ravioli stuff,meatfilled ravioli sauce,TRUE
+omelette plain,NaN,egg egg fat n omelet scramble,TRUE
+chocolate dark,NaN,chocolate fat milk reduce,TRUE
+dress french salad,dress french salad,NaN,TRUE
+kaki,NaN,juice prune,TRUE
+macaroon,macaroon,NaN,TRUE
+carrot,NaN,carrot,TRUE
+crêpe plain,crêpes vegan,crepe plain,TRUE
+jam,jam,jam,TRUE
+chicken nugget,chicken nugget,chicken nugget,TRUE
+pumpkin soup,pumpkin soup,pumpkin soup,TRUE
+sushi,sushi,sushi,TRUE
+chestnut,NaN,chestnut,TRUE
+sauce soya,dip sauce soy,sauce soy,TRUE
+cabbage chinese,NaN,cabbage chinese,TRUE
+green tea,green tea,NaN,TRUE
+bread wheat whole,bread wheat whole,bread wheat whole,TRUE
+eggplant,NaN,eggplant,TRUE
+onion,NaN,onion,TRUE
+garlic,NaN,garlic,TRUE
+hummus,hummus,NaN,TRUE
+bake pizza vegetable,bacon pizza vegetable,meat pizza top vegetable,TRUE
+black olive,NaN,black olive,TRUE
+bake margherita pizza,bean margherita pizza,NaN,TRUE
+ear lamb salad,NaN,lamb stew,TRUE
+drink g glucose,drink ice slush,drink energy monster,TRUE
+mozzarella,dip mozzarella,cheese mozzarella,TRUE
+cauliflower,NaN,cauliflower,TRUE
+bake cake dough quiche spinach,bacon quiche spinach,meatless quiche spinach,TRUE
+green olive,NaN,green olive,TRUE
+bell pepper red,bell pepper rice,cook pepper red,TRUE
+brazil nut,NaN,brazil nut,TRUE
+bread pita,bread pita,bread pita,TRUE
+pasta wholemeal,NaN,cook grain pasta whole,TRUE
+dahl dhal lentil soup,ham lentil soup,can lentil soup,TRUE
+prosecco,negroni prosecco variation,NaN,TRUE
+bread toast,bread tomato,bread rye toast,TRUE
+pasta penne,NaN,cook pasta,TRUE
+salmon,NaN,cook pasta,TRUE
+cotta panna,cotta panna,NaN,TRUE
+juice lemon water,ice lemon tea,form juice lemon n,TRUE
+caffeine espresso,crinkle espresso,coffee espresso,TRUE
+egg prepare scramble,egg pepper scramble,egg egg fat n omelet scramble,TRUE
+juice orange,NaN,juice orange,TRUE
+cub ice,NaN,water,TRUE
+water,NaN,water,TRUE
+braid loaf white,bread loaf white,bread toast white,TRUE
+cheese emmental,NaN,cheese gruyere,TRUE
+caotina hazelnutchocolate ovomaltine spreadnutella,cake hazelnutandchocolate meringue,candy chocolate cover peanut,TRUE
+mineral water,NaN,water,TRUE
+bake cheese pastry puff quiche,bake cheese pasta spinach,cheese pastry puff,TRUE
+bread sourdough,bread sourdough,NaN,TRUE
+hazelnut,NaN,hazelnut,TRUE
+bread nut,bread nut,bread nut,TRUE
+miso soup,miso soup,NaN,TRUE
+curry vegetarian,NaN,curry vegetable,TRUE
+basmati rice,basmati rice,NaN,TRUE
+bacon fry,bacon fry,NaN,TRUE
+butter fat full mash milk potato prepare,butter garlic mash potato roast,butter eat fresh make peel potato roast,TRUE
+spinach,NaN,spinach,TRUE
+bread indien naan,flatbread indian naan,bread naan,TRUE
+cream spinach,cream spinach,cream spinach,TRUE
+halloumi,fry halloumi,NaN,TRUE
+chicken creamcoconut curry curry milk spicespaste,chicken coconut curry milk potato sweet,NaN,TRUE
+cream sauce,NaN,cream sauce tomato vodka,TRUE
+bread flour french white,blend four french spice,bread french vienna,TRUE
+tomme,NaN,blue cheese dress fat free roquefort,TRUE
+carrot mix pea vegetable,NaN,andor assort carrot dress include lettuce salad tomato vegetable,TRUE
+parsley,NaN,parsley,TRUE
+brownie,brownie,NaN,TRUE
+salami,NaN,salami,TRUE
+cream dairy ice,cream dairy ice,NaN,TRUE
+cake carrot,cake carrot,NaN,TRUE
+addition beetroot salt steam without,NaN,beet cook green,TRUE
+dress salad,dress salad,NaN,TRUE
+dry meat,NaN,beef round steak,TRUE
+chop mix salad sauce without,NaN,assort carrot dress exclude lettuce salad tomato vegetable,TRUE
+feta,NaN,cheese feta,TRUE
+bread,bread,NaN,TRUE
+chickpea,NaN,chickpea,TRUE
+oil,NaN,oil olive,TRUE
+dress mayonnaise potato salad yogurt,dress mayonnaise potato salad shorecooks,make mayonnaise potato salad,TRUE
+balsamic dress salad,balsamic dress salad,NaN,TRUE
+romanesco,roast romanesco,NaN,TRUE
+kolhrabi,kohlrabi soup,kohlrabi,TRUE
+alfa sprout,slaw sprout,alfalfa sprout,TRUE
+brussel sprout,brussels sprout,brussels sprout,TRUE
+bacon cook,bacon cook oven,bacon beef cook,TRUE
+bulgur,bulgur,NaN,TRUE
+pumpkin,pie pumpkin,pie pumpkin,TRUE
+black tea,NaN,black hot leaf tea,TRUE
+tea,NaN,black hot leaf tea,TRUE
+kiwi,NaN,fruit kiwi,TRUE
+chocolate egg small,chocolate egg marshmallow,chocolate milk,TRUE
+cappuccino,cappuccino,NaN,TRUE
+chicken wing,chicken wing,NaN,TRUE
+addition addition fat salt stew without without zucchini,NaN,sambar stew vegetable,TRUE
+gruyère,gruyère puff,NaN,TRUE
+black bread,NaN,black bread,TRUE
+cheese fresh,cheese fresh,NaN,TRUE
+mango,NaN,mango,TRUE
+addition salt spinach steam without,NaN,artichoke dip spinach,TRUE
+fish,NaN,fish,TRUE
+crisp,crisp kale,apple crisp,TRUE
+pork,NaN,pork,TRUE
+rosti,rosti,NaN,TRUE
+chocolate hazelnut milk,chocolate hazelnut roll,chocolate hazelnut spread,TRUE
+flake oat,NaN,oatmeal,TRUE
+bread grain,bread raisin,bread raisin,TRUE
+tuna,pie tuna,fish tuna,TRUE
+walnut,NaN,exclude honey roast walnut,TRUE
+ratatouille,ratatouille,ratatouille,TRUE
+bacon,baron,bacon bit,TRUE
+bouillon,NaN,french onion soup,TRUE
+seed sesame,NaN,seed sesame,TRUE
+bake potato,bake potato,bake potato,TRUE
+fennel,fennel,NaN,TRUE
+beetroot,NaN,beet green,TRUE
+meat,NaN,meat,TRUE
+cheese cook risotto without,NaN,parmesan risotto truffle,TRUE
+roast sauce,NaN,chicken mole sauce,TRUE
+philadelphia,NaN,cheese cream plain regular,TRUE
+addition addition average fat mushroom salt stew without without,NaN,stew,TRUE
+addition addition bell fat pepper red salt stew without without,NaN,stew,TRUE
+chocolate white,NaN,candy chocolate white,TRUE
+escalope pork,meatloaf pork,ear pork,TRUE
+breadcrumb unspiced,NaN,bread cuban,TRUE
+fondue,NaN,cheese fondue,TRUE
+honey,NaN,honey,TRUE
+strawberry,NaN,strawberry,TRUE
+crunch müesli,berry muesli,NaN,TRUE
+empanadas meat meat pie small turnover,empanadillas galician gallegas recipe turnover,NaN,TRUE
+rooibos tea,pear rooibos tea,NaN,TRUE
+bake cake dough pie plum,bake cake doughnut,cake doughnut ice type,TRUE
+au dauphinois gratin potato prepare,dauphinoise gratin potato scallop,NaN,TRUE
+mushroom sauce,mushroom sauce,NaN,TRUE
+mix nut,mix nut,mix nut,TRUE
+bread toast wholemeal,bread wholemeal,bread toast white,TRUE
+radish red,amish bread,radish,TRUE
+dumpling,dumpling,NaN,TRUE
+linguini parpadelle pasta tagliatelle,evan funke handmade pasta tagliatelle ’,NaN,TRUE
+chicken cut meat strip,NaN,breast chicken eat skin stew,TRUE
+bouillon vegetable,bouillon vegetable,NaN,TRUE
+sundried tomatoe,sundried tomato,sundried tomato,TRUE
+bread ticino,bread taco,bread cinnamon,TRUE
+milk partially porridge prepare skim,berry muesli,NaN,TRUE
+drink milk soy soya,NaN,milk soy sweeten,TRUE
+bean french,NaN,bean white,TRUE
+ball meat,ball matzo,bagel wheat,TRUE
+popcorn salt,popcorn salad,popcorn,TRUE
+beer,NaN,beer,TRUE
+orange,NaN,orange,TRUE
+chocolate fill,NaN,candy chocolate white,TRUE
+chocolate milk,chocolate milk,chocolate milk,TRUE
+blueberry,NaN,blueberry,TRUE
+natural ou yahourt yaourt yoghourt yogourt,NaN,fruit parfait yogurt,TRUE
+bread fruit,bread fruit,bread fruit,TRUE
+beef cut meat strip,beef cucumber salad strip,beef eat lean steak strip,TRUE
+corn,NaN,corn,TRUE
+de moine tête,NaN,camembert cheese,TRUE
+radish white,NaN,horseradish,TRUE
+pesto sauce,pesto sauce,pesto sauce,TRUE
+parmesan,NaN,cheese dry grate parmesan,TRUE
+celery,NaN,celery,TRUE
+milk oat,milk oat,milk oat,TRUE
+potato soup,potato soup,potato soup,TRUE
+cheese cream,cheese cream,NaN,TRUE
+bread crisp wasa,NaN,bread french vienna,TRUE
+grape,NaN,grape,TRUE
+chicory witloof,chicory griddle,NaN,TRUE
+bolognaise sauce,bolognaise sauce,NaN,TRUE
+apple crumble,apple crumble,NaN,TRUE
+pistachio,dip pistachio,nut pistachio,TRUE
+nut pecan,cup pecan,pecan,TRUE
+tofu,NaN,soy yogurt,TRUE
+white wine,NaN,white wine,TRUE
+spice tea,spice tea,NaN,TRUE
+quinoa,quinoa,NaN,TRUE
+smoothie,cub smoothie,fruit smoothie,TRUE
+leek,NaN,leek,TRUE
+soup vegetable,soup vegetable,soup vegetable,TRUE
+boil shrimp,boil shrimp,NaN,TRUE
+drink kefir,NaN,kefir,TRUE
+cheese semihard,cheese spread,cheese head,TRUE
+bread rye,bread rye,bread rye,TRUE
+guacamole,guacamole,guacamole,TRUE
+mm,NaN,candy chocolate nut,TRUE
+juice multifruit,NaN,fruit juice,TRUE
+rocket salad,crab pocket salad,carrot salad,TRUE
+bread hamburger ketchup meat,cornbread hamburger pie,bun hamburger medium patty wheat,TRUE
+cooky,cooky t,cookie,TRUE
+cake oblong,cake moon,cake sponge,TRUE
+bake ham mushroom pizza,NaN,cheese crust extra pizza thick vegetable,TRUE
+coulis fruit,NaN,fruit juice,TRUE
+plum,NaN,plum,TRUE
+bake ham pizza,NaN,cheese crust extra pizza thick vegetable,TRUE
+date,NaN,date,TRUE
+butter peanut,butter peanut,butter peanut,TRUE
+bean kidney,NaN,bean kidney,TRUE
+pineapple,NaN,pineapple,TRUE
+breast chicken,breast chicken,NaN,TRUE
+cheddar,NaN,cheddar cheese,TRUE
+ketchup,ketchup,ketchup,TRUE
+peppermint tea,NaN,herbal hot tea,TRUE
+bread fajita,NaN,fajita,TRUE
+potato sweet,potato sweet,potato sweet,TRUE
+pastry puff savoury stick,pastry puff savoury tart,pastry puff,TRUE
+chicken leg,NaN,chicken drumstick eat leg skin stew thigh,TRUE
+cabbage red,cabbage red,cabbage red,TRUE
+croissant,croissant,croissant,TRUE
+hörnli pasta,NaN,flavor pasta,TRUE
+carne chili con prepare,carne chilli con recipe,can chili meat,TRUE
+cream sour,cream sour,NaN,TRUE
+cheese raclette,raclette,NaN,TRUE
+can corn sweet,NaN,corn,TRUE
+cheese process,NaN,camembert cheese,TRUE
+cheese goat soft,cheese goat souffle,cheese goat,TRUE
+couscous,couscous,NaN,TRUE
+leaf spinach,bean spinach,cream spinach,TRUE
+pasta stuff tortelloni,pasta salad tortellini,meatfilled sauce tortellini,TRUE
+praline,praline,NaN,TRUE
+chocolate croissant fill,chocolate croissant,chocolate croissant,TRUE
+focaccia,focaccia,NaN,TRUE
+caper,NaN,pickle,TRUE
+spaetzle,spaetzle,NaN,TRUE
+grissini,grissini,NaN,TRUE
+candy sweet,candy mash sweet,candy potato sweet,TRUE
+fruit tart,fruit tart,NaN,TRUE
+brie,NaN,brie cheese,TRUE
+biscuit butter,biscuit butter,NaN,TRUE
+peanut,NaN,peanut,TRUE
+dilute drink ready syrup,NaN,chocolate syrup,TRUE
+pasta spaghetti,asian spaghetti,sauce spaghetti,TRUE
+sauerkraut,sauerkraut,sauerkraut,TRUE
+mustard,NaN,mustard,TRUE
+vegetable,NaN,vegetable,TRUE
+soup tomato,soup tomato,soup tomato,TRUE
+apple pie,apple pie,apple pie,TRUE
+bread butter egg milk white,bread buttermilk wheat,bread egg sandwich white,TRUE
+pastry puff savoury,pastry puff savoury tart,pastry puff,TRUE
+pomegranate,NaN,pomegranate,TRUE
+anchovy,anchovy eye,anchovy fish,TRUE
+drain oil tuna,asian roll tuna,can fish tuna,TRUE
+lemon pie,lemon pie,lemon pie,TRUE
+pumpkin seed,NaN,pumpkin seed,TRUE
+cashew chers fauxmage vegan,cashew sauce vegan,NaN,TRUE
+bean white,bean white,bean white,TRUE
+melon sugar,NaN,honeydew melon,TRUE
+mix seed,NaN,mix seed,TRUE
+hamburger,hamburger,hamburger,TRUE
+bun hamburger,bun hamburger,NaN,TRUE
+dress oil salad vinegar,dress oil salad vinegar,NaN,TRUE
+caffeine latte macchiato,latte macchiato,coffee macchiato,TRUE
+greek salad,greek salad,NaN,TRUE
+celeriac,celeriac soup,celery,TRUE
+pasta twist,NaN,honeydew melon,TRUE
+chocolate mousse,chocolate mousse,NaN,TRUE
+coriander,NaN,flavor sherbet,TRUE
+cenovis spread yeast,NaN,chocolate hazelnut spread,TRUE
+milk,NaN,milk,TRUE
+cream thicken,NaN,boneless chicken hot sauce source wing,TRUE
+berry,NaN,berry,TRUE
+meringue,meringue,meringue,TRUE
+biscuit,biscuit,biscuit,TRUE
+beef,NaN,beef,TRUE
+lemon,NaN,lemon,TRUE
+müesli,muesli,NaN,TRUE
+chive,NaN,chive,TRUE
+add birchermüesli prepare sugar,NaN,fruit parfait yogurt,TRUE
+cracker,NaN,cracker,TRUE
+batter crunchies fish,NaN,crayfish fry,TRUE
+beef filet,beef fillet,beef brisket,TRUE
+fry roll spring,fresh roll spring,fry onion ring,TRUE
+muffin,NaN,muffin,TRUE
+bread spell,bread spell,NaN,TRUE
+addition cabbage salt savoy steam without,bacon cabbage green mustard savoy steam,NaN,TRUE
+nut pine,NaN,nut pine,TRUE
+chorizo,chorizo,chorizo,TRUE
+chia grain,NaN,chia seed,TRUE
+fry sausage,NaN,beef pork sausage,TRUE
+alsace bake french pizza,NaN,cheese crust pizza thick white,TRUE
+fillet lake perch,NaN,crayfish fry,TRUE
+chip paprika,chicken paprika,chip pita,TRUE
+baby bear essence fruit fruit gummi jelly jelly,NaN,candy,TRUE
+sauce savoury,NaN,cheese sauce,TRUE
+blue cheese mould,blue cheese mousse,blue cheese roquefort,TRUE
+rosé wine,NaN,spritzer wine,TRUE
+meat paté terrine,easy ham hock terrine,NaN,TRUE
+chocolate piece roll,NaN,almond candy chocolate cover,TRUE
+average goat,NaN,goat,TRUE
+cake lemon,cake lemon,NaN,TRUE
+coconut milk,coconut milk,coconut milk,TRUE
+dry raisin,bread raisin,raisin,TRUE
+caviar eggplant,caviar eggplant,NaN,TRUE
+rice wild,rice wild,NaN,TRUE
+flaky pastry,flaky pastry,NaN,TRUE
+seed,NaN,chia seed,TRUE
+ball falafel,bake falafel,falafel,TRUE
+bread glutenfree,bread glutenfree,NaN,TRUE
+bread kebab pita,bread pita,bread pita,TRUE
+sausage swiss wienerli,sausage swirl,NaN,TRUE
+dijon mustard,dijonstyle mustard,dip honey mustard,TRUE
+cook sausage,duck sausage,pork sausage,TRUE
+cook mushroom risotto,NaN,bacon fennel pea risotto,TRUE
+beef meat mince,beef kebab mince,bean meat rice,TRUE
+chocolate,chocolate hot,chocolate dip,TRUE
+meatloaf,meatloaf,NaN,TRUE
+cake fill salt vegetable,NaN,cake fish patty,TRUE
+cantonese fry rice,cantonese fry rice,NaN,TRUE
+prawn shrimp small,NaN,shrimp,TRUE
+butter herb,butter herb,NaN,TRUE
+balsamic vinegar,balsamic beet vinegar,vinegar,TRUE
+flour halfwhite large roll void white,NaN,bread nut,TRUE
+chocolate cooky,chocolate cooky,NaN,TRUE
+corn crisp,NaN,cheese corn flavor snack,TRUE
+bagel fill without,bake fillet trout,bagel grain white whole,TRUE
+berry du du green lentil puy,curry green lentil soup,NaN,TRUE
+chocolate chocolate drink milk,chocolate chocolate milkshake,chocolate drink milk,TRUE
+cocktail,NaN,cocktail,TRUE
+crouton,crouton,crouton,TRUE
+cod,NaN,cod fish,TRUE
+ou soya yahourt yaourt yoghourt yogourt,NaN,soy yogurt,TRUE
+sausage veal,NaN,marsala veal,TRUE
+cheesecake,cheesecake,NaN,TRUE
+bleu cordon fry pork schnitzel,bleu cordon pork recipe romanian schnitzel,bleu cordon veal,TRUE
+butter cheese ham sandwich,NaN,cheese club sandwich wheat,TRUE
+butterfly farfalle form pasta,butter campanelle parsley pasta,NaN,TRUE
+flour grit maize polenta,NaN,creamy meatball polenta,TRUE
+croque monsieur,croque monsieur,NaN,TRUE
+raspberry,NaN,raspberry,TRUE
+ice tea,ice tea,NaN,TRUE
+lasagne prepare vegetable,lasagne roast vegetable,lasagna meatless vegetable,TRUE
+dip,NaN,dip,TRUE
+corn flake,NaN,bran cereal flake flavor,TRUE
+chard swiss,NaN,cheese swiss,TRUE
+noodlesvermicelli rice,bowl noodle vermicelli,NaN,TRUE
+tiramisu,tiramisu,tiramisu,TRUE
+pea,NaN,chickpea,TRUE
+pork roast,pork roast,pork roast,TRUE
+curry sauce,curry sauce,curry sauce,TRUE
+apricot,NaN,apricot,TRUE
+lamb,NaN,lamb loaf mutton,TRUE
+lasagne meat prepare,lasagne meat pea sauce,lasagna meat restaurant,TRUE
+bouquet garni,bouquet garni,NaN,TRUE
+almond butter puree spread,NaN,almond butter,TRUE
+cake salt,NaN,bean cake,TRUE
+large prawn shrimp,NaN,shrimp,TRUE
+bread dough dough pastry pizza puff shortcrust,NaN,cheese crust meat pizza thin white,TRUE
+rice waffels,NaN,waffle,TRUE
+cervelat,NaN,beef liver,TRUE
+tea verveine,NaN,herbal hot tea,TRUE
+sekt,NaN,champagne punch,TRUE
+sorbet,NaN,sorbet,TRUE
+brioche,brioche,brioche,TRUE
+coca cola,NaN,champagne punch,TRUE
+coca cola zero,NaN,champagne punch,TRUE
+charcuterie meat process,NaN,green ham pork,TRUE
+croissant ham,NaN,cheese croissant,TRUE
+mousse,NaN,mousse,TRUE
+sauce sour sweet,sauce sour sweet,sauce sour sweet,TRUE
+ham turkey,hash turkey,can turkey,TRUE
+rice wholegrain,NaN,adobo rice,TRUE
+mungbean sprout,NaN,sprout,TRUE
+ginger tea,ginger tea,ginger tea,TRUE
+basil,basil,basil,TRUE
+apricot bake cake dough pie,apricot bake oatmeal spice,NaN,TRUE
+beer light,NaN,beer light,TRUE
+chop lamb,chop lamb,chop lamb,TRUE
+rusk wholemeal,bread wholemeal,NaN,TRUE
+chop coleslaw sauce without,NaN,coleslaw,TRUE
+dry fruit mix nut,dry fruit marinate,fruit mix nut trail,TRUE
+beef roast,beef roast,beef roast,TRUE
+alcohol aperitif apérol spritz,peachaperol spritz,NaN,TRUE
+nut,NaN,nut,TRUE
+cook cream crème custard dessert vanille,cream creamy custard ice vanilla,cone cream ice serve soft vanilla,TRUE
+sauce tartar,sauce tartar,sauce tartar,TRUE
+country fry,country gravy,beef country fry steak,TRUE
+carbonara sauce,carbonara sauce,NaN,TRUE
+jasmin rice,NaN,adobo rice,TRUE
+champagne,champagne jelly,champagne punch,TRUE
+meat mince,meat pie,bean meat rice,TRUE
+addition carrot salt steam without,bean carrot salad sesame sprout,add carrot fat rice white,TRUE
+ebly,NaN,adobo rice,TRUE
+high lentil make pasta pea protein,NaN,lentil,TRUE
+burger veggie,burger veggie,NaN,TRUE
+bread finger fish,NaN,shellfish,TRUE
+artichoke,artichoke,artichoke,TRUE
+dry mango,NaN,dry mango,TRUE
+coconut,NaN,coconut milk,TRUE
+banana cake,banana cake,NaN,TRUE
+waffle,waffle,waffle,TRUE
+apricot dry,NaN,apricot dry,TRUE
+fresh watermelon,french watermelon,watermelon,TRUE
+couscous prepare taboulé,couscous israeli tabbouleh,NaN,TRUE
+black forest tart,black forest tart,NaN,TRUE
+onion pearl,onion pearl,NaN,TRUE
+tzatziki,tzatziki,NaN,TRUE
+asian sauce sweetsalted,asian dip sauce sweethot,dress pasta sauce vegetable,TRUE
+compote fruit,compote fruit,NaN,TRUE
+bread olive,bread olive,NaN,TRUE
+margarine,NaN,margarine,TRUE
+asparagus green,asparagus crepe,asparagus,TRUE
+shoot,NaN,sprout,TRUE
+conch form pasta,corn cream pasta,cook pasta,TRUE
+grapefruit pomelo,grapefruit pie,grapefruit,TRUE
+au bake gratin vegetable,NaN,au chicken diet entree freeze gratin rice vegetable,TRUE
+chop pork,chop ole pork,chop pork stuff,TRUE
+blackberry,NaN,blackberry,TRUE
+coffee decaffeinate,coffee waffle,brew coffee decaffeinate,TRUE
+dry fig,NaN,dry fig,TRUE
+potatognocchi,NaN,gnocchi potato,TRUE
+dress italian salad,dress italian salad,NaN,TRUE
+cake marble,cake marble,NaN,TRUE
+glaze sugar,basic glaze sugar,sugar,TRUE
+croissant wholegrain,croissant herb,croissant fruit,TRUE
+fruit tea,NaN,drink ice juice lemonade tea,TRUE
+meat tartar,beet tartare,steak tartare,TRUE
+curd fidm natural,NaN,cheese cottage fat low,TRUE
+asparagus white,asparagus pie,asparagus,TRUE
+peach,NaN,peach,TRUE
+curd,NaN,cheese cottage fat low,TRUE
+beef cook meat pork sausag sausage smoke,ale potato sauerkraut sausage smoke,beef loaf make meat pork sauce tomatobased,TRUE
+bake cake dough pie rhubarb,NaN,blueberry fill pie,TRUE
+cocktail sauce,cocktail sauce,cocktail sauce,TRUE
+addition addition fat salt stew tomato without without,NaN,beef gravy potato puerto rican stew,TRUE
+buckwheat pancake,buckwheat pancake,NaN,TRUE
+cherry,cherry,cherry,TRUE
+nectarine,NaN,nectarine,TRUE
+fig,NaN,fig,TRUE
+damson plum,damson jam,can plum,TRUE
+bean seed,bean red,bean refried,TRUE

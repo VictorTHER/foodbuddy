@@ -1,0 +1,9 @@
+target_cleaned,recipe_cleaned,ingredient_cleaned,is_ok
+cheese soft,,,False
+ham raw,,,False
+cheese hard,,,False
+bread wholemeal,,,False
+cheese cottage,,,False
+bread half white,,,False
+fruit salad,,,False
+pancake,,,False
