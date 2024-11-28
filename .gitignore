@@ -171,3 +171,15 @@ WEBSITE/.secrets.toml
 .env
 
 .ipynb
+#NOTEBOOKS
+notebooks
+
+# PAUL
+Recipes+Ingredients/exploration.ipynb
+Recipes+Ingredients/__pycache__
+Recipes+Ingredients/cleaned_recipes_with_ingredients.csv
+Recipes+Ingredients/data_train_set.csv
+.python-version
+
+#DANNY
+.python-version

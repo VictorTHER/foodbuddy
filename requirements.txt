@@ -15,3 +15,14 @@ requests
 bs4
 folium
 streamlit_folium
+
+# ingredients_to_nutrients.py
+google.cloud.storage
+transformers
+torch
+rapidfuzz
+nltk
+
+#Recipes.py
+re
+ast
