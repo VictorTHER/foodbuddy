@@ -138,6 +138,7 @@ def parse_ingredient(ingredient):
     # Default fallback
     return 1, None, None, ingredient.strip()
 
+
 def clean_ingredients(series):
     """
     Input a series containing recipe/ingredient/target names
@@ -410,7 +411,7 @@ def generate_recipe_list():
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(f"Recipes/recipes.csv")
     content = blob.download_as_text()
-    recipes = pd.read_csv(StringIO(content))[0:10]
+    recipes = pd.read_csv(StringIO(content))
     recipe = recipes.copy().drop_duplicates(subset=["title"], keep='first')
     print("Recipes downloaded")
 
@@ -434,8 +435,8 @@ def generate_recipe_list():
 
     # Step 2: Process ingredients
     all_parsed_ingredients = []
-    for title, ingredients in zip(recipes["title"], recipes["ingredients"]):
-        ingredient_list = ast.literal_eval(ingredients)
+    for title, ingreds in zip(recipes["title"], recipes["ingredients"]):
+        ingredient_list = ast.literal_eval(ingreds)
         for ingredient in ingredient_list:
             parsed = parse_ingredient(ingredient)
             all_parsed_ingredients.append((title, *parsed))
