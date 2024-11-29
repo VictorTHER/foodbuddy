@@ -1,0 +1,936 @@
+recipe,ingredient,quantity,grammage,unit
+dress salad,red or white wine vinegar,1.0,2.0,tbsp
+dress salad,"mustard, ideally Dijon or French",1.0,1.0,tsp
+dress salad,"garlic clove, crushed",0.5,,
+dress salad,tsp caster sugar,0.5,1.0,
+dress salad,"extra virgin olive oil, or a mix of olive oil and sunflower oil",1.0,8.0,tbsp
+dress salad,salt and freshly ground black pepper,1.0,,
+dress salad,white wine vinegar or cider vinegar,1.0,2.0,tbsp
+dress salad,wholegrain mustard,1.0,1.0,tbsp
+dress salad,runny honey,1.0,1.0,tbsp
+dress salad,sunflower or vegetable oil,1.0,6.0,tbsp
+dress salad,salt and freshly ground black pepper,1.0,,
+dress salad,mayonnaise (around 75g),1.0,6.0,tbsp
+dress salad,tomato ketchup,1.0,2.0,tbsp
+dress salad,lemon juice,1.0,1.0,tsp
+dress salad,splash Worcestershire sauce,1.0,,
+dress salad,pinch cayenne pepper,1.0,,
+,"/1pint 7fl oz good quality vanilla ice cream, softened",1.0,750.0,ml
+,free -range eggs,1.0,4.0,
+,"caster sugar, plus extra to dust",1.0,110.0,g
+,self-raising flour,1.0,110.0,g
+,caster sugar,1.0,150.0,g
+,"lemon, zest and juice",0.5,,
+,"strawberries, roughly chopped",1.0,350.0,g
+banana cake,"butter, softened, plus extra for greasing",1.0,200.0,g
+banana cake,"plain flour, plus extra for dusting",1.0,400.0,g
+banana cake,"ripe bananas, peeled",1.0,4.0,
+banana cake,maple syrup,1.0,200.0,ml
+banana cake,25-50ml/1-2fl oz milk (optional),25.0,,
+banana cake,caster sugar,1.0,150.0,g
+banana cake,free -range eggs,1.0,4.0,
+banana cake,baking powder,1.0,2.0,tsp
+banana cake,"pecan nuts, roughly chopped",1.0,100.0,g
+banana cake,double cream,1.0,200.0,ml
+chocolate mousse,"good-quality dark chocolate, minimum 60 per cent cocoa solids, roughly chopped (dairy free, if necessary)",1.0,170.0,g
+chocolate mousse,free -range egg whites (use pasteurised egg white from a carton if you have concerns about raw eggs),1.0,7.0,
+chocolate mousse,tsp lemon juice,0.25,,
+chocolate mousse,caster sugar,1.0,40.0,g
+muesli,oats,1.0,100.0,g
+muesli,"dried apricots, chopped",1.0,25.0,g
+muesli,"dried prunes, chopped",1.0,25.0,g
+muesli,pumpkin seeds,1.0,1.0,tbsp
+muesli,sunflower seeds,1.0,1.0,tbsp
+muesli,"fresh berry fruits, to serve",1.0,,
+muesli,"milk , yoghurt or fruit juice, to serve",1.0,,
+chocolate cooky,"wholemeal, spelt or plain flour",1.0,100.0,g
+chocolate cooky,cocoa powder,1.0,2.0,tbsp
+chocolate cooky,tsp bicarbonate of soda,0.25,,
+chocolate cooky,tsp salt,0.25,,
+chocolate cooky,"very ripe banana (about 100g), mashed with a fork",1.0,1.0,
+chocolate cooky,honey or golden syrup,1.0,85.0,g
+chocolate cooky,melted butter or coconut oil,1.0,2.0,tbsp
+chocolate cooky,tsp vanilla extract,0.5,,
+chocolate cooky,"chocolate chunks (milk, dark or white)",1.0,50.0,g
+cake chocolate,"butter, plus extra for greasing",1.0,250.0,g
+cake chocolate,golden caster sugar,1.0,400.0,g
+cake chocolate,sunflower oil,1.0,3.0,tbsp
+cake chocolate,vanilla extract,1.0,1.0,tsp
+cake chocolate,"free -range eggs, beaten",1.0,3.0,
+cake chocolate,plain flour,1.0,400.0,g
+cake chocolate,bicarbonate of soda,1.0,1.0,tsp
+cake chocolate,baking powder,1.0,2.0,tsp
+cake chocolate,tsp salt,0.5,,
+cake chocolate,pinch cinnamon,1.0,,
+cake chocolate,cocoa powder,1.0,85.0,g
+cake chocolate,flat cola,1.0,220.0,ml
+cake chocolate,strawberry jam,1.0,150.0,g
+cake chocolate,"double cream, whipped until stiff peaks form when the whisk is removed",1.0,150.0,ml
+cake chocolate,"milk chocolate, broken into pieces",1.0,100.0,g
+cake chocolate,"jellied sweets, to decorate",1.0,,
+cake chocolate,"chocolate buttons, to decorate",1.0,,
+croque monsieur,milk,1.0,200.0,ml
+croque monsieur,/⅔oz plain flour,1.0,20.0,g
+croque monsieur,/⅔oz butter,1.0,20.0,g
+croque monsieur,salt and pepper,1.0,,
+croque monsieur,freshly cut slices white bread,1.0,4.0,
+croque monsieur,Dijon mustard,1.0,1.0,tbsp
+croque monsieur,slices carved ham,1.0,4.0,
+croque monsieur,"cheese slices, such as emmental or gruyère",1.0,4.0,
+croque monsieur,"cheddar, grated",1.0,80.0,g
+dumpling,"smoked tofu, drained, rinsed in cold water and cut into cubes",1.0,50.0,g
+dumpling,"firm tofu, drained, rinsed in cold water and crumbled",1.0,40.0,g
+dumpling,"Tenderstem broccoli, stems finely chopped and florets separated",1.0,60.0,g
+dumpling,"2.5cm/1in fresh root ginger, peeled and grated",2.0,,
+dumpling,"spring onion, trimmed and finely chopped",1.0,1.0,
+dumpling,tsp salt,0.25,,
+dumpling,"vegetable stock cube, crumbled",0.5,,
+dumpling,tsp golden caster sugar,0.5,,
+dumpling,tsp white pepper,0.25,,
+dumpling,tsp pure sesame oil,0.5,,
+dumpling,tsp sea salt,0.5,,
+dumpling,vegetarian mushroom stir-fry sauce (available in Asian supermarkets),1.0,1.0,tbsp
+dumpling,sheets shop-bought dumpling wrappers,1.0,10.0,
+dumpling,"spring onions, sliced",1.0,2.0,
+dumpling,"red chillies, julienned",1.0,1.0,
+dumpling,chopped fresh coriander leaves,1.0,2.0,tbsp
+focaccia,/1lb 2oz strong white flour,1.0,500.0,g
+focaccia,salt,1.0,2.0,tsp
+focaccia,sachet (7g) dried easy blend yeast,1.0,1.0,
+focaccia,olive oil,1.0,2.0,tbsp
+focaccia,cold water,1.0,400.0,ml
+focaccia,"olive oil, for drizzling",1.0,,
+focaccia,fine sea salt,1.0,,
+fruit tart,plain flour,1.0,250.0,g
+fruit tart,caster sugar,1.0,75.0,g
+fruit tart,pinch salt,1.0,,
+fruit tart,"vanilla pod, seeds only",1.0,1.0,
+fruit tart,"unsalted butter, softened",1.0,150.0,g
+fruit tart,"free -range egg, lightly beaten",1.0,1.0,
+fruit tart,milk,1.0,1.0,tbsp
+fruit tart,pint full-fat milk,1.0,1.0,
+fruit tart,"vanilla pod, split in half lengthways",1.0,1.0,
+fruit tart,free -range egg yolks,1.0,6.0,
+fruit tart,caster sugar,1.0,125.0,g
+fruit tart,plain flour,1.0,40.0,g
+fruit tart,"punnet strawberries, hulled",0.5,,
+fruit tart,punnet raspberries,0.5,,
+fruit tart,punnet blackberries,0.5,,
+fruit tart,punnet redcurrants,0.5,,
+fruit tart,pink champagne,1.0,325.0,ml
+fruit tart,"gelatine leaves, softened in cold water for 10 minutes",1.0,4.0,
+fruit tart,sugar,1.0,75.0,g
+fruit salad,amaretto liquor,1.0,5.0,tbsp
+fruit salad,"strawberries, halved",1.0,200.0,g
+fruit salad,blueberries,1.0,200.0,g
+fruit salad,"melon, cubed",1.0,200.0,g
+fruit salad,"mint , to garnish (optional)",1.0,,
+bread glutenfree,-50g-1¾oz golden linseeds (also known as flaxseed),1.0,25.0,g
+bread glutenfree,warm water,1.0,475.0,ml
+bread glutenfree,sachet fast-action yeast (about 2½ tsp),1.0,1.0,
+bread glutenfree,/3½fl oz natural yoghurt,1.0,100.0,ml
+bread glutenfree,/1lb cornflour,1.0,450.0,g
+bread glutenfree,salt,1.0,1.0,tsp
+bread glutenfree,caster sugar,1.0,1.0,tsp
+bread glutenfree,psyllium husk powder,1.0,50.0,g
+bread glutenfree,olive oil,1.0,50.0,ml
+bread glutenfree,"extra olive oil and cornflour, to finish",1.0,,
+greek salad,"small red onion, thinly sliced",0.5,,
+greek salad,"large ripe tomatoes, roughly chopped",1.0,2.0,
+greek salad,"cucumber, deseeded and roughly chopped",0.5,,
+greek salad,"reduced fat feta cheese, drained and cut into cubes",1.0,100.0,g
+greek salad,"black olives, pitted and drained (in brine not oil and preferably Kalamata olives)",1.0,50.0,g
+greek salad,small handful fresh mint leaves,1.0,,
+greek salad,tsp dried oregano,0.5,,
+greek salad,extra virgin olive oil,1.0,2.0,tsp
+greek salad,fresh lemon juice,1.0,2.0,tsp
+greek salad,sea salt and freshly ground black pepper,1.0,,
+greek salad,"wholemeal pitta breads, warmed",1.0,2.0,
+hummus,"tin chickpeas, rinsed and drained",1.0,410.0,g
+hummus,water or vegetable stock,1.0,4.0,tbsp
+hummus,large cloves garlic,1.0,2.0,
+hummus,tahini (sesame paste),1.0,3.0,tbsp
+hummus,lemon juice,1.0,3.0,tbsp
+hummus,"salt , to taste",1.0,,
+hummus,olive oil,1.0,1.0,tbsp
+hummus,chopped fresh parsley,1.0,,
+hummus,olive oil,1.0,,
+hummus,"pine nuts, fried",1.0,,
+hummus,paprika,1.0,,
+macaroon,icing sugar,1.0,125.0,g
+macaroon,ground almonds,1.0,125.0,g
+macaroon,free-range egg whites,1.0,90.0,g
+macaroon,water,1.0,2.0,tbsp
+macaroon,caster sugar,1.0,110.0,g
+macaroon,food colouring (optional),1.0,,
+macaroon,"desiccated coconut, for sprinkling (optional)",1.0,,
+macaroon,"double or whipped cream, whipped",1.0,150.0,ml
+cake marble,butter or baking spread,1.0,175.0,g
+cake marble,caster sugar,1.0,175.0,g
+cake marble,"free -range eggs, lightly beaten",1.0,3.0,
+cake marble,tsp vanilla extract,0.5,,
+cake marble,self-raising flour,1.0,225.0,g
+cake marble,pinch salt,1.0,,
+cake marble,milk,1.0,2.0,tbsp
+cake marble,cocoa powder,1.0,2.0,tbsp
+cake marble,"strong black coffee, cooled",1.0,2.0,tbsp
+meatloaf,/1lb 10oz lean beef mince,1.0,750.0,g
+meatloaf,pork sausage meat,1.0,175.0,g
+meatloaf,"egg , beaten",1.0,1.0,
+meatloaf,"medium onion, finely chopped",1.0,1.0,
+meatloaf,"clove garlic, crushed",1.0,1.0,
+meatloaf,"tablespoon sage leaves, chopped",1.0,1.0,
+meatloaf,tablespoon mustard,1.0,1.0,
+meatloaf,heaped tablespoon tomato purée,1.0,1.0,
+meatloaf,fresh breadcrumbs,1.0,110.0,g
+meatloaf,tsp paprika,0.5,,
+meatloaf,salt and freshly ground black pepper,1.0,,
+cucumber pickle,whole cucumber,1.0,1.0,
+cucumber pickle,salt,1.0,1.0,tsp
+cucumber pickle,white vinegar,1.0,60.0,ml
+cucumber pickle,sugar,1.0,50.0,g
+cucumber pickle,7.5cm/3in fresh root ginger,7.0,,
+cucumber pickle,stem ginger in sugar syrup,1.0,4.0,
+tzatziki,Greek-style yoghurt,1.0,350.0,g
+tzatziki,cucumber,1.0,1.0,
+tzatziki,lemon juice,1.0,2.0,tbsp
+tzatziki,"garlic cloves, grated finely",1.0,2.0,
+tzatziki,dash of extra virgin olive oil,1.0,,
+tzatziki,"paprika , for sprinkling",1.0,,
+bread wholemeal,strong wholemeal bread flour,1.0,400.0,g
+bread wholemeal,"strong white bread flour, plus extra for dusting",1.0,100.0,g
+bread wholemeal,/¼oz fast-action dried yeast,1.0,7.0,g
+bread wholemeal,tsp fine salt,0.5,1.0,
+bread wholemeal,black treacle,1.0,1.0,tbsp
+bread wholemeal,"vegetable or olive oil, plus extra for oiling",1.0,1.0,tbsp
+black forest tart,"pack sweet shortcrust pastry , roughly chopped",1.0,375.0,g
+black forest tart,cocoa powder,1.0,4.0,tbsp
+black forest tart,vanilla extract,1.0,1.0,tsp
+black forest tart,"plain flour , plus extra for dusting",1.0,50.0,g
+black forest tart,"large eggs , 1 separated",1.0,3.0,
+black forest tart,"dark chocolate , broken up",1.0,75.0,g
+black forest tart,"milk chocolate , broken up",1.0,75.0,g
+black forest tart,"butter , diced",1.0,50.0,g
+black forest tart,jam,1.0,140.0,g
+black forest tart,golden caster sugar,1.0,85.0,g
+black forest tart,"couple of handfuls fresh cherries , pitted, plus extra to serve",1.0,,
+black forest tart,"icing sugar , to serve",1.0,,
+black forest tart,"cr ème fraîche , to serve",1.0,,
+biscuit butter,butter,1.0,165.0,g
+biscuit butter,icing sugar,1.0,100.0,g
+biscuit butter,lemon zest,1.0,1.0,tsp
+biscuit butter,plain flour,1.0,250.0,g
+biscuit butter,milk,1.0,1.0,tbsp
+biscuit butter,"dark chocolate, milk chocolate or white chocolate",1.0,100.0,g
+cappuccino,ground espresso (or 1 espresso pod),1.0,18.0,g
+cappuccino,milk,1.0,150.0,ml
+cappuccino,cocoa powder (optional),1.0,,
+cappuccino,"the right cup , 200-250ml capacity",1.0,,
+cream dairy ice,"free -range eggs , separated",1.0,4.0,
+cream dairy ice,caster sugar,1.0,100.0,g
+cream dairy ice,double cream,1.0,300.0,ml
+cream dairy ice,"chocolate , fruit, vanilla or coffee extract (optional)",1.0,,
+cream dairy ice,"cones , nuts, flakes, sauces, to serve",1.0,,
+chicory griddle,"white chicory , cut into quarters",1.0,2.0,
+chicory griddle,"red chicory , cut into quarters",1.0,2.0,
+chicory griddle,"small radicchio (rosso di Treviso), or extra chicory, cut into quarters",1.0,1.0,
+chicory griddle,olive oil,1.0,1.0,tbsp
+chicory griddle,"saba (reduced grape must, see tip below) or balsamic vinegar",1.0,3.0,tbsp
+fry halloumi,pot Greek yogurt,1.0,170.0,g
+fry halloumi,"lemon , zested, then cut into wedges for squeezing",1.0,1.0,
+fry halloumi,rose harissa,1.0,1.0,tbsp
+fry halloumi,"za'atar, plus extra for sprinkling",1.0,3.0,tbsp
+fry halloumi,plain flour,1.0,75.0,g
+fry halloumi,"blocks halloumi, cut into fries",2.0,250.0,g
+fry halloumi,"oil , for frying",1.0,,
+fry halloumi,"handful mint, leaves torn",1.0,,
+miso soup,dried wakame seaweed,1.0,5.0,g
+miso soup,dashi (shop bought or see tip),1.0,1.0,l
+miso soup,"fresh silken tofu , or firm if you prefer, cut into 1cm cubes",1.0,200.0,g
+miso soup,white miso paste,1.0,2.0,tbsp
+miso soup,red miso paste,1.0,3.0,tbsp
+miso soup,"spring onion , finely chopped, to serve",1.0,,
+mushroom sauce,dried porcini mushrooms,1.0,2.0,tbsp
+mushroom sauce,butter,1.0,1.0,tsp
+mushroom sauce,"shallots , finely diced",1.0,2.0,
+mushroom sauce,"chestnut mushrooms, sliced",1.0,200.0,g
+mushroom sauce,crème fraîche,1.0,200.0,g
+raclette,"raclette cheese , sliced",1.0,800.0,g
+raclette,"new potatoes , halved if large",1.0,1.0,kg
+raclette,butter,1.0,1.0,tbsp
+raclette,"curly lettuce (or endive), leaves separated",1.0,1.0,
+raclette,"Baby Gem lettuce , leaves separated",1.0,1.0,
+raclette,"red peppers , deseeded and sliced",1.0,2.0,
+raclette,"yellow peppers , deseeded and sliced",1.0,2.0,
+raclette,"jar pickled silverskin onions , drained",1.0,150.0,g
+raclette,"jar cornichons , drained",1.0,150.0,g
+raclette,"baguettes , or other crusty loaves, sliced",1.0,2.0,
+raclette,Dijon mustard,1.0,3.0,tbsp
+raclette,red wine vinegar,1.0,3.0,tbsp
+raclette,sunflower oil,1.0,100.0,ml
+raclette,"chives , finely chopped",1.0,1.0,tbsp
+raclette,"assorted sliced cured meats (we used a mixture of salami, garlic sausage and Bayonne ham, but sliced gammon or Parma ham also works well)",1.0,250.0,g
+raclette,x raclette grill machine with paddles,1.0,1.0,
+pear rooibos tea,"ripe pear , sliced",1.0,1.0,
+pear rooibos tea,a cinnamon stick,0.5,,
+pear rooibos tea,rooibos leaf tea,1.0,2.0,tsp
+cream sour,double cream,1.0,300.0,ml
+cream sour,natural yogurt,1.0,60.0,ml
+cream sour,white wine vinegar,1.0,2.0,tbsp
+cream sour,"tbsp finely chopped chives , to serve",0.5,,
+cream sour,"tsp fine sea salt , to serve",0.5,,
+sauce tomato,olive oil,1.0,1.0,tbsp
+sauce tomato,"onions , chopped",1.0,2.0,
+sauce tomato,"garlic cloves, crushed",1.0,2.0,
+sauce tomato,tomato purée,1.0,1.0,tbsp
+sauce tomato,cans chopped tomatoes,2.0,400.0,g
+sauce tomato,dried oregano,1.0,1.0,tsp
+cake carrot,light muscovado sugar,1.0,175.0,g
+cake carrot,sunflower oil,1.0,175.0,ml
+cake carrot,"large eggs, lightly beaten",1.0,3.0,
+cake carrot,grated carrot (about 3 medium),1.0,140.0,g
+cake carrot,raisins,1.0,100.0,g
+cake carrot,"large orange, zested",1.0,1.0,
+cake carrot,self-raising flour,1.0,175.0,g
+cake carrot,bicarbonate of soda,1.0,1.0,tsp
+cake carrot,ground cinnamon,1.0,1.0,tsp
+cake carrot,tsp grated nutmeg (freshly grated will give you the best flavour),0.5,,
+cake carrot,icing sugar,1.0,175.0,g
+cake carrot,-2 tbsp orange juice,0.5,1.0,
+butter campanelle parsley pasta,(packed) coarsely chopped fresh Italian parsley,1.0,1.0,cup
+butter campanelle parsley pasta,teaspoons (packed) grated lemon peel,1.0,2.0,
+butter campanelle parsley pasta,"garlic clove, peeled",1.0,1.0,
+butter campanelle parsley pasta,"1/2 cup (1 stick) unsalted butter, room temperature",1.0,,
+butter campanelle parsley pasta,"pound campanelle (trumpet-shaped pasta), fiori, or fusilli pasta",1.0,1.0,
+curry green lentil soup,Tbsp . virgin coconut oil,1.0,2.0,
+curry green lentil soup,"small onion, chopped",1.0,1.0,
+curry green lentil soup,"garlic cloves, finely chopped",1.0,2.0,
+curry green lentil soup,"1 1"" piece peeled ginger, finely chopped",1.0,,
+curry green lentil soup,". Diamond Crystal or ½ tsp. Morton kosher salt, plus more",1.0,1.0,tsp
+curry green lentil soup,cup Thai green curry paste,0.25,,
+curry green lentil soup,"medium sweet potato, peeled, cut into ½"" cubes",1.0,1.0,
+curry green lentil soup,cup brown or green lentils,0.75,,
+curry green lentil soup,cups low-sodium chicken or vegetable broth,1.0,4.0,
+curry green lentil soup,"1 13.5-oz. can unsweetened coconut milk, shaken well",1.0,,
+curry green lentil soup,cups (loosely packed) baby spinach leaves,1.0,4.0,
+curry green lentil soup,tsp. (or more) fish sauce,0.5,,
+curry green lentil soup,Small handful cilantro leaves with tender stems and lime wedges (for serving),1.0,,
+butter herb,"(packed) fresh herb leaves (such as flat-leaf parsley, chives, and tarragon)",1.0,1.0,cup
+butter herb,1/2 small garlic clove,1.0,,
+butter herb,"1/2 cup (1 stick) unsalted butter, room temperature",1.0,,
+butter herb,1/4 teaspoon finely grated lemon zest,1.0,,
+butter herb,teaspoon fresh lemon juice,1.0,1.0,
+butter herb,"Kosher salt, freshly ground pepper",1.0,,
+dress italian salad,cup olive oil,0.5,,
+dress italian salad,tablespoons white wine vinegar,1.0,5.0,
+dress italian salad,tablespoon mayonnaise,1.0,1.0,
+dress italian salad,tablespoon sugar,1.0,1.0,
+dress italian salad,teaspoons dried oregano,0.5,1.0,
+dress italian salad,"garlic clove, finely grated",1.0,1.0,
+dress italian salad,"Kosher salt, freshly ground pepper",1.0,,
+dress italian salad,small head of iceberg lettuce,1.0,1.0,
+dress italian salad,"small red onion, sliced into rings",0.5,,
+dress italian salad,"ounces provolone piccante cheese, thinly sliced",1.0,2.0,
+dress italian salad,"drained small mozzarella balls, torn",1.0,1.0,cup
+dress italian salad,"peperoncini , halved if large",1.0,10.0,
+couscous israeli tabbouleh,1 1/2 cups Israeli couscous,1.0,,
+couscous israeli tabbouleh,"small shallot, finely chopped",1.0,1.0,
+couscous israeli tabbouleh,1/2 cup extra-virgin olive oil,1.0,,
+couscous israeli tabbouleh,tablespoons (or more) fresh lemon Juice,1.0,2.0,
+couscous israeli tabbouleh,"English hothouse cucumber, unpeeled, seeded, finely choppedt",1.0,1.0,
+couscous israeli tabbouleh,"cups cherry tomatoes, halved",1.0,3.0,
+couscous israeli tabbouleh,tablespoons chopped fresh flat-leaf parsley,1.0,2.0,
+couscous israeli tabbouleh,tablespoons chopped fresh mint,1.0,2.0,
+couscous israeli tabbouleh,"Kosher salt, freshly ground pepper",1.0,,
+bean margherita pizza,lb . large ripe tomatoes,1.0,1.0,
+bean margherita pizza,"2 15-oz. cans white beans (such as cannellini or butter), rinsed",2.0,,
+bean margherita pizza,"Kosher salt, freshly ground pepper",1.0,,
+bean margherita pizza,"Tbsp . extra-virgin olive oil, plus more for drizzling",1.0,3.0,
+bean margherita pizza,pints cherry or Sun Gold tomatoes (about 1¼ lb.),1.0,2.0,
+bean margherita pizza,"garlic cloves, finely chopped",1.0,4.0,
+bean margherita pizza,"cup torn basil leaves, stems reserved, plus more for serving",0.25,,
+bean margherita pizza,". fresh mozzarella, thinly sliced",1.0,6.0,oz
+bean margherita pizza,"Tbsp . finely grated Parmesan, plus more for serving",1.0,2.0,
+bean margherita pizza,Toasted country-style bread (for serving),1.0,,
+peachaperol spritz,"lb . ripe peaches or nectarines, cut into wedges, or frozen, thawed sliced peaches",1.0,1.0,
+peachaperol spritz,. Aperol,1.0,2.0,oz
+peachaperol spritz,oz. Averna amaro,0.5,,
+peachaperol spritz,"lemon , sliced",1.0,1.0,
+peachaperol spritz,"orange , sliced",1.0,1.0,
+peachaperol spritz,1 750-ml bottle chilled sparkling rosé,1.0,,
+boil shrimp,"onions , halved crosswise",1.0,2.0,
+boil shrimp,"head of garlic, halved crosswise",1.0,1.0,
+boil shrimp,whole cloves,1.0,5.0,
+boil shrimp,bay leaves,1.0,3.0,
+boil shrimp,tablespoons kosher salt,1.0,2.0,
+boil shrimp,tablespoon coriander seeds,1.0,1.0,
+boil shrimp,teaspoons yellow mustard seeds,1.0,4.0,
+boil shrimp,teaspoons dill seeds,1.0,2.0,
+boil shrimp,teaspoons whole allspice,1.0,2.0,
+boil shrimp,teaspoon black peppercorns,1.0,1.0,
+boil shrimp,teaspoon crushed red pepper flakes,1.0,1.0,
+boil shrimp,1/2 teaspoon cayenne pepper,1.0,,
+boil shrimp,"lemon , halved",1.0,1.0,
+boil shrimp,"dashes (or more) hot pepper sauce, preferably Crystal",1.0,5.0,
+boil shrimp,1 1/2 pounds unpeeled large shrimp (about 30),1.0,,
+burger veggie,cup white long-grain rice,0.33,,
+burger veggie,"2 15-ounce cans black beans, rinsed",2.0,,
+burger veggie,"medium shallot, chopped",1.0,1.0,
+burger veggie,slices pickled jalapeño,1.0,6.0,
+burger veggie,tablespoon prepared barbecue sauce,1.0,1.0,
+burger veggie,"teaspoon chili powder, preferably ancho",1.0,1.0,
+burger veggie,teaspoon ground cumin,0.5,,
+burger veggie,large egg white,1.0,1.0,
+burger veggie,"Kosher salt, freshly ground pepper",1.0,,
+burger veggie,"tablespoons vegetable oil, divided",1.0,4.0,
+burger veggie,hamburger buns,1.0,6.0,
+burger veggie,Favorite burger toppings (for serving),1.0,,
+buckwheat pancake,fast-action dried yeast,1.0,15.0,g
+buckwheat pancake,"litre whole milk or water, or 500ml milk mixed with 500ml water, lukewarm",1.0,1.0,
+buckwheat pancake,buckwheat flour,1.0,250.0,g
+buckwheat pancake,wholemeal or plain flour,1.0,250.0,g
+buckwheat pancake,medium free-range egg,1.0,1.0,
+buckwheat pancake,"unsalted butter, melted and cooled, plus plenty extra to fry",1.0,20.0,g
+buckwheat pancake,sea salt,1.0,10.0,g
+buckwheat pancake,"mature gouda or cheddar, grated",1.0,250.0,g
+easy ham hock terrine,ham hocks or gammon knuckles,2.0,1.0,kg
+easy ham hock terrine,"carrots , halved",1.0,2.0,
+easy ham hock terrine,celery sticks,1.0,2.0,
+easy ham hock terrine,"onion , halved",1.0,1.0,
+easy ham hock terrine,peppercorns,1.0,10.0,
+easy ham hock terrine,fresh parsley,1.0,60.0,g
+easy ham hock terrine,jar cornichons (baby gherkins),1.0,170.0,g
+easy ham hock terrine,gelatine leaves (we like Costa gelatine),1.0,2.0,
+easy ham hock terrine,good quality ham stock (or other good stock),1.0,300.0,ml
+mayonnaise,"large free-range egg yolks, at room temperature",1.0,2.0,
+mayonnaise,Dijon mustard,1.0,2.0,tsp
+mayonnaise,vinegar or lemon juice,1.0,2.0,tsp
+mayonnaise,cold-pressed rapeseed oil or mild vegetable oil,1.0,200.0,ml
+bread sourdough,For the pre-ferment:,1.0,,
+bread sourdough,strong white bread flour,1.0,60.0,g
+bread sourdough,rye flour,1.0,5.0,g
+bread sourdough,lukewarm water,1.0,30.0,g
+bread sourdough,starter https://www.deliciousmagazine.co.uk/how-to-make-sourdough/(See our guide),1.0,25.0,g
+bread sourdough,For the loaf,1.0,,
+bread sourdough,pre-ferment,1.0,120.0,g
+bread sourdough,"tepid water, plus 10g extra",1.0,220.0,g
+bread sourdough,strong white bread flour,1.0,275.0,g
+bread sourdough,"rye flour, plus extra to dust",1.0,25.0,g
+bread sourdough,fine salt (about 1 tbsp),1.0,8.0,g
+bread sourdough,Sunflower oil to grease the bowl,1.0,,
+cook ham,1 (10–15 pound) whole ham or 1 (5–7 pound) half ham,1.0,,
+cook ham,cups packed brown sugar,0.33,1.0,
+cook ham,teaspoons dry mustard,1.0,2.0,
+cook ham,"tablespoons cider vinegar, dry white wine, prune juice, pineapple juice, fresh-squeezed orange juice, or ham drippings",1.0,3.0,
+cook ham,"Whole cloves, optional",1.0,,
+basmati rice,cups basmati rice (14 oz),1.0,2.0,
+basmati rice,tablespoons unsalted butter,1.0,2.0,
+basmati rice,3 1/3 cups water,3.0,,
+basmati rice,teaspoon salt,1.0,1.0,
+brownie,Nonstick cooking spray,1.0,,
+brownie,"1 1/2 cups canned black beans, rinsed and drained.",1.0,,
+brownie,1/2 cup unsweetened cocoa powder,1.0,,
+brownie,tablespoon espresso powder,1.0,1.0,
+brownie,3/4 cup egg substitute,3.0,,
+brownie,"tablespoons low-calorie sugar free chocolate syrup, such as Walden Farms",1.0,2.0,
+brownie,"tablespoons reduced-fat sour cream, such as Breakstone's",1.0,2.0,
+brownie,"tablespoon unsalted butter, melted",1.0,1.0,
+brownie,packets (84g) Truvia or 8 tablespoons granulated Splenda,1.0,24.0,
+brownie,teaspoon vanilla extract,1.0,1.0,
+cheese cream,cups heavy cream (not ultra-pasteurized),1.0,2.0,
+cheese cream,cups whole milk (not ultra-pasteurized),1.0,2.0,
+cheese cream,packet (1/2 teaspoon) direct-set mesophilic starter,1.0,1.0,
+cheese cream,"drop liquid rennet, diluted in ¼ cup filtered or boiled water",1.0,1.0,
+cheese cream,"Optional : kosher salt, fresh herbs, horseradish, honey, or whatever inspires you!",1.0,,
+dauphinoise gratin potato scallop,pounds Yukon gold potatoes (about 6 large),1.0,3.0,
+dauphinoise gratin potato scallop,medium leek,1.0,1.0,
+dauphinoise gratin potato scallop,3/4 teaspoon freshly ground white pepper,3.0,,
+dauphinoise gratin potato scallop,1/4 teaspoon freshly grated nutmeg,1.0,,
+dauphinoise gratin potato scallop,tablespoons unsalted butter,1.0,2.0,
+dauphinoise gratin potato scallop,"large garlic clove, minced",1.0,1.0,
+dauphinoise gratin potato scallop,cups whole milk,1.0,2.0,
+dauphinoise gratin potato scallop,1/2 cup heavy cream,1.0,,
+dauphinoise gratin potato scallop,an adjustable blade slicer (optional); a 2 1/2- to 3-quart shallow baking dish,1.0,,
+grissini,teaspoon active dry yeast (from a 1/4-ounce package),1.0,1.0,
+grissini,"1 1/2 cups warm water (105-115°F), divided",1.0,,
+grissini,1/2 tablespoon sugar,1.0,,
+grissini,1 1/4 cups semolina flour,1.0,,
+grissini,"1 1/2 cups Italian ""00"" flour",1.0,,
+grissini,teaspoons salt,1.0,2.0,
+grissini,1/3 cup extra-virgin olive oil,1.0,,
+grissini,Equipment : a stand mixer fitted with paddle attachment,1.0,,
+bun hamburger,cups whole milk,1.0,2.0,
+bun hamburger,1/4 cup warm water (105-115°F),1.0,,
+bun hamburger,2 (1/4-ounce) packages active dry yeast,2.0,,
+bun hamburger,"1/4 cup plus 1/2 tsp sugar, divided",1.0,,
+bun hamburger,"1/2 stick unsalted butter, cut into tablespoon pieces and softened",1.0,,
+bun hamburger,"large eggs, lightly beaten",1.0,2.0,
+bun hamburger,tablespoon salt,1.0,1.0,
+bun hamburger,"cups all-purpose flour, divided",1.0,6.0,
+bun hamburger,large egg mixed with 1 tablespoon water for egg wash,1.0,1.0,
+bun hamburger,a stand mixer with paddle and dough-hook attachments; a 3-inch round cookie cutter,1.0,,
+bacon cabbage green mustard savoy steam,pound sliced bacon,0.75,,
+bacon cabbage green mustard savoy steam,large head Savoy cabbage (about 2 pounds),1.0,1.0,
+bacon cabbage green mustard savoy steam,bunches mustard greens (about 2½ pounds total),1.0,2.0,
+bacon cabbage green mustard savoy steam,large garlic cloves,1.0,6.0,
+bacon cabbage green mustard savoy steam,tablespoons unsalted butter,1.0,3.0,
+bacon cabbage green mustard savoy steam,tablespoons extra-virgin olive oil,1.0,3.0,
+apple crumble,quarts thinly sliced apples (about 2 1/2 pounds),1.0,2.0,
+apple crumble,"tablespoons raw brown (turbinado) sugar, preferably organic",1.0,2.0,
+apple crumble,tablespoon fresh lemon juice,1.0,1.0,
+apple crumble,1/2 teaspoon cinnamon,1.0,,
+apple crumble,1/4 teaspoon nutmeg,1.0,,
+apple crumble,teaspoon vanilla extract,1.0,1.0,
+apple crumble,batch quinoa-oat crumble topping,1.0,1.0,
+couscous,"chicken , 3 1/2 pounds, cut into serving pieces",1.0,1.0,
+couscous,3/4 pound zucchini and/or yellow squash,3.0,,
+couscous,"white turnips, about 3/4 pound",1.0,2.0,
+couscous,"carrots , about 3/4 pound",1.0,3.0,
+couscous,"red or green sweet pepper, about 1/2 pound",1.0,1.0,
+couscous,"large onion, about 3/4 pound",1.0,1.0,
+couscous,tablespoons corn oil or melted butter,1.0,2.0,
+couscous,cups water or chicken broth,1.0,9.0,
+couscous,1/2 cinnamon stick or 1/2 teaspoon ground,1.0,,
+couscous,1/2 teaspoon ground cumin,1.0,,
+couscous,1/4 teaspoon ground turmeric,1.0,,
+couscous,"1/2 teaspoon stem saffron, optional",1.0,,
+couscous,"tablespoons honey, optional",1.0,3.0,
+couscous,Salt to taste if desired,1.0,,
+couscous,Freshly ground pepper to taste,1.0,,
+couscous,1/4 cup raisins,1.0,,
+couscous,drained canned chickpeas,1.0,1.0,cup
+couscous,2 1/2 cups quick-cooking couscous grain,2.0,,
+couscous,cups water,1.0,4.0,
+couscous,tablespoons butter at room temperature,1.0,3.0,
+couscous,"Harissa (see recipe), optional",1.0,,
+chicken coconut curry milk potato sweet,"1 (3 1/2 pound) whole chicken, cut into 8 pieces",1.0,,
+chicken coconut curry milk potato sweet,"2 1/2 teaspoons kosher salt, more as needed",2.0,,
+chicken coconut curry milk potato sweet,"Black pepper, as needed",1.0,,
+chicken coconut curry milk potato sweet,"tablespoons peanut, safflower or vegetable oil",1.0,2.0,
+chicken coconut curry milk potato sweet,1/4 cup finely chopped scallion,1.0,,
+chicken coconut curry milk potato sweet,"1 1/2 inches fresh ginger, peeled and grated (1 1/2 tablespoons)",1.0,,
+chicken coconut curry milk potato sweet,"garlic cloves, finely chopped",1.0,3.0,
+chicken coconut curry milk potato sweet,"to 2 jalapeno or Serrano chiles, to taste, seeded and finely chopped",1.0,1.0,
+chicken coconut curry milk potato sweet,tablespoons red curry paste,1.0,2.0,
+chicken coconut curry milk potato sweet,1 (15 1/2-ounce) can coconut milk,1.0,,
+chicken coconut curry milk potato sweet,"medium sweet potatoes (1 pound), peeled and cut into 1 1/2-inch chunks",1.0,2.0,
+chicken coconut curry milk potato sweet,3/4 cup coconut flakes,3.0,,
+chicken coconut curry milk potato sweet,tablespoon black or brown mustard seeds,1.0,1.0,
+chicken coconut curry milk potato sweet,Fresh cilantro leaves,1.0,,
+chicken coconut curry milk potato sweet,Lime wedges,1.0,,
+cheese fresh,gallon whole milk (as fresh as possible),1.0,1.0,
+cheese fresh,1/4 cup cultured buttermilk,1.0,,
+cheese fresh,tablespoon rennet solution,1.0,1.0,
+cheese fresh,1 1/2 teaspoons salt,1.0,,
+evan funke handmade pasta tagliatelle ’,"pound (455 grams) “00” flour, plus more for dusting",1.0,1.0,
+evan funke handmade pasta tagliatelle ’,grams eggs (about 5 large eggs),1.0,260.0,
+cake lemon,1 2/3 cups/226 grams all-purpose flour,1.0,,
+cake lemon,3/4 cup/170 grams granulated sugar,3.0,,
+cake lemon,tablespoons /85 grams salted butter,1.0,6.0,
+cake lemon,lemons,1.0,2.0,
+cake lemon,large egg,1.0,1.0,
+cake lemon,large egg yolks,1.0,2.0,
+cake lemon,1/3 cup/41 grams confectioners’ sugar,1.0,,
+rice wild,wild rice,1.0,1.0,cup
+rice wild,cups water,1.0,3.0,
+rice wild,"Salt to taste, if desired",1.0,,
+flaky pastry,unbleached flour,1.0,1.0,cup
+flaky pastry,1/2 teaspoon salt,1.0,,
+flaky pastry,1/3 cup vegetable shortening,1.0,,
+flaky pastry,tablespoon unsalted butter,1.0,1.0,
+flaky pastry,to 3 tablespoons cold water,1.0,2.0,
+cotta panna,", plus 2 tablespoons, heavy cream",1.0,1.0,cup
+cotta panna,1/2 cup sugar,1.0,,
+cotta panna,tablespoons cold water,1.0,3.0,
+cotta panna,package powdered gelatin,1.0,1.0,
+cotta panna,1 2/3 cup buttermilk,1.0,,
+cotta panna,1/8 teaspoon salt,1.0,,
+cotta panna,Fresh fruit for garnish,1.0,,
+gruyère puff,large eggs,1.0,3.0,
+gruyère puff,1/2 cup whole milk,1.0,,
+gruyère puff,1/2 cup all-purpose flour,1.0,,
+gruyère puff,1/2 teaspoon kosher salt,1.0,,
+gruyère puff,Freshly ground black pepper,1.0,,
+gruyère puff,3/4 cup grated Gruyère cheese (about 3 ounces),3.0,,
+gruyère puff,tablespoons unsalted butter,1.0,3.0,
+gruyère puff,"Coarse sea salt, for sprinkling",1.0,,
+bread olive,cups all-purpose flour plus 2 teaspoons flour for sprinkling,1.0,5.0,
+bread olive,package dry yeast,1.0,1.0,
+bread olive,1 1/4 cups lukewarm water,1.0,,
+bread olive,"1 1/2 cups Mediterranean black olives, pitted and chopped",1.0,,
+bread olive,"1 1/2 cups Mediterranean green olives, pitted and chopped",1.0,,
+bread olive,1/2 teaspoon salt,1.0,,
+bread olive,tablespoon dried oregano,1.0,1.0,
+bread olive,tablespoons melted butter or margarine,1.0,2.0,
+fennel,fennel bulbs,1.0,2.0,
+fennel,unripe pears,1.0,2.0,
+fennel,Shaved Parmesan,1.0,,
+fennel,Dressing,1.0,,
+bulgur,large grain (No. 3) bulgur,1.0,1.0,cup
+bulgur,tablespoons butter,1.0,2.0,
+bulgur,1/2 cup finely chopped onion,1.0,,
+bulgur,teaspoon finely minced garlic,1.0,1.0,
+bulgur,1 1/2 cups chicken broth or water,1.0,,
+bulgur,Salt to taste if desired,1.0,,
+bulgur,Freshly ground pepper to taste,1.0,,
+praline,1/2 cup sugar,1.0,,
+praline,tablespoons water,1.0,2.0,
+praline,1/2 cup slivered toasted almonds,1.0,,
+compote fruit,"1/4 pound each dried pears, figs, apricots and peaches",1.0,,
+compote fruit,pitted prunes,1.0,1.0,cup
+compote fruit,1/2 cup raisins,1.0,,
+compote fruit,cups water,1.0,3.0,
+compote fruit,pitted cherries,1.0,1.0,cup
+compote fruit,"apples , peeled, cored and sliced, or 6 ounces dried apples",1.0,2.0,
+compote fruit,1/2 cup cranberries,1.0,,
+compote fruit,"lemon , sliced",1.0,1.0,
+compote fruit,whole cloves,1.0,6.0,
+compote fruit,cinnamon sticks,1.0,2.0,
+compote fruit,1/2 to 1 cup sugar,1.0,,
+compote fruit,"orange , preferably a navel orange",1.0,1.0,
+compote fruit,1/2 cup seedless grapes,1.0,,
+compote fruit,1/2 cup fruit-flavored brandy or fruit juice,1.0,,
+spaetzle,milk,1.0,1.0,cup
+spaetzle,eggs,1.0,2.0,
+spaetzle,3/4 teaspoon salt (or as desired),3.0,,
+spaetzle,1/4 teaspoon nutmeg,1.0,,
+spaetzle,"to 3 cups flour, as needed",1.0,2.0,
+bread,"cornmeal, uncooked",1.0,1.0,cup
+bread,"whole-wheat cereal, uncooked",1.0,1.0,cup
+bread,"regular oatmeal, uncooked",1.0,1.0,cup
+bread,tablespoons yeast,1.0,2.0,
+bread,1/2 cup honey,1.0,,
+bread,teaspoons salt,1.0,2.0,
+bread,cups whole-wheat flour,1.0,2.0,
+bread,to 8 cups unbleached flour,1.0,6.0,
+caviar eggplant,large eggplants,1.0,4.0,
+caviar eggplant,tablespoon kosher salt,1.0,1.0,
+caviar eggplant,extra-virgin olive oil,1.0,1.0,cup
+caviar eggplant,"cloves garlic, minced",1.0,4.0,
+caviar eggplant,tablespoon Dijon mustard,1.0,1.0,
+caviar eggplant,Salt and freshly ground black pepper to taste,1.0,,
+pasta,"cups flour, approximately",1.0,3.0,
+pasta,Salt to taste if desired,1.0,,
+pasta,"eggs , about 1 cup",1.0,4.0,
+pasta,"tablespoon water, approximately",1.0,1.0,
+ice tea,bag chamomile tea,1.0,1.0,
+ice tea,bag lemon-zinger tea,1.0,1.0,
+ice tea,bags Darjeeling,1.0,2.0,
+ice tea,bag English breakfast tea,1.0,1.0,
+ice tea,bags black-currant tea,1.0,2.0,
+ice tea,slices orange plus 1/2 an orange,1.0,6.0,
+ice tea,slices lemon plus 1/2 a lemon,1.0,6.0,
+ice tea,sprigs mint,1.0,4.0,
+mix vegetable,tablespoons butter,1.0,2.0,
+mix vegetable,1/2 cup chopped scallions,1.0,,
+mix vegetable,1 1/2 cups green beans cut into 1 1/2-inch lengths,1.0,,
+mix vegetable,1 1/2 cups carrots cut into small batons 1/2-inch long,1.0,,
+mix vegetable,"1 1/2 cups small red potatoes, also cut into 1/2-inch batons",1.0,,
+mix vegetable,1 1/2 cups white turnips cut into 1/2-inch batons,1.0,,
+mix vegetable,Salt and freshly ground pepper to taste,1.0,,
+mix vegetable,tablespoons water,1.0,4.0,
+mix vegetable,1 1/2 cups zucchini cut into 1/2-inch batons,1.0,,
+bouillon vegetable,"medium onions, peeled",1.0,2.0,
+bouillon vegetable,ribs celery,1.0,3.0,
+bouillon vegetable,"leeks , white and light green parts only, washed well",1.0,2.0,
+bouillon vegetable,"parsnips , peeled",1.0,2.0,
+bouillon vegetable,"small carrots, peeled",1.0,2.0,
+bouillon vegetable,small fennel bulbs,1.0,2.0,
+bouillon vegetable,teaspoons olive oil,1.0,4.0,
+bouillon vegetable,"plum tomato, diced",1.0,1.0,
+bouillon vegetable,quarts water,1.0,3.0,
+bouillon vegetable,Kosher salt to taste,1.0,,
+bouillon vegetable,"rib celery, thinly sliced on the diagonal",1.0,1.0,
+bouillon vegetable,"carrot , peeled and shaved with a vegetable peeler",1.0,1.0,
+bouillon vegetable,1/2 cup pea shoots,1.0,,
+bouillon vegetable,"small red onion, peeled and thinly sliced",1.0,1.0,
+bouillon vegetable,1/4 cup shelled peas,1.0,,
+bouillon vegetable,"1/2 fennel bulb, trimmed and finely shaved",1.0,,
+bouillon vegetable,"leek , white and light green parts only, washed well and thinly sliced crosswise",1.0,1.0,
+bouillon vegetable,"1/4 cup mixed fresh leaves of parsley, tarragon and chervil and fennel fronds",1.0,,
+bolognaise sauce,36.40 gm olive oil,36.0,,
+bolognaise sauce,"brown onion, finely chopped",1.0,1.0,
+bolognaise sauce,"garlic cloves, finely chopped",1.0,2.0,
+bolognaise sauce,beef mince,1.0,500.0,g
+bolognaise sauce,jar Italian tomato pasta sauce,1.0,700.0,g
+bolognaise sauce,127.50 gm beef stock,127.0,,
+bolognaise sauce,1.13 gm white sugar,1.0,,
+bolognaise sauce,bay leaves,1.0,2.0,
+cantonese fry rice,(3 cups) water,1.0,750.0,ml
+cantonese fry rice,(2 cups) medium-grain rice,1.0,440.0,g
+cantonese fry rice,"Peanut oil, to grease",1.0,,
+cantonese fry rice,"36.40 gm peanut oil, extra",36.0,,
+cantonese fry rice,"eggs , lightly whisked",1.0,3.0,
+cantonese fry rice,"(1/2 cup) leg ham off the bone, chopped",1.0,60.0,g
+cantonese fry rice,finely grated fresh ginger,1.0,2.0,tsp
+cantonese fry rice,"shallots , ends trimmed, thinly sliced",1.0,3.0,
+cantonese fry rice,"(1 cup) frozen peas, thawed",1.0,150.0,g
+cantonese fry rice,small peeled cooked prawns,1.0,250.0,g
+cantonese fry rice,20.00 ml Liquid Seasoning,20.0,,
+cantonese fry rice,sesame oil,1.0,2.0,tsp
+cantonese fry rice,Pinch of white pepper,1.0,,
+carbonara sauce,9.20 gm olive oil,9.0,,
+carbonara sauce,"sliced pancetta, roughly chopped",1.0,200.0,g
+carbonara sauce,"garlic cloves, crushed",1.0,3.0,
+carbonara sauce,egg yolks (at room temperature),1.0,2.0,
+carbonara sauce,eggs (at room temperature),1.0,2.0,
+carbonara sauce,126.25 gm thickened cream,126.0,,
+carbonara sauce,"parmesan cheese, finely grated",1.0,75.0,g
+chicken wing,chicken wings,1.0,8.0,
+chicken wing,65.63 gm soy sauce,65.0,,
+chicken wing,18.20 gm peanut oil,18.0,,
+chicken wing,20.00 ml Chinese rice wine,20.0,,
+chicken wing,41.60 gm tomato sauce,41.0,,
+chicken wing,57.20 gm honey,57.0,,
+chicken wing,41.60 gm chilli sauce,41.0,,
+chicken wing,"garlic cloves, crushed",1.0,3.0,
+chicken wing,1/2 tsp Chinese five spice powder,1.0,,
+balsamic dress salad,3/4 cup tomato juice,3.0,,
+balsamic dress salad,1/4 cup balsamic vinegar,1.0,,
+balsamic dress salad,envelope Italian salad dressing mix,1.0,1.0,
+balsamic dress salad,teaspoons sugar,1.0,2.0,
+dress french salad,1-1/2 cups vegetable oil,1.0,,
+dress french salad,ketchup,1.0,1.0,cup
+dress french salad,3/4 cup sugar,3.0,,
+dress french salad,1/2 cup vinegar,1.0,,
+dress french salad,"small onion, chopped",1.0,1.0,
+dress french salad,teaspoon lemon juice,1.0,1.0,
+dress french salad,teaspoon paprika,1.0,1.0,
+dress french salad,1/2 teaspoon salt,1.0,,
+bake italian zucchini,3-1/2 cups shredded zucchini,3.0,,
+bake italian zucchini,1/2 teaspoon salt,1.0,,
+bake italian zucchini,3/4 cup egg substitute,3.0,,
+bake italian zucchini,1/2 cup dry bread crumbs,1.0,,
+bake italian zucchini,1/4 cup all-purpose flour,1.0,,
+bake italian zucchini,teaspoons Italian seasoning,1.0,2.0,
+bake italian zucchini,"1/2 pound fresh mushrooms, sliced",1.0,,
+bake italian zucchini,teaspoons olive oil,1.0,2.0,
+bake italian zucchini,"can (15 ounces) pizza sauce, divided",1.0,1.0,
+bake italian zucchini,3/4 cup chopped green pepper,3.0,,
+bake italian zucchini,"1/4 cup sliced ripe olives, drained",1.0,,
+bake italian zucchini,"1-1/2 cups shredded part-skim mozzarella cheese, divided",1.0,,
+onion pearl,"package (16 ounces) frozen pearl onions, thawed",1.0,1.0,
+onion pearl,tablespoons butter,1.0,2.0,
+onion pearl,tablespoons plus 1-1/2 teaspoons brown sugar,1.0,2.0,
+onion pearl,tablespoon Dijon mustard,1.0,1.0,
+onion pearl,tablespoons minced fresh parsley,1.0,2.0,
+sausage swirl,cups all-purpose flour,1.0,4.0,
+sausage swirl,1/4 cup cornmeal,1.0,,
+sausage swirl,tablespoons sugar,1.0,2.0,
+sausage swirl,teaspoons baking powder,1.0,2.0,
+sausage swirl,teaspoon salt,1.0,1.0,
+sausage swirl,2/3 cup canola oil,2.0,,
+sausage swirl,3/4 to 1 cup milk,3.0,,
+sausage swirl,pounds uncooked bulk pork sausage,1.0,2.0,
+apricot bake oatmeal spice,3/4 cup packed brown sugar,3.0,,
+apricot bake oatmeal spice,teaspoons pumpkin pie spice,1.0,3.0,
+apricot bake oatmeal spice,teaspoons baking powder,1.0,2.0,
+apricot bake oatmeal spice,1/2 teaspoon salt,1.0,,
+apricot bake oatmeal spice,1/4 teaspoon ground cardamom,1.0,,
+apricot bake oatmeal spice,cups old-fashioned oats,1.0,3.0,
+apricot bake oatmeal spice,1/2 cup chopped dried apricots,1.0,,
+apricot bake oatmeal spice,"1/2 cup chopped pecans, toasted",1.0,,
+apricot bake oatmeal spice,"large eggs, room temperature",1.0,3.0,
+apricot bake oatmeal spice,1-1/2 cups fat-free milk,1.0,,
+apricot bake oatmeal spice,1/2 cup unsweetened applesauce,1.0,,
+apricot bake oatmeal spice,1-1/2 teaspoons vanilla extract,1.0,,
+apricot bake oatmeal spice,"1/4 cup butter, melted",1.0,,
+apricot bake oatmeal spice,TOPPINGS :,1.0,,
+apricot bake oatmeal spice,cups vanilla yogurt,1.0,3.0,
+apricot bake oatmeal spice,"1/2 cup apricot preserves, warmed",1.0,,
+spice tea,"quarts water, divided",1.0,3.0,
+spice tea,tea bags,1.0,4.0,
+spice tea,whole cloves,1.0,18.0,
+spice tea,cinnamon sticks (3-1/2 inches),1.0,2.0,
+spice tea,"can (12 ounces) frozen orange juice concentrate, thawed",1.0,1.0,
+spice tea,"can (12 ounces) frozen lemonade concentrate, thawed",1.0,1.0,
+spice tea,sugar,1.0,1.0,cup
+rosti,"tablespoons butter, divided",1.0,2.0,
+rosti,"tablespoons canola oil, divided",1.0,2.0,
+rosti,"package (30 ounces) frozen shredded hash brown potatoes, thawed",1.0,1.0,
+rosti,teaspoon salt,1.0,1.0,
+rosti,1/4 teaspoon pepper,1.0,,
+rosti,1-1/2 cups shredded Gruyere or Swiss cheese,1.0,,
+rosti,Optional : Sour cream and minced chives,1.0,,
+green tea,tsps green Tea,1.0,4.0,
+green tea,soft water,1.0,,
+green tea,Sieve,1.0,,
+herbal tea,tsps dried Lime blossom,1.0,2.0,
+herbal tea,tsps dried Marigold,1.0,3.0,
+potato steam,"pound small red potatoes, quartered",1.0,1.0,
+potato steam,tablespoons water,1.0,2.0,
+potato steam,Butter -flavored spray (such as I Can't Believe It's Not Butter),1.0,,
+potato steam,teaspoon salt,0.25,,
+potato steam,teaspoon pepper,0.25,,
+bouquet garni,bay leaf,1.0,1.0,
+bouquet garni,handful fresh thyme,1.0,1.0,
+bouquet garni,handful fresh parsley*,1.0,1.0,
+greek parfait recipe yogurt yogurt,"1/2 cup Peanut Butter Granola, Crispy Homemade Granola, or purchased granola",1.0,,
+greek parfait recipe yogurt yogurt,Greek yogurt (or plain yogurt),1.0,1.0,cup
+greek parfait recipe yogurt yogurt,tablespoon plus 1 teaspoon maple syrup,1.0,1.0,
+greek parfait recipe yogurt yogurt,teaspoon vanilla,1.0,1.0,
+greek parfait recipe yogurt yogurt,frozen or fresh strawberries*,1.0,1.0,cup
+greek parfait recipe yogurt yogurt,"fresh berries like blueberries, blackberries, raspberries or a mix",1.0,1.0,cup
+greek parfait recipe yogurt yogurt,1/8 teaspoon cinnamon,1.0,,
+negroni prosecco variation,ounce (2 tablespoons) sweet or semi-sweet red vermouth,1.0,1.0,
+negroni prosecco variation,ounce (2 tablespoons) Campari,1.0,1.0,
+negroni prosecco variation,"ounce (2 tablespoons) Prosecco, champagne or other sparkling wine",1.0,1.0,
+negroni prosecco variation,"Ice , for serving (try clear ice!)",1.0,,
+negroni prosecco variation,For the garnish: Orange peel,1.0,,
+cashew sauce vegan,raw or roasted cashews*,1.0,1.0,cup
+cashew sauce vegan,3/4 cup water or vegetable broth,3.0,,
+cashew sauce vegan,1/2 teaspoon kosher salt,1.0,,
+berry muesli,grams Oats,1.0,150.0,
+berry muesli,"grams mixed Nut (such as Macadamia, walnuts, hazelnuts)",1.0,150.0,
+berry muesli,grams raisins,1.0,50.0,
+berry muesli,grams Currants,1.0,50.0,
+berry muesli,grams mixed Berry (such as raspberries and blueberries),1.0,250.0,
+cheesecake,butter (for greasing the pan),1.0,,
+cheesecake,organic lemon,1.0,1.0,
+cheesecake,grams raisins,1.0,100.0,
+cheesecake,centiliters Rum,1.0,3.0,
+cheesecake,eggs,1.0,4.0,
+cheesecake,grams sugar,1.0,200.0,
+cheesecake,gram vanilla pudding mix,1.0,1.0,
+cheesecake,grams butter,1.0,80.0,
+cheesecake,1.2 kilograms Quark,1.0,,
+cheesecake,powdered sugar (for dusting),1.0,,
+breast chicken,Chicken breasts (each about 200 grams),1.0,4.0,
+breast chicken,salt,1.0,,
+breast chicken,peppers,1.0,,
+breast chicken,Tbsp sunflower oil,1.0,1.0,
+breast chicken,Limes,1.0,2.0,
+breast chicken,sheets white gelatin,1.0,3.0,
+breast chicken,milliliters Vegetable broth,1.0,125.0,
+breast chicken,1.5 Tbsps soy sauce,1.0,,
+breast chicken,1.5 tsps liquid Blossom honey,1.0,,
+empanadillas galician gallegas recipe turnover,For the Sofrito:,1.0,,
+empanadillas galician gallegas recipe turnover,tablespoons extra-virgin olive oil,1.0,3.0,
+empanadillas galician gallegas recipe turnover,medium yellow onion (finely chopped),1.0,1.0,
+empanadillas galician gallegas recipe turnover,green sweet pepper (diced),1.0,1.0,
+empanadillas galician gallegas recipe turnover,"cloves garlic (large, minced)",1.0,2.0,
+empanadillas galician gallegas recipe turnover,"1 28-ounce can crushed tomatoes (or 5 to 6 large ripe tomatoes, peeled, and diced)",1.0,,
+empanadillas galician gallegas recipe turnover,teaspoon sweet paprika),1.0,1.0,
+empanadillas galician gallegas recipe turnover,For the Dough:,1.0,,
+empanadillas galician gallegas recipe turnover,cups flour (sifted),1.0,4.0,
+empanadillas galician gallegas recipe turnover,teaspoon salt,1.0,1.0,
+empanadillas galician gallegas recipe turnover,teaspoon sweet paprika,1.0,1.0,
+empanadillas galician gallegas recipe turnover,envelope of dry yeast (or 0.6 ounces of fresh yeast),1.0,1.0,
+empanadillas galician gallegas recipe turnover,1/3 cup water (lukewarm),1.0,,
+empanadillas galician gallegas recipe turnover,3/4 cup olive oil,3.0,,
+empanadillas galician gallegas recipe turnover,1/3 cup milk (lukewarm),1.0,,
+empanadillas galician gallegas recipe turnover,For the Tuna Filling:,1.0,,
+empanadillas galician gallegas recipe turnover,ounces canned tuna (drained),1.0,24.0,
+empanadillas galician gallegas recipe turnover,hard -boiled eggs (chopped),1.0,3.0,
+empanadillas galician gallegas recipe turnover,1/2 to 2/3 cup sofrito,1.0,,
+empanadillas galician gallegas recipe turnover,For the Meat Filling:,1.0,,
+empanadillas galician gallegas recipe turnover,tablespoons raisins,1.0,4.0,
+empanadillas galician gallegas recipe turnover,tablespoons olive oil,1.0,4.0,
+empanadillas galician gallegas recipe turnover,medium onions (finely chopped),1.0,2.0,
+empanadillas galician gallegas recipe turnover,"cloves garlic (large, minced)",1.0,2.0,
+empanadillas galician gallegas recipe turnover,1 1/2 pounds ground beef (10 percent or less),1.0,,
+empanadillas galician gallegas recipe turnover,Salt to taste,1.0,,
+empanadillas galician gallegas recipe turnover,Pepper to taste,1.0,,
+empanadillas galician gallegas recipe turnover,teaspoons dried parsley,1.0,2.0,
+empanadillas galician gallegas recipe turnover,1/2 teaspoons dried oregano,1.0,,
+empanadillas galician gallegas recipe turnover,1/2 teaspoons sweet paprika,1.0,,
+empanadillas galician gallegas recipe turnover,2 1/2 teaspoons ground cumin,2.0,,
+empanadillas galician gallegas recipe turnover,ounces dry white wine,1.0,4.0,
+empanadillas galician gallegas recipe turnover,1/2 to 2/3 cup sofrito,1.0,,
+empanadillas galician gallegas recipe turnover,hard -boiled egg (finely chopped),1.0,1.0,
+empanadillas galician gallegas recipe turnover,For Assembly:,1.0,,
+empanadillas galician gallegas recipe turnover,egg white,1.0,1.0,
+empanadillas galician gallegas recipe turnover,Optional : 1 egg (for egg wash),1.0,,
+dress oil salad vinegar,3/4 cup salad oil,3.0,,
+dress oil salad vinegar,1/4 cup white wine vinegar,1.0,,
+dress oil salad vinegar,teaspoon kosher salt (or more to taste),1.0,1.0,
+dress oil salad vinegar,"1/2 teaspoon ground white pepper (or freshly ground black pepper, to taste)",1.0,,
+bread spell,For the Poolish:,1.0,,
+bread spell,grams white spelt flour,1.0,80.0,
+bread spell,grams whole spelt flour,1.0,10.0,
+bread spell,grams water,1.0,90.0,
+bread spell,Pinch of instant yeast,1.0,,
+bread spell,For the Dough:,1.0,,
+bread spell,grams white spelt flour,1.0,160.0,
+bread spell,grams whole spelt flour,1.0,20.0,
+bread spell,grams water,1.0,95.0,
+bread spell,grams salt,1.0,5.0,
+bread spell,Pinch of instant yeast,1.0,,
+bread spell,Brown rice flour for dusting,1.0,,
+bowl noodle vermicelli,0.25 cup white vinegar,0.0,,
+bowl noodle vermicelli,0.25 cup fish sauce,0.0,,
+bowl noodle vermicelli,tablespoons white sugar,1.0,2.0,
+bowl noodle vermicelli,tablespoons lime juice,1.0,2.0,
+bowl noodle vermicelli,"clove garlic, minced",1.0,1.0,
+bowl noodle vermicelli,0.25 teaspoon red pepper flakes,0.0,,
+bowl noodle vermicelli,0.5 teaspoon canola oil,0.0,,
+bowl noodle vermicelli,tablespoons chopped shallots,1.0,2.0,
+bowl noodle vermicelli,skewers,1.0,2.0,
+bowl noodle vermicelli,"medium shrimp, with shells",1.0,8.0,
+bowl noodle vermicelli,1 (8 ounce) package rice vermicelli noodles,1.0,,
+bowl noodle vermicelli,finely chopped lettuce,1.0,1.0,cup
+bowl noodle vermicelli,bean sprouts,1.0,1.0,cup
+bowl noodle vermicelli,"English cucumber, cut into 2-inch matchsticks",1.0,1.0,
+bowl noodle vermicelli,0.25 cup finely chopped pickled carrots,0.0,,
+bowl noodle vermicelli,0.25 cup finely chopped diakon radish,0.0,,
+bowl noodle vermicelli,0.25 cup crushed peanuts,0.0,,
+bowl noodle vermicelli,tablespoons chopped cilantro,1.0,3.0,
+bowl noodle vermicelli,tablespoons finely chopped Thai basil,1.0,3.0,
+bowl noodle vermicelli,tablespoons chopped fresh mint,1.0,3.0,
+buttery maple syrup,brown sugar,1.0,1.0,cup
+buttery maple syrup,0.75 cup water,0.0,,
+buttery maple syrup,0.5 cup white sugar,0.0,,
+buttery maple syrup,tablespoon butter,1.0,1.0,
+buttery maple syrup,teaspoon maple-flavored extract,1.0,1.0,
+roast romanesco,"head Romanesco (also known as Romanesque cauliflower or Romanesco broccoli), cut into bite-size pieces",1.0,1.0,
+roast romanesco,"tablespoon olive oil, or more to taste",1.0,1.0,
+roast romanesco,grinds fresh black pepper,1.0,2.0,
+roast romanesco,pinch garlic powder,1.0,1.0,
+roast romanesco,pinch paprika,1.0,1.0,
+roast romanesco,salt to taste,1.0,,
+quinoa,quinoa,1.0,1.0,cup
+quinoa,tablespoon canola oil,1.0,1.0,
+quinoa,"small onion, chopped",1.0,1.0,
+quinoa,"red bell pepper, chopped",1.0,1.0,
+quinoa,"head garlic, chopped",1.0,1.0,
+quinoa,cups chicken broth,1.0,2.0,
+quinoa,0.25 cup sofrito (such as Goya®),0.0,,
+quinoa,teaspoon ground cumin,1.0,1.0,
+quinoa,teaspoon dried cilantro,1.0,1.0,
+quinoa,salt and ground black pepper to taste,1.0,,
+quinoa,frozen corn kernels,1.0,1.0,cup
+quinoa,tablespoon canola oil,1.0,1.0,
+quinoa,pound ground chicken,1.0,1.0,
+quinoa,teaspoon adobo seasoning,1.0,1.0,
+quinoa,0.5 teaspoon garlic powder,0.0,,
+quinoa,0.5 teaspoon ground cumin,0.0,,
+quinoa,"1 (15 ounce) can black beans, drained",1.0,,
+quinoa,"0.5 cup sofrito (such as Goya®), or to taste",0.0,,
+bacon fry,cooking spray,1.0,,
+bacon fry,1 (28 ounce) package frozen steak fries,1.0,,
+bacon fry,"1 (16 ounce) package bacon slices, halved",1.0,,
+bacon fry,0.25 teaspoon seasoned salt,0.0,,
+chicken,"pound skinless, boneless chicken breasts, cut into 3/4-inch pieces",1.0,1.0,
+chicken,"egg , beaten",1.0,1.0,
+chicken,tablespoons cornstarch,1.0,2.0,
+chicken,"1.5 tablespoons minced garlic, divided",1.0,,
+chicken,"tablespoon minced ginger, divided",1.0,1.0,
+chicken,teaspoons salt,1.0,2.0,
+chicken,0.5 teaspoon ground black pepper,0.0,,
+chicken,vegetable oil for frying,1.0,,
+chicken,tablespoons vegetable oil,1.0,2.0,
+chicken,teaspoon cumin seeds,1.0,1.0,
+chicken,"serrano peppers, sliced into 1/4-inch pieces",1.0,2.0,
+chicken,tablespoons cumin powder,1.0,2.0,
+chicken,"tablespoon chile powder, or less to taste",1.0,1.0,
+chicken,0.5 teaspoon ground black pepper,0.0,,
+chicken,salt to taste,1.0,,
+chicken,"fresh curry leaves, or more to taste",1.0,6.0,
+chicken,1.5 tablespoons red chile-garlic paste,1.0,,
+chicken,tablespoon ginger paste,1.0,1.0,
+chicken,"drops red food coloring, or more as needed",1.0,5.0,
+chicken,0.5 cup water,0.0,,
+chicken,0.75 cup chopped fresh cilantro,0.0,,
+chip french fry,potatoes (such as russet),1.0,4.0,
+chip french fry,oil for frying,1.0,,
+chip french fry,salt,1.0,,
