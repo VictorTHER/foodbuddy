@@ -154,19 +154,22 @@ def get_target_match(target_list="data_train_set.csv"):
     ### STEP 1: CHECK CURRENT PROGRESS USING CACHE ###
 
     progress = 0
+
     if os.path.exists(cache_1):
         progress = 1
         updated_to_clean = pd.read_csv(cache_1)
+
     if os.path.exists(cache_2):
         if input("Did you manualy match the missing recipes? 'y'/'n' ") == "y":
             progress = 2
-            XXX = pd.read_csv(cache_2)
+            equivalents_table = pd.read_csv(cache_2)
         else :
             print("Please finish matching the recipes before launching this program.")
             return None
+
     if os.path.exists(cache_3):
         progress = 3
-        XXX = pd.read_csv(cache_1)
+        cache = pd.read_csv(cache_3)
 
     if progress == 0 :
 
@@ -201,7 +204,10 @@ def get_target_match(target_list="data_train_set.csv"):
         pd.Series(recipe_cleaned).to_csv(cleaned_recipes_list, index=False, header=False)
 
         # Convert pd.Series to df for further processing
-        target_df = pd.DataFrame({"target_cleaned": target_cleaned}).reset_index(drop=True)
+        target_df = pd.DataFrame({
+            "original_target": target,
+            "target_cleaned": target_cleaned
+        }).reset_index(drop=True)
         recipe_df = pd.DataFrame({"recipe_cleaned": recipe_cleaned}).reset_index(drop=True)
         ingredient_df = pd.DataFrame({"ingredient_cleaned": ingredient_cleaned}).reset_index(drop=True)
 
@@ -251,9 +257,147 @@ def get_target_match(target_list="data_train_set.csv"):
 
     if progress == 2 :
 
-    ### STEP 6: XXXX ####
+    ### STEP 6: PREPARE MERGE ####
 
-        FINAL MERGE PROCESS
+        # Download recipes/ingredients again
+        recipe = download_recipes_df()["recipe"]
+        ingredient = download_ingredients_df()["recipe"]
+        print("recipes/ingredients nutrients database downloaded")
+
+        # Clean recipes/ingredients labels
+        ingredient["recipe"] = clean_text(ingredient["recipe"])
+        recipe["recipe"] = clean_text(recipe["recipe"])
+        print("Recipe/ingredients labels cleaned")
+
+        # Quickly clean up manualy fixed table
+        equivalents_table['recipe_cleaned'] = equivalents_table['recipe_cleaned'].astype(str).str.strip().str.lower()
+        equivalents_table['ingredient_cleaned'] = equivalents_table['ingredient_cleaned'].astype(str).str.strip().str.lower()
+
+        # Handle "nans" if not done correctly with Excel/Pages
+        equivalents_table['recipe_cleaned'] = equivalents_table['recipe_cleaned'].replace("nan", np.nan)
+        equivalents_table['ingredient_cleaned'] = equivalents_table['ingredient_cleaned'].replace("nan", np.nan)
+
+        # Prioritize ingredients df over recipes = delete all recipe matches when ingredient has matched
+        equivalents_table.loc[equivalents_table['ingredient_cleaned'].notna(), 'recipe_cleaned'] = np.nan
+
+    ### STEP 7: MERGE EQUIVALENTS TABLE AND NUTRIENTS ####
+
+
+        ### NAME ISSUE CHECK COLUMN NAMES!!!
+        #
+        #
+        #
+        #
+        #
+
+        # Merge data using cleaned equivalents table
+        merged = equivalents_table.merge(
+            ingredient,
+            left_on='ingredient_cleaned',
+            right_on='ingredient',
+            how='left'
+        ).merge(
+            recipe,
+            left_on='recipe_cleaned',
+            right_on='recipe',
+            how='left'
+        )
+        print("merge done")
+
+        # Step 5: Drop dupplicates
+        merged = merged.drop_duplicates(subset=["target_cleaned"], keep="first")
+        print("File successfuly generated")
+
+        # Step 6: Save locally
+        merged.to_csv(cache_3, index=False)
+        print(f"XXXXXX to {cache_3} for next steps.")
+
+
+        #
+        #
+        #"original_target" column contains original name
+        #
+        #
+
+
+
+    if progress == 3 :
+
+    ### STEP X: XXXS ####
+
+
+        target["name_readable_cleaned"] = clean_text(target["name_readable"])
+
+        # Merge target names with cache
+        merged = cache.merge(
+            target[["name_readable", "name_readable_cleaned"]],
+            left_on="target_cleaned",
+            right_on="name_readable_cleaned",
+            how="left"
+        )
+        print("Target names linked with equivalence board.")
+
+        # Step 3: Split merged DataFrame into two parts
+        merged_recipes = merged[~merged["recipe_cleaned"].isna()]  # Only rows with recipe_cleaned
+        merged_ingredients = merged[~merged["ingredient_cleaned"].isna()]  # Only rows with ingredient_cleaned
+
+        # Step 4: Perform merges for recipes and ingredients separately
+        recipe_linked = merged_recipes.merge(
+            recipe,
+            left_on="recipe_cleaned",
+            right_on="recipe",
+            how="left"
+        )
+        print("Equivalence board linked with recipes.")
+
+        ingredient_linked = merged_ingredients.merge(
+            ingredient,
+            left_on="ingredient_cleaned",
+            right_on="recipe",
+            how="left"
+        )
+        print("Equivalence board linked with ingredients.")
+
+        # Step 5: Concatenate the two DataFrames
+        final_merged = pd.concat([recipe_linked, ingredient_linked], ignore_index=True)
+        print("Recipes and ingredients combined.")
+
+        # Step 6: Remove duplicates based on 'name_readable' column
+        final_merged = final_merged.drop_duplicates(subset=["name_readable"]).drop(columns=["recipe_cleaned", "ingredient_cleaned"])
+
+        # Step 7: Keep only required columns (20+ columns)
+        nutrient_columns_per_100g = [
+            "Calcium_(MG)_per_100G", "Carbohydrates_(G)_per_100G", "Iron_(MG)_per_100G",
+            "Lipid_(G)_per_100G", "Magnesium_(MG)_per_100G", "Protein_(G)_per_100G",
+            "Sodium_(MG)_per_100G", "Vitamin_A_(UG)_per_100G", "Vitamin_C_(MG)_per_100G",
+            "Vitamin_D_(UG)_per_100G"
+        ]
+        nutrient_columns_total = [
+            "Calcium_(MG)_total", "Carbohydrates_(G)_total", "Iron_(MG)_total",
+            "Lipid_(G)_total", "Magnesium_(MG)_total", "Protein_(G)_total",
+            "Sodium_(MG)_total", "Vitamin_A_(UG)_total", "Vitamin_C_(MG)_total",
+            "Vitamin_D_(UG)_total"
+        ]
+
+        required_columns = ["name_readable", "default_portion", "default_portion_in_grams"] + nutrient_columns_per_100g + nutrient_columns_total
+        final_df = final_merged[required_columns].drop_duplicates()
+        ### STEP X: UPLOAD MATCH TABLE TO GCS ###
+
+        # Upload final DataFrame to GCS
+        destination_blob_name = "Targets/target_to_nutrients.csv"
+        file_name = "target_to_nutrients.csv"
+        final_df.to_csv(file_name, index=False)
+        blob = bucket.blob(destination_blob_name)
+        blob.upload_from_filename(file_name)
+
+        print(f"Final linked data saved and uploaded to {destination_blob_name}")
+        return final_df
+
+
+
+
+
+
 
 
 
@@ -266,25 +410,7 @@ def get_target_match(target_list="data_train_set.csv"):
 
 # OUTDATED!!! After matches are done, bring all data back together // ISSUE BC ingredients/recipe format has been changed since!!
 def final_match():
-    # Step 1: Download data
-    client = storage.Client()
-    bucket_name = "recipes-dataset"
-    bucket = client.bucket(bucket_name)
-    blob = bucket.blob(f"Recipes/recipes.csv")
-    content = blob.download_as_text()
 
-    recipes = pd.read_csv(StringIO(content))
-    recipe = recipes.copy()
-    recipe = recipe.rename(columns={"ingredient":"content"})
-    print("Recipes downloaded")
-
-    ingredients = download_ingredients_df()
-    ingredient = ingredients.copy()
-    print("Ingredients downloaded")
-
-    ingredient["ingredient"] = clean_text(ingredient["ingredient"])
-    recipe["recipe"] = clean_text(recipe["recipe"])
-    print("Text cleaned")
 
     # Step 3: Load cached matches
     try:
@@ -376,67 +502,3 @@ def final_merge():
 
     ingredient["recipe"] = clean_text(ingredient["recipe"])
     target["name_readable_cleaned"] = clean_text(target["name_readable"])
-
-    # Step 2: Clean target names and merge with cache
-    merged = cache.merge(
-        target[["name_readable", "name_readable_cleaned"]],
-        left_on="target_cleaned",
-        right_on="name_readable_cleaned",
-        how="left"
-    )
-    print("Target names linked with equivalence board.")
-
-    # Step 3: Split merged DataFrame into two parts
-    merged_recipes = merged[~merged["recipe_cleaned"].isna()]  # Only rows with recipe_cleaned
-    merged_ingredients = merged[~merged["ingredient_cleaned"].isna()]  # Only rows with ingredient_cleaned
-
-    # Step 4: Perform merges for recipes and ingredients separately
-    recipe_linked = merged_recipes.merge(
-        recipe,
-        left_on="recipe_cleaned",
-        right_on="recipe",
-        how="left"
-    )
-    print("Equivalence board linked with recipes.")
-
-    ingredient_linked = merged_ingredients.merge(
-        ingredient,
-        left_on="ingredient_cleaned",
-        right_on="recipe",
-        how="left"
-    )
-    print("Equivalence board linked with ingredients.")
-
-    # Step 5: Concatenate the two DataFrames
-    final_merged = pd.concat([recipe_linked, ingredient_linked], ignore_index=True)
-    print("Recipes and ingredients combined.")
-
-    # Step 6: Remove duplicates based on 'name_readable' column
-    final_merged = final_merged.drop_duplicates(subset=["name_readable"]).drop(columns=["recipe_cleaned", "ingredient_cleaned"])
-
-    # Step 7: Keep only required columns (20+ columns)
-    nutrient_columns_per_100g = [
-        "Calcium_(MG)_per_100G", "Carbohydrates_(G)_per_100G", "Iron_(MG)_per_100G",
-        "Lipid_(G)_per_100G", "Magnesium_(MG)_per_100G", "Protein_(G)_per_100G",
-        "Sodium_(MG)_per_100G", "Vitamin_A_(UG)_per_100G", "Vitamin_C_(MG)_per_100G",
-        "Vitamin_D_(UG)_per_100G"
-    ]
-    nutrient_columns_total = [
-        "Calcium_(MG)_total", "Carbohydrates_(G)_total", "Iron_(MG)_total",
-        "Lipid_(G)_total", "Magnesium_(MG)_total", "Protein_(G)_total",
-        "Sodium_(MG)_total", "Vitamin_A_(UG)_total", "Vitamin_C_(MG)_total",
-        "Vitamin_D_(UG)_total"
-    ]
-
-    required_columns = ["name_readable", "default_portion", "default_portion_in_grams"] + nutrient_columns_per_100g + nutrient_columns_total
-    final_df = final_merged[required_columns].drop_duplicates()
-
-    # Step 8: Upload final DataFrame to GCS
-    destination_blob_name = "Targets/target_to_nutrients.csv"
-    file_name = "target_to_nutrients.csv"
-    final_df.to_csv(file_name, index=False)
-    blob = bucket.blob(destination_blob_name)
-    blob.upload_from_filename(file_name)
-
-    print(f"Final linked data saved and uploaded to {destination_blob_name}")
-    return final_df
