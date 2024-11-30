@@ -6,11 +6,9 @@ from collections import Counter
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from rapidfuzz import process, fuzz
 from google.cloud import storage
 from io import StringIO
-import numpy as np
 import pandas as pd
 import nltk
 nltk.download('stopwords')
@@ -22,121 +20,76 @@ nltk.download('omw-1.4')
 from Ingredients_list_setup import download_ingredients_df
 
 
-# def parse_ingredient(ingredient):
-#     """
-#     Input : Ingredient cell of a recipe row from the recipe dataset
-#     Output : A dataframe-like dictionary where each each pair will be the future column/cell value of each ingredient from the same recipe, where :
-#         'quantity': How many portion
-#         'grammage': Grammage depending on the unit provided
-#         'unit': Unit of the grammage
-#         'name': Name of the ingredient
-#     Purpose : Output will be used to generate a proper dataframe using pd.DataFrame
-#     """
-#     VALID_UNITS = {'g', 'tbsp', 'tsp', 'tspn', 'cup', 'ml', 'l', 'kg', 'oz', 'fl oz'}
-#     # Preprocessing to remove "/xoz" patterns and fractions like "½oz" when g is already provided
-#     ingredient = re.sub(r'/\d+oz', '', ingredient)  # Remove patterns like "/9oz"
-#     ingredient = re.sub(r'/\d+fl oz', '', ingredient)  # Remove patterns like "/9fl oz"
-#     ingredient = re.sub(r'/\d+[½⅓¼¾]+oz', '', ingredient)  # Remove fractions before "oz"
-
-#     # Regex to capture quantity, unit, and name
-#     pattern = r'(?:(\d+)(?:\s*x\s*(\d+))?)?\s*([a-zA-Z%½⅓¼]+)?\s*(.*)'
-#     match = re.match(pattern, ingredient)
-
-#     if match:
-#         quantity, sub_quantity, unit, name = match.groups()
-
-#         # Default values
-#         grammage = None
-#         portion_quantity = 1  # Default quantity if not provided
-
-#         # Handle the case of "2 x 80g"
-#         if sub_quantity:
-#             portion_quantity = int(quantity)
-#             grammage = int(sub_quantity)
-#         elif quantity and unit:
-#             grammage = int(quantity)
-#         elif quantity:
-#             portion_quantity = int(quantity)
-
-#         # If no grammage or unit is provided
-#         if not unit and not grammage:
-#             name = ingredient.strip()  # Full ingredient name as name
-
-#         # Debugging exception : Handling cases where the detected unit is actually the first word of the ingredient name
-#         if unit and unit not in VALID_UNITS:
-#             # Move the incorrectly detected unit back into the beggining of the name
-#             name = f"{unit} {name}".strip()
-#             unit = None  # Clear the unit, since it's invalid
-
-#         # Exception when a fraction of quantity is provided
-#         # Output example before fixing : 1       NaN     unit  ½ leftover roast chicken, torn into pieces
-#         # Fix : Check if a fraction is at the beginning of the name and adjust quantity
-#         fraction_pattern = r'^([½⅓¼¾])\s*(.*)'
-#         fraction_match = re.match(fraction_pattern, name)
-#         if fraction_match and portion_quantity == 1:
-#             fraction, remaining_name = fraction_match.groups()
-#             try:
-#                 # Fraction to decimal dictionary
-#                 fraction_value = {
-#                     "½": 0.5,
-#                     "⅓": 0.33,
-#                     "¼": 0.25,
-#                     "¾": 0.75
-#                 }[fraction]
-#                 portion_quantity = fraction_value  # Replacing quantity with the decimal
-#                 name = remaining_name.strip()  # Removing the fraction from the name
-#             except KeyError:
-#                 pass  # Keep running the code if error
-
-#         return {
-#             'quantity': float(portion_quantity),
-#             'grammage': grammage,
-#             'unit': unit,
-#             'name': name.strip()
-#         }
-#     # if no pattern is recognized eventually -> Default return
-#     return {
-#         'quantity': 1,
-#         'grammage': None,
-#         'unit': None,
-#         'name': ingredient.strip()
-#     }
-
-
 def parse_ingredient(ingredient):
     """
-    Optimized ingredient parser that returns tuples instead of dictionaries.
-    Returns:
-        (quantity, grammage, unit, name)
+    Input: Ingredient cell of a recipe row from the recipe dataset
+    Output: A tuple (quantity, grammage, unit, name) where:
+        - 'quantity': How many portions
+        - 'grammage': Grammage depending on the unit provided
+        - 'unit': Unit of the grammage
+        - 'name': Name of the ingredient
+    Purpose: Output will be used to generate a proper DataFrame using pd.DataFrame.
     """
-    import re
-
     VALID_UNITS = {'g', 'tbsp', 'tsp', 'tspn', 'cup', 'ml', 'l', 'kg', 'oz', 'fl oz'}
-    pattern = r'(?:(\d+(?:\.\d+)?)(?:\s*x\s*(\d+(?:\.\d+)?))?)?\s*([a-zA-Z½⅓¼¾]*)\s*(.*)'
-    match = re.match(pattern, ingredient.strip())
+    # Preprocessing to remove "/xoz" patterns and fractions like "½oz" when g is already provided
+    ingredient = re.sub(r'/\d+oz', '', ingredient)  # Remove patterns like "/9oz"
+    ingredient = re.sub(r'/\d+fl oz', '', ingredient)  # Remove patterns like "/9fl oz"
+    ingredient = re.sub(r'/\d+[½⅓¼¾]+oz', '', ingredient)  # Remove fractions before "oz"
+
+    # Regex to capture quantity, unit, and name
+    pattern = r'(?:(\d+)(?:\s*x\s*(\d+))?)?\s*([a-zA-Z%½⅓¼]+)?\s*(.*)'
+    match = re.match(pattern, ingredient)
 
     if match:
         quantity, sub_quantity, unit, name = match.groups()
-        quantity = float(quantity) if quantity else 1  # Default to 1
-        sub_quantity = float(sub_quantity) if sub_quantity else None
-        grammage = sub_quantity if sub_quantity else (quantity if unit in VALID_UNITS else None)
-        portion_quantity = quantity if not sub_quantity else 1
 
-        # Handle fractions
-        fraction_dict = {"½": 0.5, "⅓": 0.33, "¼": 0.25, "¾": 0.75}
-        if name and name[0] in fraction_dict:
-            portion_quantity = fraction_dict[name[0]]
-            name = name[1:].strip()
+        # Default values
+        grammage = None
+        portion_quantity = 1  # Default quantity if not provided
 
-        # Validate unit
-        if unit not in VALID_UNITS:
+        # Handle the case of "2 x 80g"
+        if sub_quantity:
+            portion_quantity = int(quantity)
+            grammage = int(sub_quantity)
+        elif quantity and unit:
+            grammage = int(quantity)
+        elif quantity:
+            portion_quantity = int(quantity)
+
+        # If no grammage or unit is provided
+        if not unit and not grammage:
+            name = ingredient.strip()  # Full ingredient name as name
+
+        # Debugging exception : Handling cases where the detected unit is actually the first word of the ingredient name
+        if unit and unit not in VALID_UNITS:
+            # Move the incorrectly detected unit back into the beggining of the name
             name = f"{unit} {name}".strip()
-            unit = None
+            unit = None  # Clear the unit, since it's invalid
 
-        return portion_quantity, grammage, unit, name.strip()
+        # Exception when a fraction of quantity is provided
+        # Output example before fixing : 1       NaN     unit  ½ leftover roast chicken, torn into pieces
+        # Fix : Check if a fraction is at the beginning of the name and adjust quantity
+        fraction_pattern = r'^([½⅓¼¾])\s*(.*)'
+        fraction_match = re.match(fraction_pattern, name)
+        if fraction_match and portion_quantity == 1:
+            fraction, remaining_name = fraction_match.groups()
+            try:
+                # Fraction to decimal dictionary
+                fraction_value = {
+                    "½": 0.5,
+                    "⅓": 0.33,
+                    "¼": 0.25,
+                    "¾": 0.75
+                }[fraction]
+                portion_quantity = fraction_value  # Replacing quantity with the decimal
+                name = remaining_name.strip()  # Removing the fraction from the name
+            except KeyError:
+                pass  # Keep running the code if error
 
-    # Default fallback
-    return 1, None, None, ingredient.strip()
+        return (float(portion_quantity), grammage, unit, name.strip())
+
+    # If no pattern is recognized -> Default return
+    return (1, None, None, ingredient.strip())
 
 
 def clean_ingredients(series):
@@ -211,7 +164,7 @@ def clean_ingredients(series):
     return series.dropna().map(preprocess)
 
 
-def clean_and_filter_recipes(recipes, ingredients):
+def clean_ingredient_names(recipes, ingredients):
     """
     Input recipes and ingredients dfs
     Get the 1000 most common ingredient words in recipes
@@ -219,13 +172,16 @@ def clean_and_filter_recipes(recipes, ingredients):
     Remove all other recipe ingredients
     Output recipes with only cleaned ingredients
     """
+    print("cleaning ingredients list")
     ingredients["recipe"] = clean_ingredients(ingredients["recipe"])
+    print("cleaning recipes ingredients list")
     recipes["ingredient"] = clean_ingredients(recipes["ingredient"])
 
     # Count word occurrences in recipe content
     word_counter = Counter()
     for content in recipes["ingredient"].dropna():
         word_counter.update(content.split())
+    print("couted 1000 most common ingredients")
 
     # Keep only the top 1000 most common ingredient words
     top_1000_words = {word for word, _ in word_counter.most_common(1000)}
@@ -237,6 +193,7 @@ def clean_and_filter_recipes(recipes, ingredients):
         return " ".join(filtered_words) if filtered_words else None
 
     recipes["ingredient"] = recipes["ingredient"].apply(lambda x: filter_content(x) if pd.notna(x) else None)
+    print("kept only food items")
     return recipes.dropna(subset=["ingredient"])
 
 
@@ -246,38 +203,30 @@ def fuzzy_match_and_update(filtered_recipe, ingredient):
     Do fuzzy matching to match recipe ingredients with the USDA ingredients
     Output recipes with only cleaned ingredients
     """
-    # Prepare lists for fuzzy matching
-    recipe_content = filtered_recipe["ingredient"].dropna().tolist()
+    # Prepare the list of USDA ingredient names for fuzzy matching
     ingredient_list = ingredient['recipe'].dropna().tolist()
 
-    # List to store updated rows
-    updated_rows = []
-
-    # Iterate through the filtered_recipe DataFrame
-    for index, row in filtered_recipe.iterrows():
-        content = row["ingredient"]
+    # Define a helper function for fuzzy matching
+    def match_ingredient(content):
         if pd.notna(content):
-            # Perform fuzzy matching with ingredients
+            # Perform fuzzy matching with RapidFuzz
             ingredient_match = process.extractOne(
                 content,
                 ingredient_list,
                 scorer=fuzz.ratio,
                 score_cutoff=60
             )
-
             if ingredient_match:
-                # If a match is found, update the row with ingredient information
-                row['ingredient_cleaned'] = ingredient_match[0]  # Update ingredient column
-                row['is_ok'] = "fuzzy_matched"  # Mark as fuzzy matched for manual review
+                return ingredient_match[0], "fuzzy_matched"
+        return content, "not_matched"
 
-        # Append the updated row
-        updated_rows.append(row)
+    # Apply the helper function to the "ingredient" column using pandas apply
+    filtered_recipe = filtered_recipe.copy()
+    filtered_recipe[['ingredient_cleaned', 'is_ok']] = filtered_recipe['ingredient'].apply(
+        lambda x: pd.Series(match_ingredient(x))
+    )
 
-    # Convert updated rows back into a DataFrame
-    updated_rows_df = pd.DataFrame(updated_rows)
-
-    # Return the updated DataFrame
-    return updated_rows_df
+    return filtered_recipe
 
 
 def preprocess_merged_df(matched_recipes, ingredients):
@@ -288,25 +237,28 @@ def preprocess_merged_df(matched_recipes, ingredients):
     Output df with calculations done on portion weight.
     """
     # Merge matched recipes with ingredient details
-    ingredients = ingredients.rename(columns={"recipe":"content"})
+    ingredients = ingredients.rename(columns={"recipe": "content"})
     merged_df = matched_recipes.merge(
         ingredients, left_on="ingredient_cleaned", right_on="content", how="left"
-    ).drop_duplicates(subset=["recipe"], keep="first")
+    )
 
-    # Calculate portion
-    def calculate_portion(row):
-        if row["unit"] == "g" and pd.notna(row["grammage"]):
-            return row["grammage"]
-        elif pd.notna(row["default_portion_in_grams"]) and pd.notna(row["quantity"]):
-            return row["default_portion_in_grams"] * row["quantity"]
-        return None
+    # Calculate portion using vectorized operations
+    merged_df["calculated_portion"] = merged_df["grammage"].where(
+        merged_df["unit"] == "g"
+    )  # Keep grammage if unit is "g"
 
-    merged_df["default_portion_in_grams"] = merged_df.apply(calculate_portion, axis=1)
-    merged_df = merged_df.dropna(subset=["default_portion_in_grams"]).reset_index(drop=True)
+    # Multiply default portion by quantity if grammage is not provided
+    merged_df["calculated_portion"] = merged_df["calculated_portion"].fillna(
+        merged_df["default_portion_in_grams"]
+    )
+
+    # Drop rows where portion could not be calculated
+    merged_df = merged_df.dropna(subset=["calculated_portion"]).reset_index(drop=True)
 
     # Remove unnecessary columns
     columns_to_remove = ["content", "quantity", "grammage", "unit", "ingredient_cleaned", "is_ok"]
     merged_df = merged_df.drop(columns=columns_to_remove, errors="ignore")
+
     return merged_df
 
 
@@ -316,30 +268,16 @@ def calculate_total_per_person(df):
     Perform calculations based on portion size
     Output done calculations
     """
+    # Dynamically identify nutrient columns ending with '_per_100G'
+    nutrient_columns = [col for col in df.columns if col.endswith('_per_100G')]
 
-    # List of nutrient columns to calculate totals for
-    nutrient_columns = [
-        'Calcium_(MG)_per_100G', 'Carbohydrates_(G)_per_100G', 'Iron_(MG)_per_100G',
-        'Lipid_(G)_per_100G', 'Magnesium_(MG)_per_100G', 'Protein_(G)_per_100G',
-        'Sodium_(MG)_per_100G', 'Vitamin_A_(UG)_per_100G', 'Vitamin_C_(MG)_per_100G',
-        'Vitamin_D_(UG)_per_100G'
-    ]
+    df['portion_per_person'] = df['calculated_portion'] / 4
 
-    # Ensure portion column exists
-    if 'default_portion_in_grams' not in df.columns:
-        raise ValueError("Column 'default_portion_in_grams' is required in the DataFrame.")
-
-    # Adjust the default portion in grams for one person
-    df['default_portion_in_grams'] = df['default_portion_in_grams'] / 4
-
-    # Calculate total nutrient quantities for one person
+    # Calculate total nutrients for one person using vectorized operations
     for col in nutrient_columns:
         total_col_name = col.replace('_per_100G', '_total')
-        # Calculate total nutrients for one person
-        df[total_col_name] = (df[col] * df['default_portion_in_grams']) / 100
-
-    # Rename the 'default_portion' column to 'recipe_1_person'
-    df = df.rename(columns={'default_portion': 'recipe_1_person'})
+        # Vectorized calculation of total nutrients
+        df[total_col_name] = (df[col] * df['portion_per_person']) / 100
 
     return df
 
@@ -350,7 +288,6 @@ def consolidate_recipe_nutrients(df):
     Sum the all recipe ingredients nutrients together
     Output recipes with nutrients without ingredients
     """
-
     # List of nutrient columns
     nutrient_columns_per_100G = [
         'Calcium_(MG)_per_100G', 'Carbohydrates_(G)_per_100G', 'Iron_(MG)_per_100G',
@@ -361,38 +298,40 @@ def consolidate_recipe_nutrients(df):
 
     nutrient_columns_total = [col.replace('_per_100G', '_total') for col in nutrient_columns_per_100G]
 
-    # Group by recipe
-    consolidated_data = []
-    for recipe_name, recipe_group in df.groupby("recipe"):
-        # Total weight for 1-person portion
-        total_weight_1_person = recipe_group['default_portion_in_grams'].sum()
+    # Ensure default_portion_in_grams is non-zero and replace NaN values with a default value
+    df['portion_per_person'] = df['portion_per_person'].fillna(0)
 
-        if pd.isna(total_weight_1_person) or total_weight_1_person == 0:
-            total_weight_1_person = 100
+    # Calculate the weighted average for nutrients per 100g
+    weighted_averages = (
+        df.groupby("recipe").apply(
+            lambda group: pd.Series({
+                col: (group[col] * group['portion_per_person']).sum() /
+                     max(group['portion_per_person'].sum(), 1)  # Prevent division by zero
+                for col in nutrient_columns_per_100G
+            })
+        )
+    ).reset_index()
 
-        # Calculate weighted average for nutrients per 100G
-        weighted_nutrients_per_100G = {}
-        for col in nutrient_columns_per_100G:
-            weighted_nutrients_per_100G[col] = (
-                (recipe_group[col] * recipe_group['default_portion_in_grams']).sum() / total_weight_1_person
-            )
+    # Calculate the total nutrients for 1-person portion
+    total_nutrients = (
+        df.groupby("recipe")[nutrient_columns_total].sum().reset_index()
+    )
 
-        # Sum total nutrients for the 1-person portion
-        total_nutrients = {}
-        for col in nutrient_columns_total:
-            total_nutrients[col] = recipe_group[col].sum()
+    # Calculate total weight per recipe
+    total_weights = (
+        df.groupby("recipe")['portion_per_person'].sum().reset_index()
+    )
+    total_weights.rename(columns={'default_portion_in_grams': 'total_portion_weight'}, inplace=True)
 
-        # Consolidate all data for the recipe
-        consolidated_data.append({
-            "recipe": recipe_name,
-            "default_portion": "recipe_1_person",
-            "default_portion_in_grams": total_weight_1_person,
-            **weighted_nutrients_per_100G,
-            **total_nutrients
-        })
+    # Merge all results together
+    consolidated_df = weighted_averages.merge(total_nutrients, on="recipe")
+    consolidated_df = consolidated_df.merge(total_weights, on="recipe")
 
-    # Convert consolidated data to a DataFrame
-    consolidated_df = pd.DataFrame(consolidated_data)
+    # Add a default portion description column
+    consolidated_df["default_portion"] = "recipe_1_person"
+
+    # Rename total weight column to match the output format
+    consolidated_df.rename(columns={"portion_per_person": "default_portion_in_grams"}, inplace=True)
 
     return consolidated_df
 
@@ -404,7 +343,10 @@ def generate_recipe_list():
     Use parser to get all ingredients for each recipe with portion size
     match recipe ingredient names with USDA ingredients list with nutrients
     Save to GCS for future use
+    This takes a LOT of time! 30mins for 200k recipes...
     """
+    print("Warning! This function may take a lot of time to run :) No worries, progress will be saved throughout the process")
+
     # Step 1: Download data
     client = storage.Client()
     bucket_name = "recipes-dataset"
@@ -418,50 +360,56 @@ def generate_recipe_list():
     ingredients = download_ingredients_df()
     print("Ingredients downloaded")
 
-    # # Generate a dictionary of parsed ingredients
-    # dict_recipes = {}
-    # for i, row in recipe.iterrows():
-    #     recipe_ingredients = ast.literal_eval(row['ingredients'])
-    #     parsed_ingredients = [parse_ingredient(ingredient) for ingredient in recipe_ingredients]
-    #     dict_recipes[row['title']] = pd.DataFrame(parsed_ingredients)
-    # print("All ingredients of all recipes pulled")
-
-    # # Flatten the dictionary into a single DataFrame
-    # all_recipes = []
-    # for recipe_name, df in dict_recipes.items():
-    #     df["recipe_name"] = recipe_name  # Add recipe name to each ingredient row
-    #     all_recipes.append(df)
-    # flat_recipes_df = pd.concat(all_recipes, ignore_index=True)
-
     # Step 2: Process ingredients
-    all_parsed_ingredients = []
-    for title, ingreds in zip(recipes["title"], recipes["ingredients"]):
-        ingredient_list = ast.literal_eval(ingreds)
-        for ingredient in ingredient_list:
-            parsed = parse_ingredient(ingredient)
-            all_parsed_ingredients.append((title, *parsed))
+    all_parsed_ingredients = [
+        (title, *parse_ingredient(ingredient))
+        for title, ingreds in zip(recipe["title"], recipe["ingredients"])
+        for ingredient in ast.literal_eval(ingreds)
+        ]
     print("All ingredients of all recipes pulled")
 
     # Convert to DataFrame directly
     flat_recipes_df = pd.DataFrame(
         all_parsed_ingredients,
         columns=["recipe", "quantity", "grammage", "unit", "ingredient"]
-    )
+        )
     print("Parsed ingredients combined into a DataFrame")
 
+    local_csv = "temp_1.csv"
+    flat_recipes_df.to_csv(local_csv, index=False)
+    print(f"Data saved locally as {local_csv}")
+
     # Step 2: Clean and filter recipes
-    filtered_recipes = clean_and_filter_recipes(flat_recipes_df, ingredients)
+    filtered_recipes = clean_ingredient_names(flat_recipes_df, ingredients)
     print("cleaned and filtered recipes")
+
+    local_csv = "temp_2.csv"
+    filtered_recipes.to_csv(local_csv, index=False)
+    print(f"Data saved locally as {local_csv}")
 
     # Step 3: Fuzzy matching and merging
     updated_recipes = fuzzy_match_and_update(filtered_recipes, ingredients)
     print("fuzzy matched recipes")
-    matched_recipes = updated_recipes.dropna(subset=["ingredient_cleaned"])
+
+    local_csv = "temp_3.csv"
+    updated_recipes.to_csv(local_csv, index=False)
+    print(f"Data saved locally as {local_csv}")
+
+    matched_recipes = updated_recipes[updated_recipes["is_ok"]=="fuzzy_matched"]
     merged_df = preprocess_merged_df(matched_recipes, ingredients)
     print("Matched ingredients together")
 
+    local_csv = "temp_4.csv"
+    merged_df.to_csv(local_csv, index=False)
+    print(f"Data saved locally as {local_csv}")
+
     # Step 4: Calculate totals and consolidate
     merged_df = calculate_total_per_person(merged_df)
+
+    local_csv = "temp_5.csv"
+    merged_df.to_csv(local_csv, index=False)
+    print(f"Data saved locally as {local_csv}")
+
     consolidated_df = consolidate_recipe_nutrients(merged_df)
     print("Calculated nutrients")
 
@@ -478,7 +426,33 @@ def generate_recipe_list():
     blob = bucket.blob(blob_name)
     blob.upload_from_filename("cleaned_recipes_with_nutrients.csv")
     print(f"Recipes with nutrients successfully uploaded to GCS as {blob_name}.")
+
+    # delete cache!
+    for i in range(1, 6):
+        temp_file = f"temp_{i}.csv"
+        try:
+            os.remove(temp_file)
+            print(f"Temporary file {temp_file} deleted.")
+        except OSError as e:
+            print(f"Error: {temp_file} could not be deleted. {e}")
+
     return consolidated_df
+
+
+def download_recipes_df():
+    """
+    Download cleaned recipes with nutrients data frame from GCS.
+    1 second runtime !
+    """
+    # Initialize Google Cloud Storage client
+    client = storage.Client()
+    bucket_name = "recipes-dataset"
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(f"Recipes/cleaned_recipes_with_nutrients.csv")
+    content = blob.download_as_text()
+
+    # Return df
+    return pd.read_csv(StringIO(content))
 
 
 result = generate_recipe_list()

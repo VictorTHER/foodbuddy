@@ -19,27 +19,15 @@ nltk.download('punkt_tab')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
+from Ingredients_list_setup import download_ingredients_df
+from Recipes_list_setup import download_recipes_df
 
-cache_file = "Recipes+Ingredients/matched_names.csv"
-cache_file_final = "Recipes+Ingredients/merged_table.csv"
-recipes_merged = "Recipes+Ingredients/recipes_merged.csv"
-save_interval = 20
-
-
-def download_target_df():
-    """
-    Download targets df from GCS.
-    1 second runtime !
-    """
-    # Initialize Google Cloud Storage client
-    client = storage.Client()
-    bucket_name = "recipes-dataset"
-    bucket = client.bucket(bucket_name)
-    blob = bucket.blob(f"Targets/data_train_set.csv")
-    content = blob.download_as_text()
-
-    # Return df
-    return pd.read_csv(StringIO(content))
+# DEFINE CACHE LOCATION
+cache_1 = "Label_matcher/cache/cache_1.csv"
+cache_2 = "Label_matcher/cache/cache_2.csv"
+cache_3 = "Label_matcher/cache/cache_3.csv"
+cleaned_ingredients_list = "Label_matcher/cache/cleaned_ingredients_list.csv"
+cleaned_recipes_list = "Label_matcher/cache/cleaned_recipes_list.csv"
 
 
 def clean_text(series):
@@ -99,7 +87,7 @@ def fuzzy_match_and_update(merged_df, recipe_cleaned, ingredient_cleaned):
     return merged_df
 
 
-def manual_review_fuzzy_matches(merged_df):
+def manual_review_fuzzy_matches(merged_df, save_interval=20):
     """
     Function to manually review rows where `is_ok` is 'fuzzy_matched'.
     Saves progress to a checkpoint file every `save_interval` rows.
@@ -140,8 +128,8 @@ def manual_review_fuzzy_matches(merged_df):
 
         # Save progress every `save_interval` rows
         if idx % save_interval == 0 or idx == total:
-            merged_df.to_csv(cache_file, index=False)
-            print(f"Progress saved to {cache_file}")
+            merged_df.to_csv(cache_1, index=False)
+            print(f"Progress saved to {cache_1")
 
         # Remaining rows to check
         remaining = total - idx
@@ -150,80 +138,130 @@ def manual_review_fuzzy_matches(merged_df):
     return merged_df
 
 
-# Match target + recipes together (finish by hand!)
-def match_names():
+def get_target_match(target_list="data_train_set.csv"):
     """
-    Function matches names of target, recipes, ingredients dfs.
+    Input target list name from GCS, having "name_readable" column!
+    Function will smartly keep track of progress using cache documents
+    Function will go through the following steps:
+    - Get target/recipes/ingredients from GCS
+    - Clean labels to prepare for matching
+    - Auto match using exact match + fuzzy matching
+    - Output a file to check inacurate matches and rematch
+    -
+    Output a match list uploaded to GCS with ALL nutrients.
     """
 
-    ### STEP 1: CHECK IF PROGRESS HAS BEEN SAVED ###
-    if os.path.exists(cache_file):
-        print(f"Dataset to review detected. Loading from {cache_file}...")
-        updated_to_clean = pd.read_csv(cache_file)
+    ### STEP 1: CHECK CURRENT PROGRESS USING CACHE ###
 
-        final_df = manual_review_fuzzy_matches(updated_to_clean)
+    progress = 0
+    if os.path.exists(cache_1):
+        progress = 1
+        updated_to_clean = pd.read_csv(cache_1)
+    if os.path.exists(cache_2):
+        if input("Did you manualy match the missing recipes? 'y'/'n' ") == "y":
+            progress = 2
+            XXX = pd.read_csv(cache_2)
+        else :
+            print("Please finish matching the recipes before launching this program.")
+            return None
+    if os.path.exists(cache_3):
+        progress = 3
+        XXX = pd.read_csv(cache_1)
 
-        final_df.to_csv(cache_file, index=False)
-        print(f"Cache DataFrame saved to {cache_file} for future use.")
+    if progress == 0 :
 
-    else :
-        print("Cache not found. Downloading and processing data from GCS...")
+    ### STEP 2: DOWNLOAD DATA FROM GCS ###
 
-        # Step 1: Download data
+        # Get targets list
         client = storage.Client()
         bucket_name = "recipes-dataset"
         bucket = client.bucket(bucket_name)
-        blob = bucket.blob(f"Recipes/recipes.csv")
+        blob = bucket.blob(f"Targets/data_train_set.csv")
         content = blob.download_as_text()
+        target = pd.read_csv(StringIO(content))["name_readable"]
+        print("Targets downloaded")
 
-        recipes = pd.read_csv(StringIO(content))
-        recipe = recipes.copy()
-        recipe = recipe.rename(columns={"ingredient":"content"})
+        # Get recipes list
+        recipe = download_recipes_df()["recipe"]
         print("Recipes downloaded")
 
-        from Ingredients_to_nutrients import download_ingredients_df
-        ingredients = download_ingredients_df()
-        ingredient = ingredients.copy()["ingredient"]
+        # Get ingredients list
+        ingredient = download_ingredients_df()["recipe"]
+        print("Ingredients downloaded")
 
-        targets = download_target_df()
-        target = targets.copy()["name_readable"]
+    ### STEP 3: CLEAN LABELS FOR MATCHING ###
 
-        # Step 2: Clean text
+        # Use clean_text function (basic NLP)
         target_cleaned = clean_text(target)
         ingredient_cleaned = clean_text(ingredient)
         recipe_cleaned = clean_text(recipe)
 
-        # Step 3: Convert cleaned series to DataFrames for merging
+        # Save cleaned labels for final manual matching
+        pd.Series(ingredient_cleaned).to_csv(cleaned_ingredients_list, index=False, header=False)
+        pd.Series(recipe_cleaned).to_csv(cleaned_recipes_list, index=False, header=False)
+
+        # Convert pd.Series to df for further processing
         target_df = pd.DataFrame({"target_cleaned": target_cleaned}).reset_index(drop=True)
         recipe_df = pd.DataFrame({"recipe_cleaned": recipe_cleaned}).reset_index(drop=True)
         ingredient_df = pd.DataFrame({"ingredient_cleaned": ingredient_cleaned}).reset_index(drop=True)
 
-        # Step 4: Merge all three based on name (exact matches)
+     ### STEP 4: AUTO MERGING PROCESS ###
+
+       # Match on exact name
         merged_df = target_df.merge(
-            recipe_df, left_on="target_cleaned", right_on="recipe_cleaned", how="left"
+            recipe_df,
+            left_on="target_cleaned",
+            right_on="recipe_cleaned",
+            how="left"
         ).merge(
-            ingredient_df, left_on="target_cleaned", right_on="ingredient_cleaned", how="left"
+            ingredient_df,
+            left_on="target_cleaned",
+            right_on="ingredient_cleaned",
+            how="left"
         )
         merged_df = merged_df.drop_duplicates()
+
+        # Use new columns to keep track of matched things
         merged_df["is_ok"] = merged_df[["recipe_cleaned", "ingredient_cleaned"]].notna().any(axis=1)
 
-        # Step 5: Apply fuzzy matching to fill gaps
+        # Apply fuzzy matching to fill gaps
         updated_to_clean = fuzzy_match_and_update(merged_df, recipe_cleaned.tolist(), ingredient_cleaned.tolist())
 
-        updated_to_clean.to_csv(cache_file, index=False)
-        print(f"Df to review saved to {cache_file}.")
+        # Save progress as "cache_1"
+        updated_to_clean.to_csv(cache_1, index=False)
+        print(f"DataFrame to auto-review saved to {cache_1}.")
+        progress = 1
 
-        # Step 6: Manual review
-        final_df = manual_review_fuzzy_matches(updated_to_clean)
+    if progress == 1 :
 
-        # Step 7: Save the final DataFrame to cache
-        final_df.to_csv(cache_file, index=False)
-        print(f"Final DataFrame saved to {cache_file}.")
+    ### STEP 5: MANUAL MERGING PROCESS ###
 
-        pd.Series(ingredient_cleaned).to_csv("cleaned_ingredients_list.csv", index=False, header=False)
-        pd.Series(recipe_cleaned).to_csv("cleaned_recipes_list.csv", index=False, header=False)
+        print("Auto-matches completed, now entering easy verification:")
+        final_df = manual_review_fuzzy_matches(updated_to_clean,save_interval=20)
 
-    return final_df
+        final_df.to_csv(cache_2, index=False)
+        print(f"""You've successfuly sorted auto-matches.\n\n
+              Please use Excel/Pages to open the following documents \n
+              - {cache_2}\n
+              - {cleaned_ingredients_list}\n
+              - {cleaned_recipes_list}\n
+              And then fix the remaining matches by hand.""")
+
+        progress = 2
+
+    if progress == 2 :
+
+    ### STEP 6: XXXX ####
+
+        FINAL MERGE PROCESS
+
+
+
+
+
+
+
+
 
 
 # OUTDATED!!! After matches are done, bring all data back together // ISSUE BC ingredients/recipe format has been changed since!!
