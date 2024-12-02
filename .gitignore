@@ -177,4 +177,3 @@ WEBSITE/.secrets.toml
 Label_matcher/__pycache__
 Label_matcher/cache
 Label_matcher/exploration.ipynb
-.python-version

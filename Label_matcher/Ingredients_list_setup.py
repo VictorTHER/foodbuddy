@@ -157,6 +157,3 @@ def download_ingredients_df():
     # Return df
     return pd.read_csv(StringIO(content))
 
-
-# generate_ingredients_list()
-# result = download_ingredients_df()
