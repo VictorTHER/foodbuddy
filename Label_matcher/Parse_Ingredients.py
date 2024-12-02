@@ -5,20 +5,17 @@ import re #import regex for text data cleaning
 import ast #package whose literal_eval method will help us remove the string type
 
 
-
-
-#Function
-def parse_ingredient(ingredient):
+def parse_ingredient_original(ingredient):
     """
     Input : Ingredient cell of a recipe row from the recipe dataset
     Output : A dataframe-like dictionary where each each pair will be the future column/cell value of each ingredient from the same recipe, where :
-        'quantity': How many portion 
+        'quantity': How many portion
         'grammage': Grammage depending on the unit provided
         'unit': Unit of the grammage
         'name': Name of the ingredient
     Purpose : Output will be used to generate a proper dataframe using pd.DataFrame
     """
-    VALID_UNITS = {'g', 'tbsp', 'tsp', 'tspn', 'cup', 'ml', 'l', 'kg', 'oz', 'fl oz'} 
+    VALID_UNITS = {'g', 'tbsp', 'tsp', 'tspn', 'cup', 'ml', 'l', 'kg', 'oz', 'fl oz'}
     # Preprocessing to remove "/xoz" patterns and fractions like "½oz" when g is already provided
     ingredient = re.sub(r'/\d+oz', '', ingredient)  # Remove patterns like "/9oz"
     ingredient = re.sub(r'/\d+fl oz', '', ingredient)  # Remove patterns like "/9fl oz"
@@ -27,7 +24,7 @@ def parse_ingredient(ingredient):
     # Regex to capture quantity, unit, and name
     pattern = r'(?:(\d+)(?:\s*x\s*(\d+))?)?\s*([a-zA-Z%½⅓¼]+)?\s*(.*)'
     match = re.match(pattern, ingredient)
-    
+
     if match:
         quantity, sub_quantity, unit, name = match.groups()
 
@@ -72,7 +69,7 @@ def parse_ingredient(ingredient):
                 portion_quantity = fraction_value  # Replacing quantity with the decimal
                 name = remaining_name.strip()  # Removing the fraction from the name
             except KeyError:
-                pass  # Keep running the code if error 
+                pass  # Keep running the code if error
 
         return {
             'quantity': float(portion_quantity),
@@ -88,6 +85,7 @@ def parse_ingredient(ingredient):
         'name': ingredient.strip()
     }
 
+
 def ingredients_per_recipe_dictionary(data):
     """
     1. Process the raw recipe table.
@@ -97,6 +95,6 @@ def ingredients_per_recipe_dictionary(data):
     dict_recipes={}
     for i,row in data.iterrows():
         ingredients = ast.literal_eval(row['ingredients'])
-        parsed_ingredients=[parse_ingredient(ingredient) for ingredient in ingredients] # structured ingredient information for each recipe are stored in dictionaries 
+        parsed_ingredients=[parse_ingredient(ingredient) for ingredient in ingredients] # structured ingredient information for each recipe are stored in dictionaries
         dict_recipes[row['title']]=pd.DataFrame(parsed_ingredients) #index=ingredient name -> For querying image-recognized recipes
     return dict_recipes

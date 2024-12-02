@@ -3,7 +3,8 @@ from io import StringIO
 import pandas as pd
 import numpy as np
 
-def clean_ingredients_list():
+
+def generate_ingredients_list():
     """
     Take USA GOV nutrients dataset from GCS and clean them up
     Then reupload 4k ingredients list with OUR 10 selected nutrients!
@@ -82,13 +83,52 @@ def clean_ingredients_list():
     pivot_data.columns.name = None
     pivot_data.columns = [col if isinstance(col, str) else col for col in pivot_data.columns]
 
-    # Final cleanup!
-    pivot_data = pivot_data.rename(columns={
-        "description": "ingredient",
+        # Ensure column consistency
+    pivot_data.rename(columns={
+        "description": "recipe",
         "portion_description": "default_portion",
         "gram_weight": "default_portion_in_grams"
-    })
-    pivot_data = pivot_data.drop(columns=["fdc_id"])
+    }, inplace=True)
+
+    # Handle default portion in grams
+    pivot_data["default_portion_in_grams"] = pivot_data["default_portion_in_grams"].fillna(100).replace(0, 100)
+
+    # Calculate total nutrients for the default portion
+    nutrient_columns = [
+        "Carbohydrates_(G)_per_100G", "Protein_(G)_per_100G", "Lipid_(G)_per_100G",
+        "Calcium_(MG)_per_100G", "Iron_(MG)_per_100G", "Magnesium_(MG)_per_100G",
+        "Sodium_(MG)_per_100G", "Vitamin_C_(MG)_per_100G", "Vitamin_D_(UG)_per_100G",
+        "Vitamin_A_(UG)_per_100G"
+    ]
+    for nutrient in nutrient_columns:
+        total_col = nutrient.replace("_per_100G", "_total")
+        pivot_data[total_col] = (pivot_data[nutrient] * pivot_data["default_portion_in_grams"]) / 100
+
+    # Add custom entry for "Flour"
+    flour_data = {
+        "recipe": "Flour",
+        "default_portion": "100 grams",
+        "default_portion_in_grams": 100,
+        "Carbohydrates_(G)_per_100G": 76,
+        "Protein_(G)_per_100G": 10,
+        "Lipid_(G)_per_100G": 1,
+        "Calcium_(MG)_per_100G": 15,
+        "Iron_(MG)_per_100G": 1.2,
+        "Magnesium_(MG)_per_100G": 22,
+        "Sodium_(MG)_per_100G": 2,
+        "Vitamin_C_(MG)_per_100G": 0,
+        "Vitamin_D_(UG)_per_100G": 0,
+        "Vitamin_A_(UG)_per_100G": 0
+    }
+    for nutrient in nutrient_columns:
+        total_col = nutrient.replace("_per_100G", "_total")
+        flour_data[total_col] = (flour_data[nutrient] * 100) / 100  # Default portion is 100g
+
+    # Append to pivot_data
+    pivot_data = pd.concat([pivot_data, pd.DataFrame([flour_data])], ignore_index=True)
+
+    # Final cleanup
+    pivot_data = pivot_data.drop(columns=["fdc_id"], errors="ignore")
 
     # Upload to GCS
     destination_blob_name = "Ingredients/cleaned_ingredients_with_nutrients.csv"
@@ -117,64 +157,3 @@ def download_ingredients_df():
     # Return df
     return pd.read_csv(StringIO(content))
 
-
-def nutrition_facts(ingredient, weight):
-    """
-    Calculate nutrition facts for a given ingredient and weight.
-
-    Parameters:
-    - ingredient (str): The name of the ingredient.
-    - weight (float or NaN): The weight of the ingredient in grams. If NaN, use default portion weight.
-    - ingredients_df (DataFrame): The DataFrame containing ingredient data.
-
-    Returns:
-    - dict: Nutrition facts including ingredient, weight, and nutrient amounts.
-    """
-    ingredients_df = download_ingredients_df()
-
-    ### STEP 1: MATCH INGREDIENT NAME ###
-    try:
-        # option 1 = exact match (shouldn't be dupplicates :) )
-        ingredient_data = ingredients_df.loc[ingredients_df['ingredient'] == ingredient]
-        if ingredient_data.empty:
-            raise ValueError(f"Ingredient '{ingredient}' not found in the dataset.")
-        # option 2 = DL matching model (for later)
-
-        ### STEP 2: CHECK WEIGHT/CONVERT UNITS ###
-        weight = weight if pd.notna(weight) else float(ingredient_data['default_portion_in_grams'].iloc[0])
-
-
-        ### STEP 3: CALCULATE NUTRIENT AMOUNTS ###
-        result = {'ingredient': ingredient, 'weight': weight}
-        nutrient_columns = [
-            col for col in ingredients_df.columns
-            if col not in ['ingredient', 'default_portion', 'default_portion_in_grams']
-        ]
-        for nutrient in nutrient_columns:
-            result[nutrient] = round(float((ingredient_data[nutrient].iloc[0] / 100) * weight), 2)
-
-        key_mapping = {
-            'Calcium_(MG)_per_100G': 'Calcium (MG)',
-            'Carbohydrates_(G)_per_100G': 'Carbohydrates (G)',
-            'Iron_(MG)_per_100G': 'Iron (MG)',
-            'Lipid_(G)_per_100G': 'Lipid (G)',
-            'Magnesium_(MG)_per_100G': 'Magnesium (MG)',
-            'Protein_(G)_per_100G': 'Protein (G)',
-            'Sodium_(MG)_per_100G': 'Sodium (MG)',
-            'Vitamin_A_(UG)_per_100G': 'Vitamin A (UG)',
-            'Vitamin_C_(MG)_per_100G': 'Vitamin C (MG)',
-            'Vitamin_D_(UG)_per_100G': 'Vitamin D (UG)',
-        }
-
-        renamed_result = {
-            key_mapping.get(key, key): value for key, value in result.items()
-        }
-        return renamed_result
-
-    except Exception as e:
-        return {"error": str(e)}
-
-
-# clean_ingredients_list()
-# ingredients = download_ingredients_df()
-# print(nutrition_facts("Abalone",10))
