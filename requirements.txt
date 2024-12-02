@@ -22,3 +22,7 @@ transformers
 torch
 rapidfuzz
 nltk
+
+#Recipes.py
+re
+ast

@@ -164,13 +164,15 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-<<<<<<< HEAD
 credentials.json
-=======
 # WEBSITE
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
+
+.ipynb
+#NOTEBOOKS
+notebooks
 
 # PAUL
 Label_matcher/__pycache__
