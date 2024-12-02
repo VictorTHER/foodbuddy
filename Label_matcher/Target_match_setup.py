@@ -332,4 +332,17 @@ def get_target_match(target_list="data_train_set.csv"):
     return None
 
 
-test = get_target_match()
+def download_target_match():
+    """
+    Download targets with nutrients data frame from GCS.
+    1 second runtime !
+    """
+    # Initialize Google Cloud Storage client
+    client = storage.Client()
+    bucket_name = "recipes-dataset"
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(f"Targets/target_to_nutrients.csv")
+    content = blob.download_as_text()
+
+    # Return df
+    return pd.read_csv(StringIO(content))
