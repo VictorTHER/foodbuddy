@@ -1,7 +1,4 @@
 # Core Python Libraries
-collections
-io
-string
 numpy==1.23.5
 pandas==1.5.3
 scipy==1.10.0
@@ -16,7 +13,6 @@ h5py==3.10.0
 transformers
 mlflow==2.1.1
 rapidfuzz
-sklearn
 
 # Visualization
 matplotlib
@@ -68,3 +64,4 @@ yapf
 
 # Workflow Automation
 prefect==2.19.2
+
