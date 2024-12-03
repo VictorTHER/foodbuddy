@@ -15,6 +15,7 @@ from detectron2.data.datasets import register_coco_instances
 from detectron2.evaluation import COCOEvaluator, inference_on_dataset
 from detectron2.data import MetadataCatalog, DatasetCatalog, build_detection_test_loader
 import cv2
+from PIL import Image
 
 # 1. Prétraitement des données
 def filtered_dataset():
@@ -34,6 +35,16 @@ def filtered_dataset():
         "annotations": filtered_annotations,
         "categories": data["categories"]
     }
+
+    for img in filtered_data["images"]:
+        img_path = os.path.join("./raw_data/public_training_set_release_2.0/images/", img["file_name"])
+        if os.path.exists(img_path):
+            with Image.open(img_path) as image:
+                width, height = image.size
+                img["width"] = width
+                img["height"] = height
+        else:
+            print(f"Image not found: {img['file_name']}")
 
     with open("./raw_data/public_training_set_release_2.0/filtered_annotations.json", "w") as f:
         json.dump(filtered_data, f)
@@ -62,7 +73,7 @@ def config():
     cfg.DATALOADER.NUM_WORKERS = 2
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
     cfg.SOLVER.IMS_PER_BATCH = 1
-    cfg.SOLVER.BASE_LR = 0.025
+    cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 300
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = num_categories
     cfg.OUTPUT_DIR = "./output"
