@@ -18,10 +18,8 @@ rapidfuzz
 matplotlib
 altair
 bs4
-collections
 folium
 google-cloud-storage
-io
 ipdb
 jupyterlab
 matplotlib
@@ -36,15 +34,12 @@ requests
 scikit-learn
 scipy
 seaborn
-sklearn
 streamlit
 streamlit_folium
-string
 torch
 transformers
 
 #Recipes.py
-ast
 requests
 scikit-learn
 scipy
@@ -97,4 +92,4 @@ yapf
 
 # Workflow Automation
 prefect==2.19.2
-
+astast
