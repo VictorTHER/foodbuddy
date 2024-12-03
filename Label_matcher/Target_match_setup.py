@@ -332,7 +332,7 @@ def get_target_match(target_list="data_train_set.csv"):
     return None
 
 
-def download_target_match():
+def download_target_df():
     """
     Download targets with nutrients data frame from GCS.
     1 second runtime !
