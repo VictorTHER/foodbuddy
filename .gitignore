@@ -31,7 +31,6 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-.python-version
 
 # Installer logs
 pip-log.txt
@@ -82,9 +81,6 @@ target/
 # IPython
 profile_default/
 ipython_config.py
-
-# pyenv
-.python-version
 
 # data
 raw_data/
@@ -169,6 +165,7 @@ credentials.json
 WEBSITE/.secrets.toml
 .secrets.toml
 .env
+.envrc
 
 .ipynb
 #NOTEBOOKS
@@ -184,4 +181,13 @@ Recipes+Ingredients/data_train_set.csv
 #DANNY
 .python-version
 KNN/test.ipynb
+Label_matcher/__pycache__
+Label_matcher/cache/cache_1.csv
+Label_matcher/cache/cache_2.csv
+Label_matcher/cache/cache_3.csv
+Label_matcher/cache/cleaned_ingredients_list.csv
+Label_matcher/cache/cleaned_ingredients_with_nutrients.csv
+Label_matcher/cache/cleaned_recipes_list.csv
+Label_matcher/cache/cleaned_recipes_with_nutrients.csv
+
 
