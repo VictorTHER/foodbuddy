@@ -16,12 +16,45 @@ rapidfuzz
 
 # Visualization
 matplotlib
+altair
+bs4
+collections
+folium
+google-cloud-storage
+io
+ipdb
+jupyterlab
+matplotlib
+nltk
+numpy
+pandas
+plotly
+
+altair
+scipy
+requests
+scikit-learn
+scipy
+seaborn
+sklearn
+streamlit
+streamlit_folium
+string
+torch
+transformers
+
+#Recipes.py
+ast
+requests
+scikit-learn
+scipy
 seaborn
 plotly
 altair
 folium
 streamlit
 streamlit_folium
+
 
 # Google Cloud and BigQuery
 google-cloud-storage==2.14.0
