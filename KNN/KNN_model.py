@@ -95,9 +95,9 @@ def KNN_model():
         pickle.dump(scaler, f)
     print(f"Fitted scaler saved at foodbuddy/KNN.")
 
-    # """Update 12/03/2024 : Recipe names have to be called during the predictions 
-    # => Fix : Saving the target into a csv, that will be called for indexation in the final recommendation output"""
-    # y.to_csv()
+    """Update 12/03/2024 : Recipe names have to be called during the predictions 
+    => Fix : Saving the target into a csv, that will be called for indexation in the final recommendation output"""
+    y.to_csv('./recipe_titles.csv')
 
     return None
 

@@ -46,7 +46,7 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
 
     # Dummy recommended data for testing
     if recommended_intake is None:
-        recommended_intake=np.array([[560.,   4., 224., 840.,  50.,   8., 504., 303., 121.,  81.]])
+        recommended_intake=np.array([[303., 121.,   81., 560., 4.,  224.,   840., 504., 50., 8.]])
 
     # Initializing consumed_intakes
     # consumed_intake = np.zeros(len(recommended_intake))
@@ -54,7 +54,7 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
 
     # Dummy consumed data for testing
     if consumed_intake is None:
-        consumed_intake=np.array([[280. ,   2. , 112. , 420. ,  25. ,   4. , 252. , 151.,  60., 40.]])
+        consumed_intake=np.array([[151.,  60.,  40., 280.,   2., 112., 420., 252., 25.,   4.]])
 
     # Calculate the remaining intake
     X_remaining=recommended_intake-consumed_intake
@@ -86,29 +86,27 @@ def predict_KNN_model():
     
     print('Successfully predicted the ideal recipes')
 
-    # # Displaying to the terminal the raw KNN output
-    # print("Here are the raw prediction outputs (recipe matching 'distances', and recipe index in the recipes dataset) :",y_pred)
+    # Displaying to the terminal the raw KNN output
+    print("Here are the raw prediction outputs (recipe matching 'distances', and recipe index in the recipes dataset) :",y_pred)
 
-    # # Displaying to the terminal the selected recipes
-    # # (UTD 12/02/2024 - before GitHub push to main) Making a Python object for Streamlit & API pipeline with the recipe names
-    # """First step : Loading the recipe names from the model's trained targets, as they contain both recipes indexes and titles"""
-    # y=pd.read_csv('./','recipe_titles.csv')
+    # Displaying to the terminal the selected recipes
+    # (UTD 12/02/2024 - before GitHub push to main) Making a Python object for Streamlit & API pipeline with the recipe names
+    """First step : Loading the recipe names from the model's trained targets, as they contain both recipes indexes and titles"""
+    y=pd.read_csv('./recipe_titles.csv')
 
-    # print("Here are the selected recipes by order of matching :")
-    # recommended_recipes_names=[]
-    # predicted_recipes=y_pred[1][0]
-    # for i,recipe_index in enumerate(predicted_recipes) :
-    #     print(f"""The recommended recipe n°{i+1} is : {data.iloc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
-    #     recommended_recipes_names.append(data.iloc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use 
-    # return y_pred, recommended_recipes_names
-    return y_pred
-
+    print("Here are the selected recipes by order of matching :")
+    recommended_recipes_names=[]
+    predicted_recipes=y_pred[1][0]
+    for i,recipe_index in enumerate(predicted_recipes) :
+        print(f"""The recommended recipe n°{i+1} is : {y.loc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
+        recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use 
+    return y_pred, recommended_recipes_names
+    # return y_pred
 
 y_pred=predict_KNN_model()
 
 print(y_pred)
 
-    
 
 
 
