@@ -86,6 +86,9 @@ ipython_config.py
 raw_data/
 hub/
 
+#notebooks
+*.ipynb
+
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
 #   However, in case of collaboration, if having platform-specific dependencies or dependencies
@@ -191,3 +194,10 @@ Label_matcher/cache/cleaned_recipes_list.csv
 Label_matcher/cache/cleaned_recipes_with_nutrients.csv
 
 
+#DANNY
+.python-version
+
+
+# VICTOR
+101_food_data/
+images_sample/
