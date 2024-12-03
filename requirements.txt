@@ -16,40 +16,12 @@ rapidfuzz
 
 # Visualization
 matplotlib
-altair
-bs4
-folium
-google-cloud-storage
-ipdb
-jupyterlab
-matplotlib
-nltk
-numpy
-pandas
-plotly
-
-altair
-scipy
-requests
-scikit-learn
-scipy
-seaborn
-streamlit
-streamlit_folium
-torch
-transformers
-
-#Recipes.py
-requests
-scikit-learn
-scipy
 seaborn
 plotly
 altair
 folium
 streamlit
 streamlit_folium
-
 
 # Google Cloud and BigQuery
 google-cloud-storage==2.14.0
@@ -92,4 +64,3 @@ yapf
 
 # Workflow Automation
 prefect==2.19.2
-astast
