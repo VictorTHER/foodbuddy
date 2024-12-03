@@ -5,16 +5,19 @@ import numpy as np
 import pandas as pd
 from google.cloud import storage
 from io import StringIO
+import os
 
 
 def load_recipes_KNN_data():
     """
-    WIP : Load the dataset from GCP instead of a local git-ignored source. 
-
     1. Import data recipe
+        12/02/2024 : Load the dataset from GCP instead of a local git-ignored source. 
     2. Standardize the structure
     3. Return standardized dataset for later recipe prediction (KNN)
     """
+    # # Load recipe/nutrients data (local for now while in dev)
+    # data=pd.read_csv("../raw_data/Recipes_cleaned_recipes_with_nutrients.csv")
+
     # Initializing Google Cloud Storage client
     client = storage.Client()
     bucket_name = "recipes-dataset"
@@ -27,10 +30,6 @@ def load_recipes_KNN_data():
     content = blob.download_as_text()
     # Using StringIO to create a file-like object
     data=pd.read_csv(StringIO(content))    
-
-    # Load recipe/nutrients data
-    # (local for now)
-    # data=pd.read_csv("../raw_data/Recipes_cleaned_recipes_with_nutrients.csv")
 
     # Deleting null rows    
     data.dropna(inplace=True)
@@ -79,10 +78,14 @@ def load_recipes_KNN_data():
     'vitamin_c_mg',
     'vitamin_d_ug']
 
-    #Setting the final dataframe
+    # Setting the final dataframe
     data=data[standard_data_columns]
 
-    print ("Recipe and nutrients dataset successfully imported and standardized.")
+    # Setting recipe names as index (to bypass reloading the data later in the process)
+    # data.set_index(keys=['recipe'],inplace=True)
+
+
+    print ("Recipe and nutrients dataset successfully imported.")
     return data
 
 

@@ -4,7 +4,7 @@ import numpy as np
 # np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc. 
 import pandas as pd
 
-from KNN_to_predictions import run_KNN_workflow 
+# from KNN_to_predictions import run_KNN_workflow #Deprecated : Packaging changed the .py files' order and purposes 
 
 
 """WORK IN PROGRESS : 
@@ -14,9 +14,9 @@ from KNN_to_predictions import run_KNN_workflow
 
 """
 
-y_pred,recommended_recipes_names=run_KNN_workflow()
+# y_pred,recommended_recipes_names=run_KNN_workflow()
 
-print(y_pred)
+# print(y_pred)
 
 """ Under the hood : Nutrition fulfilling validation 
 
