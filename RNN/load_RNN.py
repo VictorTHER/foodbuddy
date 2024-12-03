@@ -1,7 +1,7 @@
 import tensorflow as tf
 import pickle
 
-def save_model_as_pickle(model, file_path):
+def save_model_as_pickle(model_path, file_path):
     """
     Sauvegarde un modèle Keras/TensorFlow en format .pickle.
 
@@ -10,19 +10,25 @@ def save_model_as_pickle(model, file_path):
         file_path (str): Chemin où sauvegarder le fichier .pickle.
     """
     try:
-        # Sérialiser les poids et la structure
-        model_data = {
-            'architecture': model.to_json(),  # Architecture du modèle
-            'weights': model.get_weights()   # Poids du modèle
-        }
+        # Load the .h5 model
+        model = tf.keras.models.load_model(model_path)
 
-        # Sauvegarder avec pickle
-        with open(file_path, 'wb') as f:
-            pickle.dump(model_data, f)
+        try:
+            # Sérialiser les poids et la structure
+            model_data = {
+                'architecture': model.to_json(),  # Architecture du modèle
+                'weights': model.get_weights()   # Poids du modèle
+            }
 
-        print(f"Modèle sauvegardé en format pickle à : {file_path}")
+            # Sauvegarder avec pickle
+            with open(file_path, 'wb') as f:
+                pickle.dump(model_data, f)
+
+            print(f"Modèle sauvegardé en format pickle à : {file_path}")
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde : {e}")
     except Exception as e:
-        print(f"Erreur lors de la sauvegarde : {e}")
+        print(f"Erreur lors de la recherche du modèle .h5 : {e}")
 
 def load_model_from_pickle(file_path):
     """
@@ -59,7 +65,7 @@ def load_model_from_pickle(file_path):
 # ])
 # model.compile(optimizer='adam', loss='binary_crossentropy')
 
-# save_model_as_pickle(model, 'model.pickle')
+save_model_as_pickle("RNN/MobileNet_Food101.h5", 'RNN/model.pickle')
 
 # # Chargement du modèle
 # loaded_model = load_model_from_pickle('model.pickle')
