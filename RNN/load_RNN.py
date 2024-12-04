@@ -66,6 +66,7 @@ def load_model_from_pickle(file_path):
 # model.compile(optimizer='adam', loss='binary_crossentropy')
 
 save_model_as_pickle("RNN/MobileNet_Food101.h5", 'RNN/model.pickle')
+# save_model_as_pickle(model, 'model.pickle')
 
 # # Chargement du modèle
 # loaded_model = load_model_from_pickle('model.pickle')
