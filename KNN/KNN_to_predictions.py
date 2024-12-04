@@ -101,11 +101,11 @@ def predict_KNN_model():
         print(f"""The recommended recipe n°{i+1} is : {y.loc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
         recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use 
     return y_pred, recommended_recipes_names
-    # return y_pred
 
-# y_pred=predict_KNN_model()
+if __name__=='__main__':
+    predict_KNN_model()
 
-# print(y_pred)
+
 
 
 
