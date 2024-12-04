@@ -1,7 +1,6 @@
 #Package import
 import pandas as pd
 import numpy as np
-# np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc. 
 import pandas as pd
 
 from sklearn.neighbors import KNeighborsRegressor, NearestNeighbors
@@ -30,8 +29,10 @@ WIP 2: Fine-tuning recommendations with nutrient deficiency/overreach thresholds
 
 def preprocessing():
     """
+    Generating the features, the scaler, and the fitted KNN model.
     1. Load the recipe's data using the KNN_preprocess.py
     2. Create and scaling the nutrient features for the KNN model
+    3. Fitting the model
     """
     # Calling the dataset function
     data=load_recipes_KNN_data()
@@ -50,15 +51,15 @@ def preprocessing():
 ## Weighting the nutrients over their importance
 def weighting_nutrients(X_scaled,weights=None):
     """
+    DEV NOTES 12/04/2024: Function no longer used, delivering many recipes and validating deficiencies/overreaching afterwards is preferred.
+
     Weights nutrients more than others to counter the KNN default propency to match indiscriminately of the nutrients' importances and the users' specific deficiencies 
     Some nutrients should be prioritized by the KNN model when finding nutrient-fulfilling recipes.
     1. Giving weights to specific nutrients
     2. Applying weights to the scaled features to be training the KNN model
-    
-    WIP : Dev can change the default argument for future fine-tuning
     """
     if weights is None : 
-        weights = np.array([0.8, 1.5, 1.2, 1.5, 1.5, 1.5, 0.8, 1.2, 1.2, 1.5])
+        weights = np.array([0.8, 1.5, 1.2, 1.5, 1.5, 1.5, 0.8, 1.2, 1.2, 1.5]) # Weighting more important nutrients than others (disregarding any user's)
     # Multiply features after scaling
     # Subjective factor to determine gropingly
     X_scaled=X_scaled*weights
@@ -85,13 +86,11 @@ def KNN_model():
     print('Successfully intialized and trained the KNN model')
 
     # Saving the fitted model into a .pkl file  
-    # fitted_model_path="./KNN/fitted_model.pkl"  
     with open('fitted_model.pkl', 'wb') as f:
         pickle.dump(model, f)
     print(f"Processed dataset saved at foodbuddy/KNN.")
     
-    # Saving the fitted scaler into a .pkl file  
-    # fitted_scaler_path="./KNN/fitted_scaler.pkl"  
+    # Saving the fitted scaler into a .pkl file    
     with open('fitted_scaler.pkl', 'wb') as f:
         pickle.dump(scaler, f)
     print(f"Fitted scaler saved at foodbuddy/KNN.")

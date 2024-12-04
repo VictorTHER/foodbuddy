@@ -1,7 +1,6 @@
 #Package import
 import pandas as pd
 import numpy as np
-# np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc. 
 import pandas as pd
 from google.cloud import storage
 from io import StringIO
@@ -10,14 +9,11 @@ import os
 
 def load_recipes_KNN_data():
     """
-    1. Import data recipe
-        12/02/2024 : Load the dataset from GCP instead of a local git-ignored source. 
+    Loading from GCP the nutrient/recipe dataset:
+    1. Import data recipe 
     2. Standardize the structure
     3. Return standardized dataset for later recipe prediction (KNN)
     """
-    # # Load recipe/nutrients data (local for now while in dev)
-    # data=pd.read_csv("../raw_data/Recipes_cleaned_recipes_with_nutrients.csv")
-
     # Initializing Google Cloud Storage client
     client = storage.Client()
     bucket_name = "recipes-dataset"
@@ -62,7 +58,6 @@ def load_recipes_KNN_data():
     'Lipid_(G)_total': 'lipid_g',
     'recipe': 'recipe'}
 
-
     data.rename(columns=rename_mapping, inplace=True)
 
     # Shuffling column order for the KNN model
@@ -80,10 +75,6 @@ def load_recipes_KNN_data():
 
     # Setting the final dataframe
     data=data[standard_data_columns]
-
-    # Setting recipe names as index (to bypass reloading the data later in the process)
-    # data.set_index(keys=['recipe'],inplace=True)
-
 
     print ("Recipe and nutrients dataset successfully imported.")
     return data

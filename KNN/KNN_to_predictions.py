@@ -1,7 +1,6 @@
 #Package import
 import pandas as pd
 import numpy as np
-# np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc. 
 import pandas as pd
 
 from sklearn.neighbors import KNeighborsRegressor, NearestNeighbors
@@ -48,7 +47,7 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
     if recommended_intake is None:
         recommended_intake=np.array([[303., 121.,   81., 560., 4.,  224.,   840., 504., 50., 8.]])
 
-    # Initializing consumed_intakes
+    # Initializing consumed_intakes # Temporarily disabled: Can be used if multiple recipes or more than one lunch is allowed 
     # consumed_intake = np.zeros(len(recommended_intake))
     # Would increment each recipe intake depending on the moment of the day
 
@@ -63,7 +62,7 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
     X_remaining_scaled=scaler.transform(X_remaining)
     
     # Weighting the nutrients
-    """WIP To do later : Weight should be customized at some point over each user's importance of reaching certains nutrients"""
+    # """WIP To do later : Weight should be customized at some point over each user's importance of reaching certains nutrients"""
     # weights= # Put the user adapted weight algorithm below and before calling weighting_nutrients + Put weights as argument
     # X_remaining_scaled=weighting_nutrients(X_remaining_scaled,weights) # Disabled : Weighting no longer used, preferring validating selected recipes' nutrition after using the model. 
     
@@ -72,7 +71,12 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
 
 def predict_KNN_model():
     """MAIN FUNCTION"""
-    """Prediction and Nutrition calculation"""
+    """Prediction and Nutrition calculation
+    - Loads and scales the users' remaining nutrients of the day.
+    - Inputs the KNN model to predicts the closest recipes to fulfill the recommended intakes
+    - Returns a selection of those recipes: database indexes, recipe names, and a clean terminal output ranking them 
+    """
+    # Loading the model, scaler and user's scaled remaining intakes
     model=load_model()
     scaler=load_scaler()
     X_remaining_scaled = load_user_data(scaler)
@@ -106,7 +110,21 @@ if __name__=='__main__':
     predict_KNN_model()
 
 
+"""Suggestions for the output : 
 
+1. After-recommended-lunch nutrition validation
+2. Data display to the user (To Be Aligned with API project work)
+
+"""
+
+""" Under the hood : Nutrition fulfilling validation 
+
+1. (Ceiling Threshold) Are some recipes overreaching the recommended intakes ?
+2. (Floor Threshold) Are there still some nutrient deficiency after taking a recommended recipe ?
+3. Cleaning the recipes, then give recommended
+4. Recommend a top 3 or 5 list of recipes to the user
+
+"""
 
 
 
