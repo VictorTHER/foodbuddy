@@ -10,19 +10,22 @@ from sklearn.metrics import mean_squared_error, r2_score
 import pickle
 import os
 
-from KNN_preprocess import load_recipes_KNN_data
+from foodbuddy.KNN.KNN_preprocess import load_recipes_KNN_data
+model_path = "foodbuddy/KNN/fitted_model.pkl"
+scaler_path = "foodbuddy/KNN/fitted_scaler.pkl"
+
 
 """DEV NOTES :
 ----
 12/02/2024 :
-1. Packaging is done 
+1. Packaging is done
 2. Now running with Google Cloud Storage platform
 3. Pushed to GitHub for sharing with teammates
 WIP 1: MLFlow push
-WIP 2: Fine-tuning recommendations with nutrient deficiency/overreach thresholds (probably in predictions_to_output.py) 
+WIP 2: Fine-tuning recommendations with nutrient deficiency/overreach thresholds (probably in predictions_to_output.py)
 
 
-11/28/2024 : 
+11/28/2024 :
 1. Summarizing the KNN notebook to streamline the code
 2. Will package it later into functions
  """
@@ -38,7 +41,7 @@ def preprocessing():
     data=load_recipes_KNN_data()
 
     # Loading the features
-    X=data.drop(columns=['recipe']) 
+    X=data.drop(columns=['recipe'])
     y=data.recipe
 
     ## Scaling the nutrients features
@@ -53,12 +56,12 @@ def weighting_nutrients(X_scaled,weights=None):
     """
     DEV NOTES 12/04/2024: Function no longer used, delivering many recipes and validating deficiencies/overreaching afterwards is preferred.
 
-    Weights nutrients more than others to counter the KNN default propency to match indiscriminately of the nutrients' importances and the users' specific deficiencies 
+    Weights nutrients more than others to counter the KNN default propency to match indiscriminately of the nutrients' importances and the users' specific deficiencies
     Some nutrients should be prioritized by the KNN model when finding nutrient-fulfilling recipes.
     1. Giving weights to specific nutrients
     2. Applying weights to the scaled features to be training the KNN model
     """
-    if weights is None : 
+    if weights is None :
         weights = np.array([0.8, 1.5, 1.2, 1.5, 1.5, 1.5, 0.8, 1.2, 1.2, 1.5]) # Weighting more important nutrients than others (disregarding any user's)
     # Multiply features after scaling
     # Subjective factor to determine gropingly
@@ -78,30 +81,28 @@ def KNN_model():
     """
     # Running the previous functions
     X_scaled,y,scaler=preprocessing()
-    # X_scaled=weighting_nutrients(X_scaled) #Disabled: Weighting both the dataset and the users' input don't change anything. 
-    
+    # X_scaled=weighting_nutrients(X_scaled) #Disabled: Weighting both the dataset and the users' input don't change anything.
+
     # Model initialization and fitting
     model = KNeighborsRegressor(n_neighbors=10)
     model.fit(X_scaled, y)
     print('Successfully intialized and trained the KNN model')
 
-    # Saving the fitted model into a .pkl file  
-    with open('fitted_model.pkl', 'wb') as f:
+    # Saving the fitted model into a .pkl file
+    with open(model_path, 'wb') as f:
         pickle.dump(model, f)
-    print(f"Processed dataset saved at foodbuddy/KNN.")
-    
-    # Saving the fitted scaler into a .pkl file    
-    with open('fitted_scaler.pkl', 'wb') as f:
-        pickle.dump(scaler, f)
-    print(f"Fitted scaler saved at foodbuddy/KNN.")
+    print(f"Processed dataset saved at {model_path}")
 
-    """Update 12/03/2024 : Recipe names have to be called during the predictions 
+    # Saving the fitted scaler into a .pkl file
+    with open(scaler_path, 'wb') as f:
+        pickle.dump(scaler, f)
+    print(f"Fitted scaler saved at {scaler_path}.")
+
+    """Update 12/03/2024 : Recipe names have to be called during the predictions
     => Fix : Saving the target into a csv, that will be called for indexation in the final recommendation output"""
-    y.to_csv('./recipe_titles.csv')
+    # y.to_csv('./recipe_titles.csv')
 
     return None
 
 if __name__=='__main__':
     KNN_model()
-
-

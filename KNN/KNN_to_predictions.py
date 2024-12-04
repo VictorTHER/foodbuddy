@@ -10,33 +10,56 @@ from sklearn.metrics import mean_squared_error, r2_score
 import pickle
 import os
 
-from KNN_model import weighting_nutrients
-
+from foodbuddy.KNN.KNN_model import KNN_model
+model_path = "foodbuddy/KNN/fitted_model.pkl"
+scaler_path = "foodbuddy/KNN/fitted_scaler.pkl"
 
 
 def load_model():
     """Load fitted KNN model"""
-    if os.path.exists('fitted_model.pkl'):
-        with open('fitted_model.pkl', "rb") as f:
-            model = pickle.load(f)
-        print("Données chargées :", model)
+    if os.path.exists(model_path):
+        try:
+            with open(model_path, "rb") as f:
+                model = pickle.load(f)
+            print("KNN Model loaded successfully.")
+            return model
+        except Exception as e:
+            raise RuntimeError(f"Error loading model from '{model_path}': {e}")
     else:
-        print(f"Fichier introuvable : 'fitted_model.pkl'")
-    return model
+        raise FileNotFoundError(f"Model file not found: '{model_path}'")
+
 
 def load_scaler():
-    """Load fitted KNN scaler"""
-    if os.path.exists('fitted_scaler.pkl'):
-        with open('fitted_scaler.pkl', "rb") as f:
-            scaler = pickle.load(f)
-        print("Données chargées :", scaler)
+    """Load fitted KNN scaler from a pickle file."""
+    if os.path.exists(scaler_path):
+        try:
+            with open(scaler_path, "rb") as f:
+                scaler = pickle.load(f)
+            print("KNN Scaler loaded successfully.")
+            return scaler
+        except Exception as e:
+            raise RuntimeError(f"Error loading scaler from '{scaler_path}': {e}")
     else:
-        print(f"Fichier introuvable : 'fitted_scaler.pkl'")
-    return scaler
+        raise FileNotFoundError(f"Scaler file not found: '{scaler_path}'")
+
+
+def load_KNN():
+
+    # Check if the pickle file exists
+    if not os.path.exists(model_path) or not os.path.exists(scaler_path):
+        print("Pickle file not found. Generating a new KNN model and scaler...")
+        KNN_model()
+
+    # Load the model and scaler
+    loaded_model = load_model()
+    loaded_scaler = load_scaler()
+
+    return loaded_model, loaded_scaler
+
 
 def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,consumed_intake=None):
     """
-    WIP : Dummy user data is being used 
+    WIP : Dummy user data is being used
     => Replace with user function
 
     1. Load user consumed and current intake
@@ -47,7 +70,7 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
     if recommended_intake is None:
         recommended_intake=np.array([[303., 121.,   81., 560., 4.,  224.,   840., 504., 50., 8.]])
 
-    # Initializing consumed_intakes # Temporarily disabled: Can be used if multiple recipes or more than one lunch is allowed 
+    # Initializing consumed_intakes # Temporarily disabled: Can be used if multiple recipes or more than one lunch is allowed
     # consumed_intake = np.zeros(len(recommended_intake))
     # Would increment each recipe intake depending on the moment of the day
 
@@ -60,21 +83,22 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
 
     # Scaling the nutrients
     X_remaining_scaled=scaler.transform(X_remaining)
-    
+
     # Weighting the nutrients
     # """WIP To do later : Weight should be customized at some point over each user's importance of reaching certains nutrients"""
     # weights= # Put the user adapted weight algorithm below and before calling weighting_nutrients + Put weights as argument
-    # X_remaining_scaled=weighting_nutrients(X_remaining_scaled,weights) # Disabled : Weighting no longer used, preferring validating selected recipes' nutrition after using the model. 
-    
+    # X_remaining_scaled=weighting_nutrients(X_remaining_scaled,weights) # Disabled : Weighting no longer used, preferring validating selected recipes' nutrition after using the model.
+
     print('Successfully loaded and weighted the user nutritional data')
     return X_remaining_scaled
+
 
 def predict_KNN_model():
     """MAIN FUNCTION"""
     """Prediction and Nutrition calculation
     - Loads and scales the users' remaining nutrients of the day.
     - Inputs the KNN model to predicts the closest recipes to fulfill the recommended intakes
-    - Returns a selection of those recipes: database indexes, recipe names, and a clean terminal output ranking them 
+    - Returns a selection of those recipes: database indexes, recipe names, and a clean terminal output ranking them
     """
     # Loading the model, scaler and user's scaled remaining intakes
     model=load_model()
@@ -87,7 +111,7 @@ def predict_KNN_model():
 
     # Predicting the most nutritious recipes
     y_pred= model.kneighbors(X_remaining_scaled)
-    
+
     print('Successfully predicted the ideal recipes')
 
     # Displaying to the terminal the raw KNN output
@@ -103,21 +127,22 @@ def predict_KNN_model():
     predicted_recipes=y_pred[1][0]
     for i,recipe_index in enumerate(predicted_recipes) :
         print(f"""The recommended recipe n°{i+1} is : {y.loc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
-        recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use 
+        recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use
     return y_pred, recommended_recipes_names
+
 
 if __name__=='__main__':
     predict_KNN_model()
 
 
-"""Suggestions for the output : 
+"""Suggestions for the output :
 
 1. After-recommended-lunch nutrition validation
 2. Data display to the user (To Be Aligned with API project work)
 
 """
 
-""" Under the hood : Nutrition fulfilling validation 
+""" Under the hood : Nutrition fulfilling validation
 
 1. (Ceiling Threshold) Are some recipes overreaching the recommended intakes ?
 2. (Floor Threshold) Are there still some nutrient deficiency after taking a recommended recipe ?
@@ -125,6 +150,3 @@ if __name__=='__main__':
 4. Recommend a top 3 or 5 list of recipes to the user
 
 """
-
-
-

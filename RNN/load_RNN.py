@@ -1,73 +1,80 @@
 import tensorflow as tf
 import pickle
+import os
+h5_path = "foodbuddy/RNN/RNN.h5"
+pickle_path = "foodbuddy/RNN/RNN.pkl"
 
-def save_model_as_pickle(model_path, file_path):
+
+def save_model_as_pickle():
     """
-    Sauvegarde un modèle Keras/TensorFlow en format .pickle.
+    Save a Keras/TensorFlow model as a pickle file.
 
-    Args:
-        model (tf.keras.Model): Modèle à sauvegarder.
-        file_path (str): Chemin où sauvegarder le fichier .pickle.
+    Saves the model architecture and weights for later reconstruction.
     """
     try:
         # Load the .h5 model
-        model = tf.keras.models.load_model(model_path)
+        model = tf.keras.models.load_model(h5_path)
 
         try:
-            # Sérialiser les poids et la structure
+            # Serialize the architecture and weights
             model_data = {
-                'architecture': model.to_json(),  # Architecture du modèle
-                'weights': model.get_weights()   # Poids du modèle
+                'architecture': model.to_json(),  # Model architecture as JSON
+                'weights': model.get_weights()   # Model weights
             }
 
-            # Sauvegarder avec pickle
-            with open(file_path, 'wb') as f:
+            # Save using pickle
+            with open(pickle_path, 'wb') as f:
                 pickle.dump(model_data, f)
 
-            print(f"Modèle sauvegardé en format pickle à : {file_path}")
+            print(f"Model successfully saved as pickle at: {pickle_path}")
         except Exception as e:
-            print(f"Erreur lors de la sauvegarde : {e}")
+            print(f"Error during pickle saving: {e}")
     except Exception as e:
-        print(f"Erreur lors de la recherche du modèle .h5 : {e}")
+        print(f"Error loading .h5 model: {e}")
 
-def load_model_from_pickle(file_path):
+
+def load_RNN():
     """
-    Charge un modèle Keras/TensorFlow à partir d'un fichier .pickle.
+    Load a Keras/TensorFlow model from a pickle or .h5 file.
 
-    Args:
-        file_path (str): Chemin du fichier .pickle.
+    Priority:
+    1. Attempt to load from pickle file.
+    2. If pickle not found, attempt to load from .h5 file.
 
     Returns:
-        tf.keras.Model: Modèle reconstruit.
+        tf.keras.Model: Reconstructed model, or None if loading fails.
     """
-    try:
-        # Charger les données sérialisées
-        with open(file_path, 'rb') as f:
-            model_data = pickle.load(f)
+    # Attempt to load from pickle file
+    if os.path.exists(pickle_path):
+        print("found pickle file. Trying to load")
+        try:
+            with open(pickle_path, "rb") as f:
+                model_data = pickle.load(f)
 
-        # Reconstruire le modèle
-        model = tf.keras.models.model_from_json(model_data['architecture'])  # Reconstruire l'architecture
-        model.set_weights(model_data['weights'])  # Charger les poids
+            # Reconstruct the model
+            model = tf.keras.models.model_from_json(model_data['architecture'])
+            model.set_weights(model_data['weights'])
 
-        print(f"Modèle chargé depuis le fichier pickle : {file_path}")
-        return model
-    except Exception as e:
-        print(f"Erreur lors du chargement : {e}")
-        return None
+            print("RNN Model loaded successfully from pickle.")
+            return model
 
+        except Exception as e:
+            print(f"Error loading model from pickle: {e}")
+            return None
 
-# Fonctions d'utilisation
+    # If pickle loading fails, fallback to .h5 file
+    print(f"Pickle file not found. Attempting to load .h5 file from '{h5_path}'.")
 
-# # Sauvegarde du modèle
-# model = tf.keras.Sequential([
-#     tf.keras.layers.Dense(10, activation='relu', input_shape=(20,)),
-#     tf.keras.layers.Dense(1, activation='sigmoid')
-# ])
-# model.compile(optimizer='adam', loss='binary_crossentropy')
+    if os.path.exists(h5_path):
+        try:
+            # Load the .h5 model directly
+            model = tf.keras.models.load_model(h5_path)
+            print("RNN Model loaded successfully from .h5.")
+            return model
+        except Exception as e:
+            print(f"Error loading model from .h5: {e}")
+            return None
 
-save_model_as_pickle("RNN/MobileNet_Food101.h5", 'RNN/model.pickle')
-# save_model_as_pickle(model, 'model.pickle')
-
-# # Chargement du modèle
-# loaded_model = load_model_from_pickle('model.pickle')
-# loaded_model.summary()
+    # If both loading methods fail
+    print(f"Both pickle and .h5 files are missing or invalid.")
+    return None

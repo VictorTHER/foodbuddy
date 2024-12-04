@@ -17,7 +17,7 @@ nltk.download('punkt_tab')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-from Ingredients_list_setup import download_ingredients_df
+from foodbuddy.Label_matcher.Ingredients_list_setup import download_ingredients_df
 
 
 def parse_ingredient(ingredient):
@@ -453,4 +453,3 @@ def download_recipes_df():
 
     # Return df
     return pd.read_csv(StringIO(content))
-

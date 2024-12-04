@@ -1,4 +1,4 @@
-### NE PAS MODIFIER!!!! MIS A JOUR LE 3/12/2024  ###
+### NE PAS MODIFIER!!!! MIS A JOUR LE 4/12/2024  ###
 
 # Core Python Libraries
 numpy==1.23.5
@@ -22,8 +22,7 @@ seaborn
 plotly
 altair
 folium
-streamlit
-streamlit_folium
+streamlit==1.13.0
 
 # Google Cloud and BigQuery
 google-cloud-storage==2.14.0
@@ -67,4 +66,4 @@ yapf
 # Workflow Automation
 prefect==2.19.2
 
-### NE PAS MODIFIER!!!! MIS A JOUR LE 3/12/2024 ###
+### NE PAS MODIFIER!!!! MIS A JOUR LE 4/12/2024 ###
