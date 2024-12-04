@@ -52,13 +52,6 @@ def load_model_from_pickle(file_path):
 
 # Fonctions d'utilisation
 
-# # Sauvegarde du modèle
-# model = tf.keras.Sequential([
-#     tf.keras.layers.Dense(10, activation='relu', input_shape=(20,)),
-#     tf.keras.layers.Dense(1, activation='sigmoid')
-# ])
-# model.compile(optimizer='adam', loss='binary_crossentropy')
-
 # save_model_as_pickle(model, 'model.pickle')
 
 # # Chargement du modèle
