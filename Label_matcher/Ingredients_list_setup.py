@@ -24,10 +24,10 @@ def generate_ingredients_list():
         return pd.read_csv(StringIO(content))
 
     # Download dfs from GCS
-    food_org = load_csv_from_gcs("food.csv")[["fdc_id","description"]]
-    food_nutrient_org = load_csv_from_gcs("food_nutrient.csv")[["fdc_id","nutrient_id","amount"]]
-    food_portion_org = load_csv_from_gcs("food_portion.csv")[["fdc_id","portion_description","gram_weight"]]
-    nutrient_org = load_csv_from_gcs("nutrient.csv")[["nutrient_nbr","name","unit_name"]]
+    food_org = load_csv_from_gcs("food.csv")[["fdc_id","description"]] # ingredient ID and name
+    food_nutrient_org = load_csv_from_gcs("food_nutrient.csv")[["fdc_id","nutrient_id","amount"]] # Ingredient ID and nutrient amounts/nutrient
+    food_portion_org = load_csv_from_gcs("food_portion.csv")[["fdc_id","portion_description","gram_weight"]] # ingredient name and avg portion grams
+    nutrient_org = load_csv_from_gcs("nutrient.csv")[["nutrient_nbr","name","unit_name"]] # nutrient ID, name and unit
 
     # Prepare data frames
     food = food_org.copy()
@@ -156,4 +156,3 @@ def download_ingredients_df():
 
     # Return df
     return pd.read_csv(StringIO(content))
-

@@ -29,6 +29,7 @@ cache_3 = "Label_matcher/cache/cache_3.csv"
 cleaned_ingredients_list = "Label_matcher/cache/cleaned_ingredients_list.csv"
 cleaned_recipes_list = "Label_matcher/cache/cleaned_recipes_list.csv"
 
+
 def clean_text(series):
     lemmatizer = WordNetLemmatizer()
     stop_words = set(stopwords.words('english'))
@@ -139,7 +140,7 @@ def manual_review_fuzzy_matches(merged_df, save_interval=20):
 
 def get_target_match(target_list="target.csv"):
     """
-    Input target list name from GCS, having "label" column!
+    Input target list name from GCS, having "Label" column!
     Function will smartly keep track of progress using cache documents
     Function will go through the following steps:
     - Get target/recipes/ingredients from GCS
@@ -180,7 +181,7 @@ def get_target_match(target_list="target.csv"):
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(f"Targets/target.csv")
         content = blob.download_as_text()
-        target = pd.read_csv(StringIO(content))["label"]
+        target = pd.read_csv(StringIO(content))["Label"]
         print("Targets downloaded")
 
         # Get recipes list
@@ -254,7 +255,7 @@ def get_target_match(target_list="target.csv"):
               - {cleaned_recipes_list}\n
               And then fix the remaining matches by hand.""")
 
-        progress = 2
+        return None
 
     if progress == 2 :
 
@@ -346,3 +347,4 @@ def download_target_df():
 
     # Return df
     return pd.read_csv(StringIO(content))
+
