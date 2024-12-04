@@ -137,9 +137,9 @@ def manual_review_fuzzy_matches(merged_df, save_interval=20):
     return merged_df
 
 
-def get_target_match(target_list="data_train_set.csv"):
+def get_target_match(target_list="target.csv"):
     """
-    Input target list name from GCS, having "name_readable" column!
+    Input target list name from GCS, having "label" column!
     Function will smartly keep track of progress using cache documents
     Function will go through the following steps:
     - Get target/recipes/ingredients from GCS
@@ -178,9 +178,9 @@ def get_target_match(target_list="data_train_set.csv"):
         client = storage.Client()
         bucket_name = "recipes-dataset"
         bucket = client.bucket(bucket_name)
-        blob = bucket.blob(f"Targets/data_train_set.csv")
+        blob = bucket.blob(f"Targets/target.csv")
         content = blob.download_as_text()
-        target = pd.read_csv(StringIO(content))["name_readable"]
+        target = pd.read_csv(StringIO(content))["label"]
         print("Targets downloaded")
 
         # Get recipes list
