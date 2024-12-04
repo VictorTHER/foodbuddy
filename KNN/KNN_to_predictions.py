@@ -65,24 +65,24 @@ def load_user_data(scaler:StandardScaler, weights=None, recommended_intake=None,
     # Weighting the nutrients
     """WIP To do later : Weight should be customized at some point over each user's importance of reaching certains nutrients"""
     # weights= # Put the user adapted weight algorithm below and before calling weighting_nutrients + Put weights as argument
-    X_remaining_weighted=weighting_nutrients(X_remaining_scaled,weights)
+    # X_remaining_scaled=weighting_nutrients(X_remaining_scaled,weights) # Disabled : Weighting no longer used, preferring validating selected recipes' nutrition after using the model. 
     
     print('Successfully loaded and weighted the user nutritional data')
-    return X_remaining_weighted
+    return X_remaining_scaled
 
 def predict_KNN_model():
     """MAIN FUNCTION"""
     """Prediction and Nutrition calculation"""
     model=load_model()
     scaler=load_scaler()
-    X_remaining_weighted = load_user_data(scaler)
+    X_remaining_scaled = load_user_data(scaler)
 
     # Making sure that X is a 2D array:
-    if X_remaining_weighted.shape!=(1,10):
-        X_remaining_weighted = X_remaining_weighted.reshape(1, -1)
+    if X_remaining_scaled.shape!=(1,10):
+        X_remaining_scaled = X_remaining_scaled.reshape(1, -1)
 
     # Predicting the most nutritious recipes
-    y_pred= model.kneighbors(X_remaining_weighted)
+    y_pred= model.kneighbors(X_remaining_scaled)
     
     print('Successfully predicted the ideal recipes')
 
@@ -103,9 +103,9 @@ def predict_KNN_model():
     return y_pred, recommended_recipes_names
     # return y_pred
 
-y_pred=predict_KNN_model()
+# y_pred=predict_KNN_model()
 
-print(y_pred)
+# print(y_pred)
 
 
 

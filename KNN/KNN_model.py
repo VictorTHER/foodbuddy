@@ -13,7 +13,6 @@ import os
 
 from KNN_preprocess import load_recipes_KNN_data
 
-
 """DEV NOTES :
 ----
 12/02/2024 :
@@ -51,18 +50,20 @@ def preprocessing():
 ## Weighting the nutrients over their importance
 def weighting_nutrients(X_scaled,weights=None):
     """
-    WIP : Will change the default argument to make it easier to change for probable fine-tuning
-
-    1. Giving weight to some nutrients more than others.
-    2. Applying weights to the scaled features to be training the KNN model.
+    Weights nutrients more than others to counter the KNN default propency to match indiscriminately of the nutrients' importances and the users' specific deficiencies 
+    Some nutrients should be prioritized by the KNN model when finding nutrient-fulfilling recipes.
+    1. Giving weights to specific nutrients
+    2. Applying weights to the scaled features to be training the KNN model
+    
+    WIP : Dev can change the default argument for future fine-tuning
     """
     if weights is None : 
         weights = np.array([0.8, 1.5, 1.2, 1.5, 1.5, 1.5, 0.8, 1.2, 1.2, 1.5])
     # Multiply features after scaling
     # Subjective factor to determine gropingly
-    X_weighted=X_scaled*weights
+    X_scaled=X_scaled*weights
     print('Successfully weighted the recipe/nutrient data')
-    return X_weighted
+    return X_scaled
 
 
 def KNN_model():
@@ -76,11 +77,11 @@ def KNN_model():
     """
     # Running the previous functions
     X_scaled,y,scaler=preprocessing()
-    X_weighted=weighting_nutrients(X_scaled)
-
+    # X_scaled=weighting_nutrients(X_scaled) #Disabled: Weighting both the dataset and the users' input don't change anything. 
+    
     # Model initialization and fitting
     model = KNeighborsRegressor(n_neighbors=10)
-    model.fit(X_weighted, y)
+    model.fit(X_scaled, y)
     print('Successfully intialized and trained the KNN model')
 
     # Saving the fitted model into a .pkl file  
