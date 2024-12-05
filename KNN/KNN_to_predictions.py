@@ -13,6 +13,7 @@ import os
 from foodbuddy.KNN.KNN_model import KNN_model
 model_path = "foodbuddy/KNN/fitted_model.pkl"
 scaler_path = "foodbuddy/KNN/fitted_scaler.pkl"
+from Label_matcher.Recipes_list_setup import download_recipes_df
 
 
 def load_model():
@@ -120,7 +121,7 @@ def predict_KNN_model():
     # Displaying to the terminal the selected recipes
     # (UTD 12/02/2024 - before GitHub push to main) Making a Python object for Streamlit & API pipeline with the recipe names
     """First step : Loading the recipe names from the model's trained targets, as they contain both recipes indexes and titles"""
-    y=pd.read_csv('./recipe_titles.csv')
+    # y=pd.read_csv('./recipe_titles.csv')
 
     # print("Here are the selected recipes by order of matching :")
     # recommended_recipes_names=[]
