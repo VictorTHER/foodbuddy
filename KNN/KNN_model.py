@@ -1,7 +1,7 @@
 #Package import
 import pandas as pd
 import numpy as np
-# np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc. 
+# np.set_printoptions(legacy='1.25') # Making sure float and integers won't show as 'np.float(64)', etc.
 import pandas as pd
 
 from sklearn.neighbors import KNeighborsRegressor, NearestNeighbors
@@ -11,20 +11,20 @@ from sklearn.metrics import mean_squared_error, r2_score
 import pickle
 import os
 
-from KNN_preprocess import load_recipes_KNN_data
+from KNN.KNN_preprocess import load_recipes_KNN_data
 
 
 """DEV NOTES :
 ----
 12/02/2024 :
-1. Packaging is done 
+1. Packaging is done
 2. Now running with Google Cloud Storage platform
 3. Pushed to GitHub for sharing with teammates
 WIP 1: MLFlow push
-WIP 2: Fine-tuning recommendations with nutrient deficiency/overreach thresholds (probably in predictions_to_output.py) 
+WIP 2: Fine-tuning recommendations with nutrient deficiency/overreach thresholds (probably in predictions_to_output.py)
 
 
-11/28/2024 : 
+11/28/2024 :
 1. Summarizing the KNN notebook to streamline the code
 2. Will package it later into functions
  """
@@ -38,7 +38,7 @@ def preprocessing():
     data=load_recipes_KNN_data()
 
     # Loading the features
-    X=data.drop(columns=['recipe']) 
+    X=data.drop(columns=['recipe'])
     y=data.recipe
 
     ## Scaling the nutrients features
@@ -56,7 +56,7 @@ def weighting_nutrients(X_scaled,weights=None):
     1. Giving weight to some nutrients more than others.
     2. Applying weights to the scaled features to be training the KNN model.
     """
-    if weights is None : 
+    if weights is None :
         weights = np.array([0.8, 1.5, 1.2, 1.5, 1.5, 1.5, 0.8, 1.2, 1.2, 1.5])
     # Multiply features after scaling
     # Subjective factor to determine gropingly
@@ -83,19 +83,19 @@ def KNN_model():
     model.fit(X_weighted, y)
     print('Successfully intialized and trained the KNN model')
 
-    # Saving the fitted model into a .pkl file  
-    # fitted_model_path="./KNN/fitted_model.pkl"  
+    # Saving the fitted model into a .pkl file
+    # fitted_model_path="./KNN/fitted_model.pkl"
     with open('fitted_model.pkl', 'wb') as f:
         pickle.dump(model, f)
     print(f"Processed dataset saved at foodbuddy/KNN.")
-    
-    # Saving the fitted scaler into a .pkl file  
-    # fitted_scaler_path="./KNN/fitted_scaler.pkl"  
+
+    # Saving the fitted scaler into a .pkl file
+    # fitted_scaler_path="./KNN/fitted_scaler.pkl"
     with open('fitted_scaler.pkl', 'wb') as f:
         pickle.dump(scaler, f)
     print(f"Fitted scaler saved at foodbuddy/KNN.")
 
-    # """Update 12/03/2024 : Recipe names have to be called during the predictions 
+    # """Update 12/03/2024 : Recipe names have to be called during the predictions
     # => Fix : Saving the target into a csv, that will be called for indexation in the final recommendation output"""
     # y.to_csv()
 
@@ -103,5 +103,3 @@ def KNN_model():
 
 if __name__=='__main__':
     KNN_model()
-
-
