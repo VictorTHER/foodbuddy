@@ -122,14 +122,112 @@ def predict_KNN_model():
     """First step : Loading the recipe names from the model's trained targets, as they contain both recipes indexes and titles"""
     y=pd.read_csv('./recipe_titles.csv')
 
-    print("Here are the selected recipes by order of matching :")
-    recommended_recipes_names=[]
-    predicted_recipes=y_pred[1][0]
-    for i,recipe_index in enumerate(predicted_recipes) :
-        print(f"""The recommended recipe n°{i+1} is : {y.loc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
-        recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use
-    return y_pred, recommended_recipes_names
+    # print("Here are the selected recipes by order of matching :")
+    # recommended_recipes_names=[]
+    # predicted_recipes=y_pred[1][0]
+    # for i,recipe_index in enumerate(predicted_recipes) :
+    #     print(f"""The recommended recipe n°{i+1} is : {data.iloc[recipe_index]['recipe']}.""") # Printing by matching order the selected recipe
+    #     recommended_recipes_names.append(data.iloc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use
+    # return y_pred, recommended_recipes_names
+    return y_pred
 
+def predict_and_sort(model=load_model(), scaler=load_scaler()):
+
+    # Utiliser pour adapter les colonnes du recipes_df aux colonnes du 'remaining_nutrients'
+    column_mapping = {
+    'Carbohydrates_(G)_total': 'carbohydrates_g',
+    'Protein_(G)_total': 'protein_g',
+    'Lipid_(G)_total': 'lipid_g',
+    'Calcium_(MG)_total': 'calcium_mg',
+    'Iron_(MG)_total': 'iron_mg',
+    'Magnesium_(MG)_total': 'magnesium_mg',
+    'Sodium_(MG)_total': 'sodium_mg',
+    'Vitamin_A_(UG)_total': 'vitamin_a_ug',
+    'Vitamin_C_(MG)_total': 'vitamin_c_mg',
+    'Vitamin_D_(UG)_total': 'vitamin_d_ug'
+    }
+
+    # Utilisation de la fonction de Danny au dessus pour obtenir les 'remaining_nutrients'
+    X_remaining_weighted = load_user_data(scaler, recommended_intake=np.array([np.array([292, 117, 78, 697, 6, 279, 1046, 627, 63, 10])]), consumed_intake=np.array([18, 113, 35, 107, 4, 132, 1616, 574, 9.3, 0.3]))
+
+    if X_remaining_weighted.shape!=(1,10):
+        X_remaining_weighted = X_remaining_weighted.reshape(1, -1)
+
+    # Utilisation du KNN pour obtenir les 10 recettes
+    y_pred= model.kneighbors(X_remaining_weighted)
+
+    # Process des dataframes
+
+    # Process du remaining
+    standard_data_columns= [
+    'carbohydrates_g', # macronutrients come first for readability
+    'protein_g',
+    'lipid_g',
+    'calcium_mg', # micronutrients
+    'iron_mg',
+    'magnesium_mg',
+    'sodium_mg',
+    'vitamin_a_ug',
+    'vitamin_c_mg',
+    'vitamin_d_ug']
+
+    remaining = pd.DataFrame(X_remaining_weighted, columns=standard_data_columns)
+
+    # Process des recettes
+    recipes_df = download_recipes_df()
+    recipes_df = recipes_df[['recipe', 'Calcium_(MG)_total', 'Carbohydrates_(G)_total', 'Iron_(MG)_total', 'Lipid_(G)_total', 'Magnesium_(MG)_total', 'Protein_(G)_total', 'Sodium_(MG)_total', 'Vitamin_A_(UG)_total', 'Vitamin_C_(MG)_total', 'Vitamin_D_(UG)_total']]
+    recipes_df = recipes_df.rename(columns=column_mapping)
+    final_columns = ['recipe', 'carbohydrates_g', 'protein_g', 'lipid_g', 'calcium_mg', 'iron_mg', 'magnesium_mg', 'sodium_mg', 'vitamin_a_ug', 'vitamin_c_mg', 'vitamin_d_ug']
+    recipes_df = recipes_df[final_columns]
+
+    recipe_indices = y_pred[1][0]
+
+    matching_recipes = recipes_df.loc[recipe_indices]
+
+    # Ordre de prorités des nutriments à analyser
+    ordered_nutrients = [
+    'protein_g',
+    'iron_mg',
+    'vitamin_d_ug',
+    'calcium_mg',
+    'lipid_g',
+    'magnesium_mg',
+    'vitamin_a_ug',
+    'vitamin_c_mg',
+    'sodium_mg',
+    'carbohydrates_g'
+    ]
+
+    # Logique pour obtenir que 5 recettes dans la liste => return une liste de 5 recettes
+
+    filtered_nutrients = [nutrient for nutrient in ordered_nutrients if remaining[nutrient].iloc[0] >= 0]
+    print(filtered_nutrients)
+
+    diff_df = pd.DataFrame()
+
+    for nutrient in filtered_nutrients:
+        matching_recipes[f'diff_{nutrient}'] = matching_recipes[nutrient] - remaining[nutrient].iloc[0]
+
+        diff_df = matching_recipes.iloc[:, 11:]
+
+        diff_df = diff_df[diff_df[f'diff_{nutrient}'] >= 0]
+
+        if len(diff_df) < 5:
+            rejected_indices = matching_recipes.index.difference(diff_df.index)
+
+            missing_count = 5 - len(diff_df)
+            additional_recipes = matching_recipes.loc[rejected_indices].iloc[:missing_count]
+
+            diff_df = pd.concat([diff_df, additional_recipes])
+
+        matching_recipes = matching_recipes.loc[diff_df.index]
+
+        if len(diff_df) <= 5:
+            break
+
+    recipes = matching_recipes['recipe'].tolist()
+
+    return recipes
 
 if __name__=='__main__':
     predict_KNN_model()
